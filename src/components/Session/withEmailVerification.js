@@ -1,7 +1,7 @@
 import React from 'react'
 
-import AuthUserContext from './context'
 import { withFirebase } from '../Firebase'
+import { connect } from 'react-redux'
 
 const needsEmailVerification = authUser => 
 	authUser &&
@@ -25,40 +25,46 @@ const withEmailVerification = Component => {
 		}
 
 		render() {
-			return (
-					<AuthUserContext.Consumer>
-						{authUser => 
-							needsEmailVerification(authUser) ? (
-								<div>
-									{this.state.isSent ? (
-										<p>
-											E-Mail confirmation sent: Check your E-Mails.
-										</p>
-									) : (
-										<p>
-											Verify your E-Mail. Check your E-Mails for a confirmation.
-											Or send another confirmation E-Mail.
-										</p>
-									)}
+			const { authUser } = this.props
+			console.log(authUser)
 
-									<button
-										type="button"
-										onClick={this.onSendEmailVerification}
-										disabled={this.state.isSent}
-									>
-										Send confirmation E-Mail
-									</button>
-								</div>
-							) : (
-								<Component {...this.props} />
-							)
-						}
-					</AuthUserContext.Consumer>
+			return (
+					 needsEmailVerification(authUser) ? (
+							<div>
+								{this.state.isSent ? (
+									<p>
+										E-Mail confirmation sent: Check your E-Mails.
+									</p>
+								) : (
+									<p>
+										Verify your E-Mail. Check your E-Mails for a confirmation.
+										Or send another confirmation E-Mail.
+									</p>
+								)}
+
+								<button
+									type="button"
+									onClick={this.onSendEmailVerification}
+									disabled={this.state.isSent}
+								>
+									Send confirmation E-Mail
+								</button>
+							</div>
+						) : (
+							<Component {...this.props} />
+						)
+					
 			)
 		}
 	}
 
-	return withFirebase(WithEmailVerification)
+	const mapStateToProps = state => ({
+		authUser: state.authUser
+	})
+
+	const ConnectedWithEmailVerification = connect(mapStateToProps)(WithEmailVerification)
+
+	return withFirebase(ConnectedWithEmailVerification)
 }
 
 export default withEmailVerification
