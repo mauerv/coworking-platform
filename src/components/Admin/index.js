@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { compose } from 'recompose'
 
-import { withFirebase } from '../Firebase'
 import { withAuthorization, withEmailVerification } from '../Session'
 
-class AdminPage extends Component {
+class BaseAdminPage extends Component {
 	constructor(props) {
 		super(props)
 
@@ -73,6 +72,5 @@ const condition = authUser => !!authUser
 
 export default compose(
 	withEmailVerification,
-	withAuthorization(condition),
-	withFirebase
-)(AdminPage)
+	withAuthorization(condition)
+)(BaseAdminPage)

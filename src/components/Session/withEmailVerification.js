@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { withFirebase } from '../Firebase'
 import { connect } from 'react-redux'
 
 const needsEmailVerification = authUser => 
@@ -26,7 +25,6 @@ const withEmailVerification = Component => {
 
 		render() {
 			const { authUser } = this.props
-			console.log(authUser)
 
 			return (
 					 needsEmailVerification(authUser) ? (
@@ -59,12 +57,11 @@ const withEmailVerification = Component => {
 	}
 
 	const mapStateToProps = state => ({
-		authUser: state.authUser
+		authUser: state.authUser,
+		firebase: state.firebase
 	})
 
-	const ConnectedWithEmailVerification = connect(mapStateToProps)(WithEmailVerification)
-
-	return withFirebase(ConnectedWithEmailVerification)
+	return connect(mapStateToProps)(WithEmailVerification)
 }
 
 export default withEmailVerification

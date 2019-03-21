@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-import { withFirebase } from '../Firebase'
+import { connect } from 'react-redux'
+
 import * as ROUTES from '../../constants/routes'
 
 const PasswordForgetPage = () => (
@@ -71,8 +72,12 @@ const PasswordForgetLink = () => (
 	</p>
 )
 
-export default PasswordForgetPage
+const mapStateToProps = state => ({
+	firebase: state.firebase
+})
 
-const PasswordForgetForm = withFirebase(PasswordForgetFormBase)
+const PasswordForgetForm = connect(mapStateToProps)(PasswordForgetFormBase)
+
+export default PasswordForgetPage
 
 export { PasswordForgetForm, PasswordForgetLink }

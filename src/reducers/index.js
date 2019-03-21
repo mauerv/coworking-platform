@@ -1,13 +1,16 @@
+import Firebase from '../components/Firebase'
+
 const initialState = {
-	authUser: null
+	authUser: null,
+	firebase: new Firebase()
 }
 
 export default (state = initialState, action) => {
 	switch (action.type) {
 		case 'AUTH_USER_PRESENT':
-			return { authUser: action.payload }
+			return { ...state, authUser: action.payload }
 		case 'AUTH_USER_MISSING':
-			return { initialState }
+			return { ...state, authUser: null }
 		default:
 			return state
 	}

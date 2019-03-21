@@ -11,10 +11,9 @@ import SignInPage from '../SignIn';
 import PasswordForgetPage from '../PasswordForget';
 import HomePage from '../Home';
 import AccountPage from '../Account';
-import AdminPage from '../Admin';
+import AdminPage from '../../containers/Admin';
 
 import * as ROUTES from '../../constants/routes'
-import { withFirebase } from '../Firebase'
 
 class App extends Component {
 	componentDidMount() {
@@ -49,4 +48,4 @@ class App extends Component {
 	}
 }
 
-export default withFirebase(App)
+export default App

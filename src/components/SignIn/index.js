@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { compose } from 'recompose'
+import { connect } from 'react-redux'
 
 import { SignUpLink } from '../SignUp'
 import { PasswordForgetLink } from '../PasswordForget'
-import { withFirebase } from '../Firebase'
 
 import * as ROUTES from '../../constants/routes'
 
@@ -80,10 +79,12 @@ class SignInFormBase extends Component {
 	}
 }
 
-const SignInForm = compose(
-	withRouter,
-	withFirebase
-)(SignInFormBase)
+const mapStateToProps = state => ({
+	firebase: state.firebase
+})
+
+const ConnectedSignInForm = connect(mapStateToProps)(SignInFormBase)
+const SignInForm = withRouter(ConnectedSignInForm)
 
 export default SignInPage
 

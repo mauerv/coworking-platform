@@ -8,7 +8,6 @@ import * as serviceWorker from './serviceWorker';
 import rootReducer from './reducers'
 
 import ConnectedApp from './containers/ConnectedApp';
-import Firebase, { FirebaseContext } from './components/Firebase'
 
 const store = createStore(
 	rootReducer,
@@ -16,11 +15,9 @@ const store = createStore(
 )
 
 render(
-	<FirebaseContext.Provider value={new Firebase()}>
-		<Provider store={store}>
-			<ConnectedApp /> 
-		</Provider>
-	</FirebaseContext.Provider>,
+	<Provider store={store}>
+		<ConnectedApp /> 
+	</Provider>,
 	document.getElementById('root')
 )
 

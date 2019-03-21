@@ -3,7 +3,8 @@ import { authPresent, authMissing } from '../actions'
 import App from '../components/App'
 
 const mapStateToProps = state => ({
-	authUser: state.authUser
+	authUser: state.authUser,
+	firebase: state.firebase
 })
 
 const mapDispatchToProps = dispatch => ({

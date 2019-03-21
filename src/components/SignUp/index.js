@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import { compose } from 'recompose'
+import { connect } from 'react-redux'
 
-import { withFirebase } from '../Firebase'
 import * as ROUTES from '../../constants/routes'
 
 const SignUpPage = () => (
@@ -117,10 +116,12 @@ const SignUpLink = () => (
 	</p>
 )
 
-const SignUpForm = compose(
-	withRouter,
-	withFirebase
-)(SignUpFormBase)
+const mapStateToProps = state => ({
+	firebase: state.firebase
+})
+
+const ConnectedSignUpForm = connect(mapStateToProps)(SignUpFormBase)
+const SignUpForm = withRouter(ConnectedSignUpForm)
 
 export default SignUpPage
 
