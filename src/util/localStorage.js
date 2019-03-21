@@ -1,35 +1,22 @@
-export const loadState = () => {
+export const loadAuthUser = () => {
 	try {	
-		const serializedState = localStorage.getItem('state')
+		const serializedState = localStorage.getItem('authUser')
 		if (serializedState === null) {
-			return undefined
+			return { authUser: null }
 		}
 		return JSON.parse(serializedState)
 	} catch (err) {
-		return undefined
+		return { authUser: null }
+
 	}
 }
 
-export const saveState = state => {
+export const saveAuthUser = authUser => {
 	try {
-		const serializedState = JSON.stringify(state)
-		localStorage.setItem('state', serializedState)
-	} catch {
+		const serializedState = JSON.stringify(authUser)
+		localStorage.setItem('authUser', serializedState)
+	} catch (err) {
 		// ignore write errors
+
 	}
 }
-
-
-// store.js
-
-const persistedState = loadState()
-const store = createStore(
-	app,
-	persistedState
-)
-
-store.subscribe(() => {
-	saveState({
-		todos: store.getState().todos
-	})
-})
