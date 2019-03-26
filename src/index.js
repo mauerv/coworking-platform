@@ -3,9 +3,12 @@ import { render } from 'react-dom';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { loadAuthUser, saveAuthUser } from './util/localStorage'
+import _ from 'lodash'
 import Firebase from './components/Firebase'
 
-import './index.css';
+import theme from './theme/customTheme'
+import { ThemeProvider } from 'styled-components'
+
 import * as serviceWorker from './serviceWorker';
 import rootReducer from './reducers'
 
@@ -24,15 +27,17 @@ const store = createStore(
 	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
-store.subscribe(() => {
+store.subscribe(_.throttle(() => {
 	saveAuthUser({
 		authUser: store.getState().authUser
 	})
-})
+}, 1000))
 
 render(
 	<Provider store={store}>
-		<ConnectedApp /> 
+		<ThemeProvider theme={theme}>
+			<ConnectedApp /> 
+		</ThemeProvider>
 	</Provider>,
 	document.getElementById('root')
 )

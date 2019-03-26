@@ -2,44 +2,50 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import SignOutButton from '../../containers/SignOutButton'
+import { 
+	NavigationWrapper, 
+	NavigationList,
+	NavigationLink 
+} from './styles'
+
 import * as ROUTES from '../../constants/routes'
 
+
 const Navigation = ({ authUser }) => (	
-	<div>
+	<NavigationWrapper>
 		{authUser ? <NavigationAuth /> : <NavigationNonAuth />}
-	</div>
+	</NavigationWrapper>
 )
 
 const NavigationAuth = () => (
-	<ul>	
-
-		<li>
+	<NavigationList>	
+		<NavigationLink>
 			<Link to={ROUTES.LANDING}>Landing</Link>
-		</li>
-		<li>
+		</NavigationLink>
+		<NavigationLink>
 			<Link to={ROUTES.HOME}>Home</Link>
-		</li>
-		<li>
+		</NavigationLink>
+		<NavigationLink>
 			<Link to={ROUTES.ACCOUNT}>Account</Link>
-		</li>
-		<li>
+		</NavigationLink>
+		<NavigationLink>
 			<Link to={ROUTES.ADMIN}>Admin</Link>
-		</li>
-		<li>
+		</NavigationLink>
+		<NavigationLink>
 			<SignOutButton />
-		</li>
-	</ul>
+		</NavigationLink>
+	</NavigationList>
 )
 
 const NavigationNonAuth = () => (
-	<ul>
-		<li>
+	<NavigationList>
+		<NavigationLink>
 			<Link to={ROUTES.LANDING}>Landing</Link>
-		</li>
-		<li>
+		</NavigationLink>
+		<NavigationLink>
 			<Link to={ROUTES.SIGN_IN}>Sign In</Link>
-		</li>
-	</ul>
+		</NavigationLink>
+	</NavigationList>
 )
 
 export default Navigation

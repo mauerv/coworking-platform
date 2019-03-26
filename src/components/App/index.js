@@ -4,6 +4,10 @@ import {
 	Route 
 } from 'react-router-dom'
 
+// Style Imports
+import GlobalStyle from '../../theme/globalStyle'
+import { Normalize } from 'styled-normalize'
+
 import Navigation from '../Navigation';
 import LandingPage from '../Landing';
 import SignUpPage from '../SignUp';
@@ -12,6 +16,7 @@ import PasswordForgetPage from '../PasswordForget';
 import HomePage from '../Home';
 import AccountPage from '../Account';
 import AdminPage from '../../containers/Admin';
+import Footer from '../Footer'
 
 import * as ROUTES from '../../constants/routes'
 
@@ -31,9 +36,10 @@ class App extends Component {
 		return (
 			<Router>
 				<div>
-					<Navigation authUser={this.props.authUser}/>
+					<Normalize />
+					<GlobalStyle />
 
-					<hr />
+					<Navigation authUser={this.props.authUser}/>
 
 					<Route exact path={ROUTES.LANDING} component={LandingPage} />
 					<Route path={ROUTES.SIGN_UP} component={SignUpPage} />
@@ -42,6 +48,8 @@ class App extends Component {
 					<Route path={ROUTES.HOME} component={HomePage} />
 					<Route path={ROUTES.ACCOUNT} component={AccountPage} />
 					<Route path={ROUTES.ADMIN} component={AdminPage} />
+
+					<Footer />
 				</div>
 			</Router>
 		)
