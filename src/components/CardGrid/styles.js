@@ -1,0 +1,11 @@
+import styled from 'styled-components'
+
+export const GridWrapper = styled.div`
+	display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`
+
+export const GridTitle = styled.h1`
+
+`

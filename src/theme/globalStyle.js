@@ -3,8 +3,12 @@ import { createGlobalStyle } from 'styled-components'
 const GlobalStyle = createGlobalStyle`
 	@import url(‘https://fonts.googleapis.com/css?family=Montserrat|Roboto');
 
-	body {
+	html, body {
+		height: 100%
 	  margin: 0;
+	}
+
+	body {
 	  padding: 0;
 	  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
 	    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
