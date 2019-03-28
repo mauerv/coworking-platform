@@ -21,19 +21,15 @@ const settings = {
 	slidesToScroll: 1
 }
 
-const Card = ({ title, text, price, rating }) => (
- 	<Link to={ROUTES.COWORK}>
+const Card = ({ title, text, price, rating, images, id }) => (
+ 	<Link to={`${ROUTES.COWORKS}/${id}`}>
 	<Wrapper>
 		<Slider {...settings}>
-      <div>
-        <img src={'cowork.jpeg'} />
-      </div>
-      <div>
-        <img src={'cowork.jpeg'} />
-      </div>
-      <div>
-        <img src={'cowork.jpeg'} />
-      </div>
+			{images.map(image => (
+	      <div>
+	        <img src={`${process.env.PUBLIC_URL}/${image}`} />
+	      </div>
+			))}
 		</Slider>	
 		<CardContent>
 			<Title>

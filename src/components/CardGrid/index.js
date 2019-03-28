@@ -1,45 +1,19 @@
 import React from 'react'
 import Card from '../Card'
-import { GridWrapper, GridTitle } from './styles'
+import { GridWrapper } from './styles'
 
-const CardGrid = () => (
+const CardGrid = ({ cardsData }) => (
 	<GridWrapper>
-		<Card 
-			title={'Cowork Place'}
-			text={'A brief description of the place.'}
-			price={'$10 per day'}
-			rating={'5-5 Stars'}
-		/>
-		<Card 
-			title={'Cowork Place'}
-			text={'A brief description of the place.'}
-			price={'$10 per day'}
-			rating={'5-5 Stars'}
-		/>
-		<Card 
-			title={'Cowork Place'}
-			text={'A brief description of the place.'}
-			price={'$10 per day'}
-			rating={'5-5 Stars'}
-		/>
-		<Card 
-			title={'Cowork Place'}
-			text={'A brief description of the place.'}
-			price={'$10 per day'}
-			rating={'5-5 Stars'}
-		/>
-		<Card 
-			title={'Cowork Place'}
-			text={'A brief description of the place.'}
-			price={'$10 per day'}
-			rating={'5-5 Stars'}
-		/>
-		<Card 
-			title={'Cowork Place'}
-			text={'A brief description of the place.'}
-			price={'$10 per day'}
-			rating={'5-5 Stars'}
-		/>
+		{cardsData.map(cardData => (
+			<Card 
+				title={cardData.name}
+				text={cardData.shortDescription}
+				price={cardData.price}
+				rating={cardData.rating}
+				images={cardData.images}
+				id={cardData.id}
+			/>
+		))}
 	</GridWrapper>
 )
 

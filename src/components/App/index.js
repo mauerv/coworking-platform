@@ -52,7 +52,7 @@ class App extends Component {
 						<Route path={ROUTES.HOME} component={HomePage} />
 						<Route path={ROUTES.ACCOUNT} component={AccountPage} />
 						<Route path={ROUTES.ADMIN} component={AdminPage} />
-						<Route path={ROUTES.COWORK} component={CoworkPage} />
+						<Route exact path={ROUTES.COWORK} component={CoworkPage} />
 						<Route path={ROUTES.CREATE} component={CoworkCreate} />
 					</ContentWrapper>
 					<Footer />

@@ -13,45 +13,60 @@ const settings = {
 	centerMode: true
 }
 
-const CoworkPage = () => (
-	<div>
-		<HeroSlider>
-			<Slider {...settings}>
-				{coworks[0].images.map(image => (
-					<div>
-						<img src={'cowork-wide.png'} /> 
-					</div>
-				))}
-			</Slider>
-		</HeroSlider>
-		<FlexColumn>
+const getCoworkById = (id) => {
+	for (var i = 0; i < coworks.length; i++) {
+		if (coworks[i].id == id) {
+			return coworks[i]
+		}
+	}
+} 
+
+const CoworkPage = ({ match }) => {
+	// Estoy Funciona MAL!! Buscar por ID no por index
+	const cowork = getCoworkById(match.params.cowork_id);
+
+	return (
+		<div>
+			<HeroSlider>
+				<Slider {...settings}>
+					{cowork.images.map((image, i) => (
+						<div key={i}>
+							<img src={`${process.env.PUBLIC_URL}/${image}`} /> 
+						</div>
+					))}
+				</Slider>
+			</HeroSlider>
+			<FlexColumn>
+				<div>
+					<h1>{cowork.name}</h1>
+					<p>{cowork.location}</p>
+					<p>
+						{cowork.description}
+					</p>
+				</div>
+				<div>
+					<p>Rating {cowork.rating}</p>
+				</div>
+			</FlexColumn>
 			<div>
-				<h1>{coworks[0].name}</h1>
-				<p>{coworks[0].location}</p>
-				<p>
-					{coworks[0].description}
-				</p>
+				<h1>Ammenities</h1>
+				<FigureGrid
+					figures={cowork.ammenities}
+				/>
 			</div>
 			<div>
-				<p>Rating {coworks[0].rating}</p>
+				<h1>Opening Hours</h1>
+				<p><strong>Monday/Friday: </strong>{cowork.weekdaySchedule}</p>
+				<p><strong>Weekends: </strong>{cowork.weekendSchedule}</p>
 			</div>
-		</FlexColumn>
-		<div>
-			<h1>Ammenities</h1>
-			<FigureGrid
-				figures={coworks[0].ammenities}
-			/>
+			<div>
+				<h1>Daily Price</h1>
+				<p>${cowork.price}</p>
+			</div>				
 		</div>
-		<div>
-			<h1>Opening Hours</h1>
-			<p><strong>Monday/Friday: </strong>{coworks[0].weekdaySchedule}</p>
-			<p><strong>Weekends: </strong>{coworks[0].weekendSchedule}</p>
-		</div>
-		<div>
-			<h1>Daily Price</h1>
-			<p>${coworks[0].price}</p>
-		</div>				
-	</div>
-)
+	)
+}
+
+
 
 export default CoworkPage
