@@ -8,7 +8,7 @@ import {
 const PageHeader = () => (
 	<HeaderWrapper>
 		<HeaderImage>
-			Cowork
+			COWORK
 		</HeaderImage>
 		<HeaderText>
 			Your Perfect Workplace

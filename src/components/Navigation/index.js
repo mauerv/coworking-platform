@@ -3,49 +3,54 @@ import { Link } from 'react-router-dom'
 
 import SignOutButton from '../../containers/SignOutButton'
 import { 
-	NavigationWrapper, 
-	NavigationList,
-	NavigationLink 
+	NavWrapper, 
+	NavList,
+	NavLink,
+	NavLogo
 } from './styles'
 
 import * as ROUTES from '../../constants/routes'
 
 
 const Navigation = ({ authUser }) => (	
-	<NavigationWrapper>
+	<div>
 		{authUser ? <NavigationAuth /> : <NavigationNonAuth />}
-	</NavigationWrapper>
+	</div>
 )
 
 const NavigationAuth = () => (
-	<NavigationList>	
-		<NavigationLink>
-			<Link to={ROUTES.LANDING}>Landing</Link>
-		</NavigationLink>
-		<NavigationLink>
-			<Link to={ROUTES.HOME}>Home</Link>
-		</NavigationLink>
-		<NavigationLink>
-			<Link to={ROUTES.ACCOUNT}>Account</Link>
-		</NavigationLink>
-		<NavigationLink>
-			<Link to={ROUTES.ADMIN}>Admin</Link>
-		</NavigationLink>
-		<NavigationLink>
-			<SignOutButton />
-		</NavigationLink>
-	</NavigationList>
+	<NavWrapper>
+		<NavLogo>
+			<Link to={ROUTES.LANDING}>COWORK</Link>
+		</NavLogo>	
+		<NavList>
+			<NavLink>
+				<Link to={ROUTES.HOME}>Home</Link>
+			</NavLink>
+			<NavLink>
+				<Link to={ROUTES.ACCOUNT}>Account</Link>
+			</NavLink>
+			<NavLink>
+				<Link to={ROUTES.ADMIN}>Admin</Link>
+			</NavLink>
+			<NavLink>
+				<SignOutButton />
+			</NavLink>
+		</NavList>
+	</NavWrapper>
 )
 
 const NavigationNonAuth = () => (
-	<NavigationList>
-		<NavigationLink>
-			<Link to={ROUTES.LANDING}>Landing</Link>
-		</NavigationLink>
-		<NavigationLink>
-			<Link to={ROUTES.SIGN_IN}>Sign In</Link>
-		</NavigationLink>
-	</NavigationList>
+	<NavWrapper>
+		<NavLogo>
+				<Link to={ROUTES.LANDING}>COWORK</Link>
+		</NavLogo>
+		<NavList>
+			<NavLink>
+				<Link to={ROUTES.SIGN_IN}>Sign In</Link>
+			</NavLink>
+		</NavList>
+	</NavWrapper>
 )
 
 export default Navigation

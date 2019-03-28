@@ -4,7 +4,7 @@ import { FooterWrapper, FooterLogo } from './styles'
 const Footer = () => (
 	<FooterWrapper>
 		<FooterLogo>
-			CoWork
+			COWORK
 		</FooterLogo>
 	</FooterWrapper>
 )
