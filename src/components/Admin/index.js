@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { compose } from 'recompose'
 
 import { withAuthorization, withEmailVerification } from '../Session'
+import UserList from './UserList'
 
 class BaseAdminPage extends Component {
 	constructor(props) {
@@ -49,24 +50,6 @@ class BaseAdminPage extends Component {
 		)
 	}
 }
-
-const UserList = ({ users }) => (
-	<ul>
-		{users.map(user => (
-			<li key={user.uid}>
-				<span>
-					<strong>ID:</strong> {user.uid}
-				</span>
-				<span>
-					<strong>E-Mail:</strong> {user.email}
-				</span>
-				<span>
-					<strong>Username:</strong> {user.username}
-				</span>
-			</li>
-		))}
-	</ul>
-)
 
 const condition = authUser => !!authUser
 

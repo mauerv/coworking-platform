@@ -4,7 +4,7 @@ import { MainButton, Alert } from '../../theme/utilComponents'
 
 export { Alert }
 
-export const FormWrapper = styled.div` 
+export const FormWrapper = styled.form` 
 	display: flex;
 	flex-direction: column;
 `

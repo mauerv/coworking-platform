@@ -24,10 +24,10 @@ const NavigationAuth = () => (
 		</NavLogo>	
 		<NavList>
 			<NavLink>
-				<Link to={ROUTES.ACCOUNT}>Account</Link>
+				<Link to={ROUTES.CREATE}>Create Cowork</Link>
 			</NavLink>
 			<NavLink>
-				<Link to={ROUTES.ADMIN}>Admin</Link>
+				<Link to={ROUTES.ACCOUNT}>Account</Link>
 			</NavLink>
 			<NavLink>
 				<SignOutButton />

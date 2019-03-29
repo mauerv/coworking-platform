@@ -69,6 +69,12 @@ class Firebase {
 					fallback()
 				}
 		})
+
+	// *** Cowork API ***
+
+	cowork = uid => this.db.ref(`coworks/${uid}`)
+
+	coworks = () => this.db.ref('coworks')
 }
 
 export default Firebase

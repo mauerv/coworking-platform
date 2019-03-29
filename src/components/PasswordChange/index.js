@@ -6,8 +6,7 @@ import {
 	Alert, 
 	FormWrapper,
 	FormInput,
-	FormSubmit,
-	FormTitle
+	FormSubmit
 } from './styles'
 
 const INITIAL_STATE = {

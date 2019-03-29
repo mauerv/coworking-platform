@@ -16,10 +16,9 @@ import SignInPage from '../SignIn'
 import PasswordForgetPage from '../PasswordForget'
 import HomePage from '../Home'
 import AccountPage from '../Account'
-import AdminPage from '../../containers/Admin'
 import Footer from '../Footer'
 import CoworkPage from '../CoworkPage'
-import CoworkCreate from '../CoworkCreate'
+import ConnectedCoworkCreate from '../../containers/ConnectedCoworkCreate'
 
 import * as ROUTES from '../../constants/routes'
 
@@ -54,9 +53,8 @@ class App extends Component {
 						<Route path={ROUTES.SIGN_IN} component={SignInPage} />
 						<Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
 						<Route path={ROUTES.ACCOUNT} component={AccountPage} />
-						<Route path={ROUTES.ADMIN} component={AdminPage} />
 						<Route exact path={ROUTES.COWORK} component={CoworkPage} />
-						<Route path={ROUTES.CREATE} component={CoworkCreate} />
+						<Route path={ROUTES.CREATE} component={ConnectedCoworkCreate} />
 					</ContentWrapper>
 					<Footer />
 				</AppWrapper>

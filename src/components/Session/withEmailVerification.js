@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { connect } from 'react-redux'
+import { MainButton } from './styles'
 
 const needsEmailVerification = authUser => 
 	authUser &&
@@ -40,13 +41,13 @@ const withEmailVerification = Component => {
 									</p>
 								)}
 
-								<button
+								<MainButton
 									type="button"
 									onClick={this.onSendEmailVerification}
 									disabled={this.state.isSent}
 								>
 									Send confirmation E-Mail
-								</button>
+								</MainButton>
 							</div>
 						) : (
 							<Component {...this.props} />

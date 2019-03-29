@@ -5,6 +5,7 @@ export const MainButton = styled.button`
   background-color: ${props => props.theme.blue}
   border-color: ${props => props.theme.blue}
   border-radius: 5px;
+  padding: 10px 20px; 
 `
 
 export const Alert = styled.p`
