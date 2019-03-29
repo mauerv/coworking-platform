@@ -2,6 +2,14 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 
+import { 
+	Alert, 
+	FormWrapper,
+	FormInput,
+	FormSubmit,
+	FormTitle
+} from './styles'
+
 const INITIAL_STATE = {
 	passwordOne: '',
 	passwordTwo: '',
@@ -41,27 +49,27 @@ class BasePasswordChangeForm extends Component {
 			passwordOne !== passwordTwo || passwordOne === ''
 		
 		return (
-      <form onSubmit={this.onSubmit}>
-        <input
+      <FormWrapper onSubmit={this.onSubmit}>
+        <FormInput
           name="passwordOne"
           value={passwordOne}
           onChange={this.onChange}
           type="password"
           placeholder="New Password"
         />
-        <input
+        <FormInput
           name="passwordTwo"
           value={passwordTwo}
           onChange={this.onChange}
           type="password"
           placeholder="Confirm New Password"
         />
-        <button disabled={isInvalid} type="submit">
-          Reset My Password
-        </button>
+        <FormSubmit disabled={isInvalid} type="submit">
+          Change My Password
+        </FormSubmit>
 
-        {error && <p>{error.message}</p>}
-      </form>
+        {error && <Alert>{error.message}</Alert>}
+      </FormWrapper>
 		)
 	}
 }

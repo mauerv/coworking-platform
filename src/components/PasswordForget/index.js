@@ -1,5 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { 
+	Alert, 
+	FormWrapper,
+	FormInput,
+	FormSubmit,
+	FormTitle
+} from './styles'
 
 import { connect } from 'react-redux'
 
@@ -7,7 +14,7 @@ import * as ROUTES from '../../constants/routes'
 
 const PasswordForgetPage = () => (
 	<div>
-		<h3>PasswordForget</h3>
+		<FormTitle>PasswordForget</FormTitle>
 		<PasswordForgetForm />
 	</div>
 )
@@ -48,20 +55,20 @@ class PasswordForgetFormBase extends Component {
 		const isInvalid = email === ''
 
 		return (
-			<form onSubmit={this.onSubmit}>
-				<input
+			<FormWrapper onSubmit={this.onSubmit}>
+				<FormInput
 					name="email"
 					value={this.state.email}
 					onChange={this.onChange}
 					type="text"
 					placeholder="Email Address"
 				/>
-				<button disabled={isInvalid} type="submit">
+				<FormSubmit disabled={isInvalid} type="submit">
 					Reset My Password
-				</button>
+				</FormSubmit>
 
-				{error && <p>{error.message}</p>}
-			</form>
+				{error && <Alert>{error.message}</Alert>}
+			</FormWrapper>
 		)
 	}
 }

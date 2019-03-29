@@ -2,11 +2,19 @@ import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
+import { 
+	Alert, 
+	FormWrapper,
+	FormInput,
+	FormSubmit,
+	FormTitle
+} from '../../theme/utilComponents'
+
 import * as ROUTES from '../../constants/routes'
 
 const SignUpPage = () => (
 	<div>
-		<h1>SignUp</h1>
+		<FormTitle>SignUp</FormTitle>
 		<SignUpForm />
 	</div>
 )
@@ -73,39 +81,39 @@ class SignUpFormBase extends Component {
 			username === ''
 
 		return (
-			<form onSubmit={this.onSubmit}>
-				<input
+			<FormWrapper onSubmit={this.onSubmit}>
+				<FormInput
 					name="username"
 					value={username}
 					onChange={this.onChange}
 					type="text"
 					placeholder="Full Name"
 				/>
-				<input
+				<FormInput
 					name="email"
 					value={email}
 					onChange={this.onChange}
 					type="text"
 					placeholder="Email Address"
 				/>
-				<input
+				<FormInput
 					name="passwordOne"
 					value={passwordOne}
 					onChange={this.onChange}
 					type="password"
 					placeholder="Password"
 				/>
-				<input
+				<FormInput
 					name="passwordTwo"
 					value={passwordTwo}
 					onChange={this.onChange}
 					type="password"
 					placeholder="Confirm Password"
 				/>
-				<button disabled={isInvalid} type="submit">Sign Up</button>
+				<FormSubmit disabled={isInvalid} type="submit">Sign Up</FormSubmit>
 
-				{error && <p>{error.message}</p>}
-			</form>
+				{error && <Alert>{error.message}</Alert>}
+			</FormWrapper>
 		)	
 	}
 }

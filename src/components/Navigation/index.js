@@ -11,7 +11,6 @@ import {
 
 import * as ROUTES from '../../constants/routes'
 
-
 const Navigation = ({ authUser }) => (	
 	<div>
 		{authUser ? <NavigationAuth /> : <NavigationNonAuth />}
@@ -21,12 +20,9 @@ const Navigation = ({ authUser }) => (
 const NavigationAuth = () => (
 	<NavWrapper>
 		<NavLogo>
-			<Link to={ROUTES.LANDING}>COWORK</Link>
+			<Link to={ROUTES.HOME}>COWORK</Link>
 		</NavLogo>	
 		<NavList>
-			<NavLink>
-				<Link to={ROUTES.HOME}>Home</Link>
-			</NavLink>
 			<NavLink>
 				<Link to={ROUTES.ACCOUNT}>Account</Link>
 			</NavLink>
@@ -43,7 +39,7 @@ const NavigationAuth = () => (
 const NavigationNonAuth = () => (
 	<NavWrapper>
 		<NavLogo>
-				<Link to={ROUTES.LANDING}>COWORK</Link>
+				<Link to={ROUTES.HOME}>COWORK</Link>
 		</NavLogo>
 		<NavList>
 			<NavLink>

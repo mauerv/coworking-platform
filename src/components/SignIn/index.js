@@ -5,15 +5,24 @@ import { connect } from 'react-redux'
 import { SignUpLink } from '../SignUp'
 import { PasswordForgetLink } from '../PasswordForget'
 
+import { 
+	Alert, 
+	FormWrapper,
+	FormInput,
+	FormSubmit,
+	FormTitle,
+	ContentWrapper
+} from './styles'
+
 import * as ROUTES from '../../constants/routes'
 
 const SignInPage = () => (
-	<div>
-		<h1>SignIn</h1>
+	<ContentWrapper>
+		<FormTitle>Sign In</FormTitle>
 		<SignInForm />
 		<PasswordForgetLink />
 		<SignUpLink />
-	</div>
+	</ContentWrapper>
 )
 
 const INITIAL_STATE = {
@@ -55,26 +64,26 @@ class SignInFormBase extends Component {
 		const isInvalid = password === '' || email === '' 
 
 		return (
-			<form onSubmit={this.onSubmit}>
-				<input
+			<FormWrapper onSubmit={this.onSubmit}>
+				<FormInput
 					name="email"
 					value={email}
 					onChange={this.onChange}
 					type="text"
 					placeholder="Email Address"
 				/>
-				<input
+				<FormInput
 					name="password"
 					value={password}
 					onChange={this.onChange}
 					type="password"
 					placeholder="Password"
 				/>
-				<button disabled={isInvalid} type="submit">
+				<FormSubmit disabled={isInvalid} type="submit">
 					Sign In
-				</button>
-				{error && <p>{error.message}</p>}
-			</form>
+				</FormSubmit>
+				{error && <Alert>{error.message}</Alert>}
+			</FormWrapper>
 		)
 	}
 }

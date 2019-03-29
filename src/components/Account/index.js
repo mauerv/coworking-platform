@@ -5,13 +5,18 @@ import {
 	withAuthorization, 
 	withEmailVerification 
 } from '../Session'
+
 import { PasswordForgetForm } from '../PasswordForget'
 import PasswordChangeForm from '../PasswordChange'
+
+import { FormTitle } from './styles'
 
 const AccountPage = ({ authUser }) => (
 	<div>
 		<h1>Account: {authUser.email}</h1>
+		<FormTitle>Forgot Password</FormTitle>
 		<PasswordForgetForm />
+		<FormTitle>Change Password</FormTitle>
 		<PasswordChangeForm />
 	</div>
 )
