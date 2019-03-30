@@ -12,25 +12,32 @@ import PasswordChangeForm from '../PasswordChange'
 import List from '../List'
 import FigureWithButton from '../FigureWithButton'
 
-import { FormTitle } from './styles'
+import { 
+	FormTitle,
+	PasswordManageWrapper 
+	} from './styles'
 
 const AccountPage = () => (
 	<div>
-		<div>
-			<h1>My Coworks</h1>
-			<List items={coworks} />
-		</div>
-		<FigureWithButton 
-			title="My Coworks"
-			text="You don't seem to have any cowork just yet."
-			onClick={() => ''}
-		/>
-		<div>
-			<FormTitle>Forgot Password</FormTitle>
-			<PasswordForgetForm />
-			<FormTitle>Change Password</FormTitle>
-			<PasswordChangeForm />
-		</div>
+		{true ? (
+			<List listTitle={"My Coworks"} items={coworks} />
+		) : (
+			<FigureWithButton 
+				title="My Coworks"
+				text="You don't seem to have any cowork just yet."
+				onClick={() => ''}
+			/>
+		)}
+		<PasswordManageWrapper>
+			<div>
+				<FormTitle>Forgot Password</FormTitle>
+				<PasswordForgetForm />
+			</div>
+			<div>
+				<FormTitle>Change Password</FormTitle>
+				<PasswordChangeForm />
+			</div>
+		</PasswordManageWrapper>
 	</div>
 )
 

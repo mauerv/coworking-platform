@@ -8,6 +8,19 @@ export const MainButton = styled.button`
   padding: 10px 20px; 
 `
 
+export const LightContainer = styled.div`
+  display: flex;
+  border: ${props => props.theme.darkBlue};
+  background: ${props => props.theme.lightBlue};
+  border-radius: 4px;
+  padding: 15px 20px;
+`
+
+export const ContainerTitle = styled.h1`
+  color: ${props => props.theme.darkBlue};
+  margin-bottom: 10px;
+`
+
 export const Alert = styled.p`
   color: #a94442;
   background-color: #f2dede;

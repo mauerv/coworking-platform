@@ -31,7 +31,7 @@ const CoworkPage = ({ match }) => {
 				<Slider {...settings}>
 					{cowork.images.map((image, i) => (
 						<div key={i}>
-							<img src={`${process.env.PUBLIC_URL}/${image}`} /> 
+							<img src={`${process.env.PUBLIC_URL}/${image}`} alt='' /> 
 						</div>
 					))}
 				</Slider>

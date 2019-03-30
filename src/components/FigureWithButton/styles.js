@@ -1,19 +1,17 @@
 import styled from 'styled-components'
 
-import { MainButton } from '../../theme/utilComponents'
+import { 
+	MainButton, 
+	LightContainer,
+	ContainerTitle 
+} from '../../theme/utilComponents'
 
-export const FigureContent = styled.div`
-	display: flex;
+export const FigureContent = styled(LightContainer)`
 	justify-content: space-between;
-	border: ${props => props.theme.darkBlue};
-	background: ${props => props.theme.lightBlue};
-  border-radius: 4px;
-  padding: 15px 20px;
 `
 
-export const FigureTitle = styled.h1`
-	color: ${props => props.theme.darkBlue};
-	margin-bottom: 10px;
+export const FigureTitle = styled(ContainerTitle)`
+
 `
 
 export const FigureText = styled.p`

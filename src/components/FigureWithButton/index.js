@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import {
 	FigureContent,
@@ -16,6 +17,12 @@ const FigureWithButton = ({ title, text, onClick }) => (
 		</FigureContent>
 	</div>
 )
+
+FigureWithButton.propTypes = {
+	title: PropTypes.string,
+	text: PropTypes.string.isRequired,
+	onClick: PropTypes.func.isRequired
+}
 
 export default FigureWithButton
 
