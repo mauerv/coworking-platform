@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import * as ROUTES from '../../constants/routes'
+import ImageUpload from '../ImageUpload'
+import { 
+	withAuthorization, 
+	withEmailVerification 
+} from '../Session'
+import { compose } from 'recompose'
 import { 
 	FormWrapper,
 	FormRow,
@@ -11,7 +17,6 @@ import {
 	FormCheckbox,
 	FormSubmit,
 	Alert,
-	ImageInput,
 	AmmenitiesRow
 } from './styles'
 
@@ -28,6 +33,9 @@ const INITIAL_STATE = {
 	ammenitiesMusic: false,
 	openingWeekday: '',
 	openingWeekend: '',
+	imageOne: '',
+	imageTwo: '',
+	imageThree: '',
 	error: null
 }
 
@@ -72,8 +80,18 @@ class CoworkCreate extends Component {
 			ammenitiesMusic,
 			openingWeekday,
 			openingWeekend,
+			imageOne,
+			imageTwo,
+			imageThree,
 			error 
 		} = this.state
+
+		const isInvalid = 
+			name === '' || 
+			smallDescription === '' ||
+			description === '' ||
+			openingWeekday === '' ||
+			openingWeekend === ''
 
 		return (
 			<div>
@@ -221,9 +239,23 @@ class CoworkCreate extends Component {
 						</FormItem>
 					</FormRow>
 					<FormRow>
-						<ImageInput type="button" onClick={() => alert("Not implemented")} value="Add Image" />
+						<ImageUpload 
+							image={imageOne}
+							onImageUpdate={url => this.setState({imageOne: url})}
+							onRemoveImage={() => this.setState({imageOne: ''})} 
+						/>
+						<ImageUpload 
+							image={imageTwo}
+							onImageUpdate={url => this.setState({imageTwo: url})}
+							onRemoveImage={() => this.setState({imageTwo: ''})}
+						/>
+						<ImageUpload 
+							image={imageThree}
+							onImageUpdate={url => this.setState({imageThree: url})}
+							onRemoveImage={() => this.setState({imageThree: ''})}
+						/>
 					</FormRow>
-					<FormSubmit type="submit">Create Cowork</FormSubmit>
+					<FormSubmit type="submit" disabled={isInvalid}>Create Cowork</FormSubmit>
 					{error && <Alert>{error}</Alert>}
 				</FormWrapper>
 			</div>
@@ -231,4 +263,10 @@ class CoworkCreate extends Component {
 	}
 }
 
-export default withRouter(CoworkCreate)
+const condition = authUser => !!authUser
+
+export default compose(
+	withEmailVerification,
+	withAuthorization(condition),
+	withRouter
+)(CoworkCreate)

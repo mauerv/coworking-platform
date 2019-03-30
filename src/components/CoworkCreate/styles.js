@@ -57,7 +57,3 @@ export const FormSubmit = styled(MainButton)`
   padding: 10px 50px; 
   align-self: center;
 `
-
-export const ImageInput = styled.input`
-	flex-grow: 1;
-`
