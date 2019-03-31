@@ -1,6 +1,6 @@
 import { AUTH_USER_PRESENT, AUTH_USER_MISSING } from '../constants/actions'
 
-export default (state, action) => {
+const rootReducer = (state, action) => {
 	switch (action.type) {
 		case AUTH_USER_PRESENT:
 			return { ...state, authUser: action.payload }
@@ -10,3 +10,5 @@ export default (state, action) => {
 			return state
 	}
 }
+
+export default rootReducer
