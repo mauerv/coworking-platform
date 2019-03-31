@@ -33,6 +33,14 @@ const GlobalStyle = createGlobalStyle`
 	button:hover {
 		cursor: pointer;
 	}
+
+	.profile-carousel img {
+	  display: block;
+	  margin-left: auto;
+	  margin-right: auto;
+	}
+  .profile-carousel .slick-next { right: 5px; }
+  .profile-carousel .slick-prev { left: 5px; }
 `
 
 export default GlobalStyle

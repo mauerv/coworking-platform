@@ -9,8 +9,8 @@ import { coworks } from '../../util/dummyData'
 
 const HomePage = () => (
 	<HomeWrapper>
-		<h1>Find the best work spaces in Mendoza</h1>
 		<CardGrid 
+			gridTitle="Find the best work spaces in Mendoza"
 			cardsData={coworks}
 		/>
 	</HomeWrapper>

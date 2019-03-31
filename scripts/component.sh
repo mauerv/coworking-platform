@@ -9,8 +9,8 @@ case $key in
 		COMPONENT_NAME=$2
 		DIR_NAME=~/Code/coworking-platform/src/components/$COMPONENT_NAME
 		mkdir $DIR_NAME
-		echo "import styled from 'styled-components'" >> $DIR_NAME/styles.js
-		printf "import React from 'react'\n\nconst $COMPONENT_NAME = () => (\n  <div>\n    $COMPONENT_NAME\n  </div>\n)\n\nexport default $COMPONENT_NAME" >> $DIR_NAME/index.js
+		printf "import styled from 'styled-components'\n\nexport const ${COMPONENT_NAME}Wrapper = styled.div\`\n\n\`" >> $DIR_NAME/styles.js
+		printf "import React from 'react'\n\nimport {\n ${COMPONENT_NAME}Wrapper\n} from './styles'\n\nconst $COMPONENT_NAME = () => (\n  <${COMPONENT_NAME}Wrapper>\n    $COMPONENT_NAME\n  </${COMPONENT_NAME}Wrapper>\n)\n\nexport default $COMPONENT_NAME" >> $DIR_NAME/index.js
 		shift
 		shift
 	;;

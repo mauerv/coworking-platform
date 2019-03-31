@@ -133,7 +133,7 @@ export const coworks = [
 		weekdaySchedule: '8:00 - 19:00',
 		weekendSchedule: 'Closed',
 		images: [
-			'cowork-wide.png', 
+			'cowork.jpeg', 
 			'cowork-wide.png', 
 			'cowork-wide.png'
 		]
@@ -177,7 +177,7 @@ export const coworks = [
 		weekdaySchedule: '8:00 - 19:00',
 		weekendSchedule: 'Closed',
 		images: [
-			'cowork-wide.png', 
+			'cowork.jpeg', 
 			'cowork-wide.png', 
 			'cowork-wide.png'
 		]
@@ -213,7 +213,7 @@ export const coworks = [
 		weekdaySchedule: '8:00 - 19:00',
 		weekendSchedule: 'Closed',
 		images: [
-			'cowork-wide.png', 
+			'olegario.jpg', 
 			'cowork-wide.png', 
 			'cowork-wide.png'
 		]

@@ -1,16 +1,23 @@
 import React from 'react'
 import Slider from 'react-slick'
-import { HeroSlider, FlexColumn } from './styles'
 import FigureGrid from '../FigureGrid'
 import { coworks } from '../../util/dummyData'
+import { 
+	HeroSlider, 
+	FlexColumn,
+	ProfileRow,
+	ProfileRowSplit 
+} from './styles'
 
 const settings = {
 	dots: true,
 	infinite: true,
 	speed: 500,
 	slidesToShow: 1,
+	arrows: false,
 	slidesToScroll: 1,
-	centerMode: true
+	slidesToShow: 1,
+	className: 'profile-carousel'
 }
 
 const getCoworkById = (id) => {
@@ -22,7 +29,6 @@ const getCoworkById = (id) => {
 } 
 
 const CoworkPage = ({ match }) => {
-	// Estoy Funciona MAL!! Buscar por ID no por index
 	const cowork = getCoworkById(match.params.cowork_id);
 
 	return (
@@ -36,7 +42,7 @@ const CoworkPage = ({ match }) => {
 					))}
 				</Slider>
 			</HeroSlider>
-			<FlexColumn>
+			<ProfileRowSplit>
 				<div>
 					<h1>{cowork.name}</h1>
 					<p>{cowork.location}</p>
@@ -47,22 +53,22 @@ const CoworkPage = ({ match }) => {
 				<div>
 					<p>Rating {cowork.rating}</p>
 				</div>
-			</FlexColumn>
-			<div>
+			</ProfileRowSplit>
+			<ProfileRow>
 				<h1>Ammenities</h1>
 				<FigureGrid
 					figures={cowork.ammenities}
 				/>
-			</div>
-			<div>
+			</ProfileRow>
+			<ProfileRow>
 				<h1>Opening Hours</h1>
 				<p><strong>Monday/Friday: </strong>{cowork.weekdaySchedule}</p>
 				<p><strong>Weekends: </strong>{cowork.weekendSchedule}</p>
-			</div>
-			<div>
+			</ProfileRow>
+			<ProfileRow>
 				<h1>Daily Price</h1>
 				<p>${cowork.price}</p>
-			</div>				
+			</ProfileRow>				
 		</div>
 	)
 }

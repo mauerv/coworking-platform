@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const UserList = ({ users }) => (
 	<ul>
@@ -18,5 +19,12 @@ const UserList = ({ users }) => (
 	</ul>
 )
 
+UserList.propTypes = {
+	users: PropTypes.arrayOf(PropTypes.shape({
+		uid: PropTypes.string.isRequired,
+		email: PropTypes.string.isRequired,
+		username: PropTypes.string.isRequired
+	}).isRequired).isRequired
+}
 
 export default UserList

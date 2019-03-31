@@ -14,5 +14,6 @@ export const FigureImage = styled.img`
 `
 
 export const FigureLabel = styled.p`
-
+	color: ${props => props.theme.darkBlue};
+	font-weight: 500;
 `

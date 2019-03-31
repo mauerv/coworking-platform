@@ -1,54 +1,53 @@
 import React from 'react'
-import Slider from 'react-slick'
-import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import * as ROUTES from '../../constants/routes'
 
 import { 
-	Wrapper,
-	Title,
-	Text,
-	Price,
-	Rating,
+	CardLink,
+	CardTitle,
+	CardText,
+	CardPrice,
+	CardRating,
 	CardContent,
-	CardStats
+	CardStats,
+	CardThumbnail
 } from './styles'
 
-const settings = {
-	dots: true,
-	infinite: true,
-	speed: 500,
-	slidesToShow: 1,
-	slidesToScroll: 1
-}
+//<CardThumbnail>
+	//<img src={`${process.env.PUBLIC_URL}/${images[0]}`} />
+//</CardThumbnail>
 
 const Card = ({ title, text, price, rating, images, id }) => (
- 	<Link to={`${ROUTES.COWORKS}/${id}`}>
-	<Wrapper>
-		<Slider {...settings}>
-			{images.map(image => (
-	      <div>
-	        <img src={`${process.env.PUBLIC_URL}/${image}`} />
-	      </div>
-			))}
-		</Slider>	
+	<CardLink to={`${ROUTES.COWORKS}/${id}`}>
 		<CardContent>
-			<Title>
+			<CardThumbnail>
+		 		<img src={`${process.env.PUBLIC_URL}/${images[0]}`} />
+		 	</CardThumbnail>
+			<CardTitle>
 				{title}
-			</Title>	
-			<Text>
+			</CardTitle>	
+			<CardText>
 				{text}
-			</Text>
+			</CardText>
 		</CardContent>
 		<CardStats>
-			<Price>
-				{price}
-			</Price>
-			<Rating>
+			<CardPrice>
+				${price} Per Day
+			</CardPrice>
+			<CardRating>
 				{rating}
-			</Rating>
+			</CardRating>
 		</CardStats>
-	</Wrapper>
-	</Link>
+	</CardLink>
 )
+
+Card.propTypes = {
+	title: PropTypes.string.isRequired,
+	text: PropTypes.string.isRequired,
+	price: PropTypes.number.isRequired,
+	rating: PropTypes.number.isRequired,
+	images: PropTypes.arrayOf(PropTypes.string),
+	id: PropTypes.number.isRequired
+}
 
 export default Card
