@@ -32,16 +32,6 @@ export const CardText = styled.p`
 	margin: 0;
 `
 
-export const CardStats = styled.div`
-  display: flex;
-  justify-content: space-between;
-`
-
-export const CardRating = styled.p`
-	color: ${props => props.theme.darkBlue};
-	margin: 0;
-`
-
 export const CardPrice = styled.p`
 	color: ${props => props.theme.darkBlue};
 	font-weight: bold;

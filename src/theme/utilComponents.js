@@ -1,4 +1,9 @@
 import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+export const MainIcon = styled(FontAwesomeIcon)`
+  color: ${props => props.theme.blue};
+`
 
 export const MainButton = styled.button`
   color: ${props => props.theme.white}

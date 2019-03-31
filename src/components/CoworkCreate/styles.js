@@ -1,8 +1,10 @@
 import styled from 'styled-components'
 
-import { MainButton, Alert } from '../../theme/utilComponents'
-
-export { Alert }
+import { 
+	MainButton,
+	MainIcon, 
+	Alert 
+} from '../../theme/utilComponents'
 
 export const FormWrapper = styled.form` 
 	display: flex;
@@ -29,7 +31,7 @@ export const FormItem = styled.div`
 export const FormCheckbox = styled(FormItem)` 
 	align-items: center;
 	input {
-		margin: 5px 0;
+		margin: 10px 0;
 	}
 `
 
@@ -57,3 +59,5 @@ export const FormSubmit = styled(MainButton)`
   padding: 10px 50px; 
   align-self: center;
 `
+
+export { Alert, MainIcon }

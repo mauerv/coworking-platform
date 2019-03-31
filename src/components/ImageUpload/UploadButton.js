@@ -1,10 +1,12 @@
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { 
+	CheckboxIcon,
+} from './styles'
 
 export default ({ onChange }) =>
-	<div className='button'>
+	<div>
 		<label htmlFor='single'>
-			<FontAwesomeIcon icon='image' color='#3B599' size='10x' />
+			<CheckboxIcon icon='image' size='10x' />
 		</label>
 		<input type='file' id='single' onChange={onChange} />
 	</div>

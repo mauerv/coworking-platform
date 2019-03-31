@@ -1,7 +1,17 @@
 import React from 'react'
 import Slider from 'react-slick'
-import FigureGrid from '../FigureGrid'
+
+import { compose } from 'recompose'
+import { 
+	withAuthorization, 
+	withEmailVerification 
+} from '../Session'
+
+import Grid from '../Grid'
+import Figure from '../Figure'
+
 import { coworks } from '../../util/dummyData'
+
 import { 
 	HeroSlider, 
 	FlexColumn,
@@ -42,7 +52,7 @@ const CoworkPage = ({ match }) => {
 					))}
 				</Slider>
 			</HeroSlider>
-			<ProfileRowSplit>
+			<ProfileRow>
 				<div>
 					<h1>{cowork.name}</h1>
 					<p>{cowork.location}</p>
@@ -50,14 +60,14 @@ const CoworkPage = ({ match }) => {
 						{cowork.description}
 					</p>
 				</div>
-				<div>
-					<p>Rating {cowork.rating}</p>
-				</div>
-			</ProfileRowSplit>
+			</ProfileRow>
 			<ProfileRow>
-				<h1>Ammenities</h1>
-				<FigureGrid
-					figures={cowork.ammenities}
+				<Grid 
+					gridTitle="Ammenities"
+					gridData={cowork.ammenities}
+					Component={Figure}
+					justifyContent='space-between'
+					alignTitle='left'
 				/>
 			</ProfileRow>
 			<ProfileRow>
@@ -73,6 +83,9 @@ const CoworkPage = ({ match }) => {
 	)
 }
 
+const condition = authUser => !!authUser
 
-
-export default CoworkPage
+export default compose(
+	withEmailVerification,
+	withAuthorization(condition)
+)(CoworkPage)

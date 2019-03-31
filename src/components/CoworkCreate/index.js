@@ -17,18 +17,20 @@ import {
 	FormCheckbox,
 	FormSubmit,
 	Alert,
-	AmmenitiesRow
+	AmmenitiesRow,
+	MainIcon
 } from './styles'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const INITIAL_STATE = {
 	name: '',
 	coworkLocation: '',
 	smallDescription: '',
 	description: '',
-	ammenitiesWhiteboard: false,
+	ammenitiesSmoking: false,
 	ammenitiesCoffee: false,
 	ammenitiesFridge: false,
-	ammenitiesMate: false,
+	ammenitiesMeetings: false,
 	ammenitiesPingpong: false,
 	ammenitiesMusic: false,
 	openingWeekday: '',
@@ -72,10 +74,10 @@ class CoworkCreate extends Component {
 			smallDescription, 
 			coworkLocation, 
 			description,
-			ammenitiesWhiteboard,
+			ammenitiesSmoking,
 			ammenitiesCoffee,
 			ammenitiesFridge,
-			ammenitiesMate,
+			ammenitiesMeetings,
 			ammenitiesPingpong,
 			ammenitiesMusic,
 			openingWeekday,
@@ -148,18 +150,18 @@ class CoworkCreate extends Component {
 					</FormRow>
 					<AmmenitiesRow>
 						<FormCheckbox>
-							<img src={"coffee.png"} alt="coffee" />
-							<label htmlFor="whiteboard">Whiteboard</label>
+							<MainIcon icon="smoking" size='3x' alt="hot-mug" />
+							<label htmlFor="smoking">Smoking</label>
 							<input 
 								type="checkbox" 
-								checked={ammenitiesWhiteboard}
-								id="whiteboard" 
-								name="ammenitiesWhiteboard"
+								checked={ammenitiesSmoking}
+								id="smoking" 
+								name="ammenitiesSmoking"
 								onChange={this.onCheckboxToggle}
 							/>
 						</FormCheckbox>
 						<FormCheckbox>
-							<img src={"coffee.png"} alt="coffee" />
+							<MainIcon icon="mug-hot" size='3x' alt="hot-mug" />
 							<label htmlFor="coffee">Coffee</label>
 							<input 
 								type="checkbox" 
@@ -170,7 +172,7 @@ class CoworkCreate extends Component {
 							/>
 						</FormCheckbox>
 						<FormCheckbox>
-							<img src={"coffee.png"} alt="coffee" />
+							<MainIcon icon="snowflake" size='3x' alt="hot-mug" />
 							<label htmlFor="fridge">Fridge</label>
 							<input 
 								type="checkbox" 
@@ -181,18 +183,18 @@ class CoworkCreate extends Component {
 							/>
 						</FormCheckbox>
 						<FormCheckbox>
-							<img src={"coffee.png"} alt="coffee" />
-							<label htmlFor="mate">Mate</label>
+							<MainIcon icon="handshake" size='3x' alt="hot-mug" />
+							<label htmlFor="meetings">Meetings</label>
 							<input 
 								type="checkbox" 
-								checked={ammenitiesMate}
-								id="mate"
-								name="ammenitiesMate"
+								checked={ammenitiesMeetings}
+								id="meetings"
+								name="ammenitiesMeetings"
 								onChange={this.onCheckboxToggle} 
 							/>
 						</FormCheckbox>
 						<FormCheckbox>
-							<img src={"coffee.png"} alt="coffee" />
+							<MainIcon icon="table-tennis" size='3x' alt="hot-mug" />
 							<label htmlFor="pingpong">PingPong</label>
 							<input 
 								type="checkbox" 
@@ -203,7 +205,7 @@ class CoworkCreate extends Component {
 							/>
 						</FormCheckbox>
 						<FormCheckbox>
-							<img src={"coffee.png"} alt="coffee" />
+							<MainIcon icon="music" size='3x' alt="hot-mug" />
 							<label htmlFor="music">Music</label>
 							<input 
 								type="checkbox" 
