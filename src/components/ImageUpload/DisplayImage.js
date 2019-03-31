@@ -1,7 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export default ({ image, onRemoveImage }) =>
+const DisplayImage = ({ image, onRemoveImage }) =>
 	<div>
 		<div
 			onClick={() => onRemoveImage()}
@@ -11,3 +12,10 @@ export default ({ image, onRemoveImage }) =>
 		</div>
 		<img src={image} alt='' />
 	</div>
+
+DisplayImage.propTypes = {
+	image: PropTypes.string.isRequired,
+	onRemoveImage: PropTypes.func.isRequired
+}
+
+export default DisplayImage
