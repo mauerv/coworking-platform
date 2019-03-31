@@ -1,34 +1,34 @@
 export const ammenities = [
 	{
-		image: 'coffee.png',
+		icon: 'mug-hot',
 		label: 'Coffee'
 	},
 	{
-		image: 'wifi.png',
+		icon: 'wifi',
 		label: 'Wifi'
 	},
 	{
-		image: 'fridge.png',
+		icon: 'snowflake',
 		label: 'Fridge'
 	},
 	{
-		image: 'mate.png',
-		label: 'Mate'
+		icon: 'smoking',
+		label: 'Smoking'
 	},
 	{
-		image: 'pong.png',
+		icon: 'table-tennis',
 		label: 'PingPong'
 	},
 	{
-		image: 'music.png',
+		icon: 'music',
 		label: 'Music'
 	},
 	{
-		image: 'meeting.png',
+		icon: 'handshake',
 		label: 'Meeting Room'
 	},						
 	{
-		image: 'pet.png',
+		icon: 'dog',
 		label: 'Pet Friendly'
 	}
 ]
@@ -43,38 +43,38 @@ export const coworks = [
 		website: 'www.campusolegario.org',
 		reviews: [],
 		ammenities: [
-		{
-			image: 'coffee.png',
-			label: 'Coffee'
-		},
-		{
-			image: 'wifi.png',
-			label: 'Wifi'
-		},
-		{
-			image: 'fridge.png',
-			label: 'Fridge'
-		},
-		{
-			image: 'mate.png',
-			label: 'Mate'
-		},
-		{
-			image: 'pong.png',
-			label: 'PingPong'
-		},
-		{
-			image: 'music.png',
-			label: 'Music'
-		},
-		{
-			image: 'meeting.png',
-			label: 'Meeting Room'
-		},						
-		{
-			image: 'pet.png',
-			label: 'Pet Friendly'
-		}
+			{
+				icon: 'mug-hot',
+				label: 'Coffee'
+			},
+			{
+				icon: 'wifi',
+				label: 'Wifi'
+			},
+			{
+				icon: 'snowflake',
+				label: 'Fridge'
+			},
+			{
+				icon: 'smoking',
+				label: 'Smoking'
+			},
+			{
+				icon: 'table-tennis',
+				label: 'PingPong'
+			},
+			{
+				icon: 'music',
+				label: 'Music'
+			},
+			{
+				icon: 'handshake',
+				label: 'Meeting Room'
+			},						
+			{
+				icon: 'dog',
+				label: 'Pet Friendly'
+			}
 		],
 		rating: 5,
 		price: 10,
@@ -95,38 +95,38 @@ export const coworks = [
 		website: 'www.linka.space',
 		reviews: [],
 		ammenities: [
-		{
-			image: 'coffee.png',
-			label: 'Coffee'
-		},
-		{
-			image: 'wifi.png',
-			label: 'Wifi'
-		},
-		{
-			image: 'fridge.png',
-			label: 'Fridge'
-		},
-		{
-			image: 'mate.png',
-			label: 'Mate'
-		},
-		{
-			image: 'pong.png',
-			label: 'PingPong'
-		},
-		{
-			image: 'music.png',
-			label: 'Music'
-		},
-		{
-			image: 'meeting.png',
-			label: 'Meeting Room'
-		},						
-		{
-			image: 'pet.png',
-			label: 'Pet Friendly'
-		}
+			{
+				icon: 'mug-hot',
+				label: 'Coffee'
+			},
+			{
+				icon: 'wifi',
+				label: 'Wifi'
+			},
+			{
+				icon: 'snowflake',
+				label: 'Fridge'
+			},
+			{
+				icon: 'smoking',
+				label: 'Smoking'
+			},
+			{
+				icon: 'table-tennis',
+				label: 'PingPong'
+			},
+			{
+				icon: 'music',
+				label: 'Music'
+			},
+			{
+				icon: 'handshake',
+				label: 'Meeting Room'
+			},						
+			{
+				icon: 'dog',
+				label: 'Pet Friendly'
+			}
 		],
 		rating: 4,
 		price: 20,
@@ -147,30 +147,38 @@ export const coworks = [
 		website: 'www.whalecoworking.com',
 		reviews: [],
 		ammenities: [
-		{
-			image: 'coffee.png',
-			label: 'Coffee'
-		},
-		{
-			image: 'wifi.png',
-			label: 'Wifi'
-		},
-		{
-			image: 'fridge.png',
-			label: 'Fridge'
-		},
-		{
-			image: 'mate.png',
-			label: 'Mate'
-		},
-		{
-			image: 'pong.png',
-			label: 'PingPong'
-		},
-		{
-			image: 'music.png',
-			label: 'Music'
-		}
+			{
+				icon: 'mug-hot',
+				label: 'Coffee'
+			},
+			{
+				icon: 'wifi',
+				label: 'Wifi'
+			},
+			{
+				icon: 'snowflake',
+				label: 'Fridge'
+			},
+			{
+				icon: 'smoking',
+				label: 'Smoking'
+			},
+			{
+				icon: 'table-tennis',
+				label: 'PingPong'
+			},
+			{
+				icon: 'music',
+				label: 'Music'
+			},
+			{
+				icon: 'handshake',
+				label: 'Meeting Room'
+			},						
+			{
+				icon: 'dog',
+				label: 'Pet Friendly'
+			}
 		],
 		rating: 4,
 		price: 20,
@@ -191,22 +199,38 @@ export const coworks = [
 		website: 'www.wework.com',
 		reviews: [],
 		ammenities: [
-		{
-			image: 'coffee.png',
-			label: 'Coffee'
-		},
-		{
-			image: 'wifi.png',
-			label: 'Wifi'
-		},
-		{
-			image: 'fridge.png',
-			label: 'Fridge'
-		},
-		{
-			image: 'mate.png',
-			label: 'Mate'
-		}
+			{
+				icon: 'mug-hot',
+				label: 'Coffee'
+			},
+			{
+				icon: 'wifi',
+				label: 'Wifi'
+			},
+			{
+				icon: 'snowflake',
+				label: 'Fridge'
+			},
+			{
+				icon: 'smoking',
+				label: 'Smoking'
+			},
+			{
+				icon: 'table-tennis',
+				label: 'PingPong'
+			},
+			{
+				icon: 'music',
+				label: 'Music'
+			},
+			{
+				icon: 'handshake',
+				label: 'Meeting Room'
+			},						
+			{
+				icon: 'dog',
+				label: 'Pet Friendly'
+			}
 		],
 		rating: 4,
 		price: 20,

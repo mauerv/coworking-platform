@@ -3,7 +3,6 @@ import {
 	BrowserRouter as Router,
 	Route 
 } from 'react-router-dom'
-
 // Style Imports
 import GlobalStyle from '../../theme/globalStyle'
 import { Normalize } from 'styled-normalize'

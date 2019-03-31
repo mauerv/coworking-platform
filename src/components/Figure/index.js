@@ -2,13 +2,13 @@ import React from 'react'
 
 import {
 	FigureWrapper,
-	FigureImage,
+	FigureIcon,
 	FigureLabel
 } from './styles'
 
-const Figure = ({ image, label }) => (
+const Figure = ({ icon, label }) => (
 	<FigureWrapper>
-		<FigureImage src={image} />
+		<FigureIcon icon={icon} size='2x' />
 		<FigureLabel>{label}</FigureLabel>
 	</FigureWrapper>
 )

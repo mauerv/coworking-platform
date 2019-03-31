@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const FigureWrapper = styled.div`
 	display: flex;
@@ -9,11 +10,11 @@ export const FigureWrapper = styled.div`
   margin: 10px;
 `
 
-export const FigureImage = styled.img`
-
+export const FigureIcon = styled(FontAwesomeIcon)`
+	color: ${props => props.theme.blue};
 `
 
 export const FigureLabel = styled.p`
-	color: ${props => props.theme.darkBlue};
+	color: ${props => props.theme.blue};
 	font-weight: 500;
 `

@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { loadAuthUser, saveAuthUser } from './util/localStorage'
 import _ from 'lodash'
 import Firebase from './components/Firebase'
-
+import initIconLibrary from './util/initIconLibrary'
 import theme from './theme/customTheme'
 import { ThemeProvider } from 'styled-components'
 import "slick-carousel/slick/slick.css"; 
@@ -34,6 +34,8 @@ store.subscribe(_.throttle(() => {
 		authUser: store.getState().authUser
 	})
 }, 1000))
+
+initIconLibrary()
 
 render(
 	<Provider store={store}>

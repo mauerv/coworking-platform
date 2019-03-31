@@ -7,7 +7,7 @@ const FigureGrid = ({ figures }) => (
 	<GridWrapper>
 		{figures.map(figure => (
 			<Figure 
-				image={`${process.env.PUBLIC_URL}/${figure.image}`} 
+				icon={figure.icon}
 				label={figure.label} 
 				key={figure.label}
 			/>
