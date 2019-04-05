@@ -1,7 +1,11 @@
 import { connect } from 'react-redux'
-import { authPresent, authMissing } from '../actions'
-import { getAuthUser, getFirebase } from '../selectors'
+
 import App from '../components/App'
+
+import { getAuthUser, getFirebase } from '../selectors'
+
+import { doAuthUserPresent, doAuthUserMissing } from '../actions'
+
 
 const mapStateToProps = state => ({
 	authUser: getAuthUser(state),
@@ -9,8 +13,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-	authUserPresent: authUser => dispatch(authPresent(authUser)),
-	authUserMissing: () => dispatch(authMissing())
+	authUserPresent: authUser => dispatch(doAuthUserPresent(authUser)),
+	authUserMissing: () => dispatch(doAuthUserMissing())
 })
 
 const ConnectedApp = connect(

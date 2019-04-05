@@ -5,8 +5,9 @@ import Spinner from './Spinner'
 import DisplayImage from './DisplayImage'
 import UploadButton from './UploadButton'
 
-import { ImageUploadWrapper } from './styles'
 import { getFirebase } from '../../selectors'
+
+import { ImageUploadWrapper } from './styles'
 
 class ImageUploadBase extends Component {
   state = {

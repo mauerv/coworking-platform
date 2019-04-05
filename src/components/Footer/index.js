@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { FooterWrapper, FooterLogo } from './styles'
 
 const Footer = () => (
@@ -8,8 +9,6 @@ const Footer = () => (
 		</FooterLogo>
 	</FooterWrapper>
 )
-
-
 
 export default Footer
 

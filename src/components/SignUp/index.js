@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+
 import { getFirebase } from '../../selectors'
+
+import * as ROUTES from '../../constants/routes'
 
 import { 
 	Alert, 
@@ -10,8 +13,6 @@ import {
 	FormSubmit,
 	FormTitle
 } from '../../theme/utilComponents'
-
-import * as ROUTES from '../../constants/routes'
 
 const SignUpPage = () => (
 	<div>

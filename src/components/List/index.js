@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import Li from '../Li'
+
 import * as ROUTES from '../../constants/routes'
 
-import Li from '../Li'
 import { 
 	ListWrapper,
 	ListTitle 

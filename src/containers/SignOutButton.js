@@ -1,7 +1,8 @@
 import { connect } from 'react-redux'
-import { getFirebase } from '../selectors'
 
 import BaseSignOutButton from '../components/SignOut'
+
+import { getFirebase } from '../selectors'
 
 const mapStateToProps = state => ({
 	firebase: getFirebase(state)

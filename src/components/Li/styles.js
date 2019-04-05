@@ -1,8 +1,6 @@
 import styled from 'styled-components'
-import { 
-	MainButton,
-	LightContainer
-} from '../../theme/utilComponents'
+
+import { MainButton, LightContainer } from '../../theme/utilComponents'
 
 export const LiWrapper = styled(LightContainer)`
 	justify-content: space-between;

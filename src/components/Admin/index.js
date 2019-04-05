@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { compose } from 'recompose'
 
 import { withAuthorization, withEmailVerification } from '../Session'
+
 import UserList from './UserList'
 
 class BaseAdminPage extends Component {

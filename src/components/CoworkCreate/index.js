@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
 import { compose } from 'recompose'
+import { withRouter } from 'react-router-dom'
+
+import { withAuthorization, withEmailVerification } from '../Session'
 
 import ImageUpload from '../ImageUpload'
 import Grid from '../Grid'
 import Checkbox from '../Checkbox'
 
-import { 
-	withAuthorization, 
-	withEmailVerification 
-} from '../Session'
-
-import { withRouter } from 'react-router-dom'
 import * as ROUTES from '../../constants/routes'
 
 import { ammenities } from '../../util/dummyData'

@@ -26,3 +26,5 @@ const applyAuthUserMissing = (state, action) => ({
 })
 
 export default authUserReducer	
+
+export { applyAuthUserPresent, applyAuthUserMissing }

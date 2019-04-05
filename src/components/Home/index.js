@@ -6,9 +6,9 @@ import { withAuthorization, withEmailVerification } from '../Session'
 import Grid from '../Grid'
 import Card from '../Card'
 
-import { HomeWrapper } from './styles'
-
 import { coworks } from '../../util/dummyData'
+
+import { HomeWrapper } from './styles'
 
 const HomePage = () => (
 	<HomeWrapper>

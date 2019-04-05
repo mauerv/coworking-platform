@@ -1,13 +1,10 @@
 import { createStore, applyMiddleware } from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly'
 import thunk from 'redux-thunk'
-
 import _ from 'lodash'
+import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly'
 
 import Firebase from '../components/Firebase'
-
 import rootReducer from '../reducers'
-
 import { loadAuthUser, saveAuthUser } from '../util/localStorage'
 
 const getPreloadedState = () => {

@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-const GlobalStyle = createGlobalStyle`
+export default createGlobalStyle`
 	@import url(‘https://fonts.googleapis.com/css?family=Montserrat|Roboto');
 
 	html, body {
@@ -42,5 +42,3 @@ const GlobalStyle = createGlobalStyle`
   .profile-carousel .slick-next { right: 5px; }
   .profile-carousel .slick-prev { left: 5px; }
 `
-
-export default GlobalStyle

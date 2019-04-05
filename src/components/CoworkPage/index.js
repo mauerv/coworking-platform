@@ -1,11 +1,8 @@
 import React from 'react'
 import Slider from 'react-slick'
-
 import { compose } from 'recompose'
-import { 
-	withAuthorization, 
-	withEmailVerification 
-} from '../Session'
+
+import { withAuthorization, withEmailVerification } from '../Session'
 
 import Grid from '../Grid'
 import LabeledIcon from '../LabeledIcon'

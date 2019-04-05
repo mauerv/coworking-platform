@@ -1,7 +1,9 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+
 import { getFirebase, getAuthUser } from '../../selectors'
+
 import * as ROUTES from '../../constants/routes'
 
 const withAuthorization = condition => Component => {

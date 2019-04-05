@@ -1,4 +1,4 @@
-const theme = {
+export default {
 	darkBlue: '#263f48',
 	blue: '#559696',
 	lightBlue: '#aeced7',
@@ -6,4 +6,3 @@ const theme = {
 	lightBrown: '#cb9375'
 }
 
-export default theme

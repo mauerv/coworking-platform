@@ -1,7 +1,8 @@
 import { connect } from 'react-redux'
-import { getFirebase } from '../selectors'
 
 import BaseAdminPage from '../components/Admin'
+
+import { getFirebase } from '../selectors'
 
 const mapStateToProps = state => ({
 	firebase: getFirebase(state)

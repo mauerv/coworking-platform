@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { MainIcon } from '../../theme/utilComponents'
 
 export const CheckboxWrapper = styled.div`

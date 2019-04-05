@@ -1,8 +1,9 @@
 import React from 'react'
-
 import { connect } from 'react-redux'
-import { MainButton } from './styles'
+
 import { getFirebase, getAuthUser } from '../../selectors'
+
+import { MainButton } from './styles'
 
 const needsEmailVerification = authUser => 
 	authUser &&

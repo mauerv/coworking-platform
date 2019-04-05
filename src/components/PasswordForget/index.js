@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+
+import { getFirebase } from '../../selectors'
+
+import * as ROUTES from '../../constants/routes'
+
 import { 
 	Alert, 
 	FormWrapper,
@@ -7,12 +13,6 @@ import {
 	FormSubmit,
 	FormTitle
 } from './styles'
-
-import { connect } from 'react-redux'
-
-import { getFirebase } from '../../selectors'
-
-import * as ROUTES from '../../constants/routes'
 
 const PasswordForgetPage = () => (
 	<div>

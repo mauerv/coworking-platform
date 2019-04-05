@@ -1,7 +1,8 @@
 import { connect } from 'react-redux'
-import { getAuthUser } from '../selectors'
 
 import Account from '../components/Account'
+
+import { getAuthUser } from '../selectors'
 
 const mapStateToProps = state => ({
 	authUser: getAuthUser(state)
