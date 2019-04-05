@@ -8,16 +8,16 @@ import GlobalStyle from '../../theme/globalStyle'
 import { Normalize } from 'styled-normalize'
 import { AppWrapper, ContentWrapper } from './styles'
 
+import ConnectedHomePage from '../../containers/ConnectedHomePage'
+import ConnectedCoworkCreate from '../../containers/ConnectedCoworkCreate'
 import Navigation from '../Navigation'
 import LandingPage from '../Landing'
 import SignUpPage from '../SignUp'
 import SignInPage from '../SignIn'
 import PasswordForgetPage from '../PasswordForget'
-import HomePage from '../Home'
 import AccountPage from '../Account'
 import Footer from '../Footer'
 import CoworkPage from '../CoworkPage'
-import ConnectedCoworkCreate from '../../containers/ConnectedCoworkCreate'
 
 import * as ROUTES from '../../constants/routes'
 
@@ -43,7 +43,7 @@ class App extends Component {
 					<ContentWrapper>
 						
 						{this.props.authUser ? (
-							<Route exact path={ROUTES.HOME} component={HomePage} />
+							<Route exact path={ROUTES.HOME} component={ConnectedHomePage} />
 						) : (
 							<Route exact path={ROUTES.HOME} component={LandingPage} />
 						)}

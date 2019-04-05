@@ -1,32 +1,52 @@
-import React from 'react'
-import { compose } from 'recompose'
-
-import { withAuthorization, withEmailVerification } from '../Session'
+import React, { Component } from 'react'
 
 import Grid from '../Grid'
 import Card from '../Card'
 
-import { coworks } from '../../util/dummyData'
-
 import { HomeWrapper } from './styles'
 
-const HomePage = () => (
-	<HomeWrapper>
-		<Grid 
-			gridTitle="Find the best work spaces in Mendoza"
-			gridData={coworks}
-			Component={Card}
-		>
-			{coworks.map((cowork, i) => (
-				<Card {...cowork} key={i} />
-			))}
-		</Grid>
-	</HomeWrapper>
-)
+class HomePage extends Component {
+	componentDidMount() {
+		this.props.firebase.coworks().on('value', snapshot => {
+			const coworksObject = snapshot.val()
 
-const condition = authUser => !!authUser
+			if (coworksObject !== null) {
+				const coworksList = Object.keys(coworksObject).map(key => ({
+					...coworksObject[key],
+					uid: key
+				}))
+				
+				this.props.onCoworksUpdate(coworksList)
+			}
+		})
+	}
 
-export default compose(
-	withEmailVerification,
-	withAuthorization(condition)
-)(HomePage)
+	componentWillUnmount() {
+		this.props.firebase.coworks().off()
+	}
+
+	render() {
+		const { coworks } = this.props
+		console.log(coworks[0])
+		return (
+			<HomeWrapper>
+				<Grid 
+					gridTitle="Find the best work spaces in Mendoza"
+				>
+					{coworks.map((cowork, i) => (
+						<Card 
+						 key={i} 
+						 name={cowork.name} 
+						 shortDescription={cowork.smallDescription} 
+						 price={24}
+						 images={[cowork.imageOne, cowork.imageTwo, cowork.imageThree]} 
+						 id={cowork.uid}
+						/>
+					))}
+				</Grid>
+			</HomeWrapper>
+		)
+	}
+}
+
+export default HomePage

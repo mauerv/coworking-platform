@@ -16,7 +16,7 @@ const Card = ({ name, shortDescription, price, images, id }) => (
 	<CardLink to={`${ROUTES.COWORKS}/${id}`}>
 		<CardContent>
 			<CardThumbnail>
-		 		<img src={`${process.env.PUBLIC_URL}/${images[0]}`} alt='' />
+		 		<img src={images[0]} alt='' />
 		 	</CardThumbnail>
 			<CardTitle>
 				{name}
@@ -36,7 +36,7 @@ Card.propTypes = {
 	shortDescription: PropTypes.string.isRequired,
 	price: PropTypes.number.isRequired,
 	images: PropTypes.arrayOf(PropTypes.string),
-	id: PropTypes.number.isRequired
+	id: PropTypes.string.isRequired
 }
 
 export default Card
