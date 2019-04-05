@@ -1,9 +1,10 @@
 import { connect } from 'react-redux'
+import { getFirebase } from '../selectors'
 
 import BaseSignOutButton from '../components/SignOut'
 
 const mapStateToProps = state => ({
-	firebase: state.firebase
+	firebase: getFirebase(state)
 })
 
 const SignOutButton = connect(mapStateToProps)(BaseSignOutButton)

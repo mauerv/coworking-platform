@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-
 import { connect } from 'react-redux'
+import { getFirebase } from '../../selectors'
 
 import { 
 	Alert, 
@@ -74,7 +74,7 @@ class BasePasswordChangeForm extends Component {
 }
 
 const mapStateToProps = state => ({
-	firebase: state.firebase
+	firebase: getFirebase(state)
 })
 
 export default connect(mapStateToProps)(BasePasswordChangeForm)

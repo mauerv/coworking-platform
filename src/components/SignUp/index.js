@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { getFirebase } from '../../selectors'
 
 import { 
 	Alert, 
@@ -125,7 +126,7 @@ const SignUpLink = () => (
 )
 
 const mapStateToProps = state => ({
-	firebase: state.firebase
+	firebase: getFirebase(state)
 })
 
 const ConnectedSignUpForm = connect(mapStateToProps)(SignUpFormBase)

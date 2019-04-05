@@ -1,14 +1,10 @@
-import { AUTH_USER_PRESENT, AUTH_USER_MISSING } from '../constants/actionTypes'
+import { combineReducers } from 'redux'
+import authUserReducer from './authUserReducer'
+import firebaseReducer from './firebaseReducer'
 
-const rootReducer = (state, action) => {
-	switch (action.type) {
-		case AUTH_USER_PRESENT:
-			return { ...state, authUser: action.payload }
-		case AUTH_USER_MISSING:
-			return { ...state, authUser: null }
-		default:
-			return state
-	}
-}
+const rootReducer = combineReducers({
+	authUser: authUserReducer,
+	firebase: firebaseReducer
+})
 
 export default rootReducer

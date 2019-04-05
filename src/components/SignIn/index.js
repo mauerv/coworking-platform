@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { getFirebase } from '../../selectors'
 
 import { SignUpLink } from '../SignUp'
 import { PasswordForgetLink } from '../PasswordForget'
@@ -89,7 +90,7 @@ class SignInFormBase extends Component {
 }
 
 const mapStateToProps = state => ({
-	firebase: state.firebase
+	firebase: getFirebase(state)
 })
 
 const ConnectedSignInForm = connect(mapStateToProps)(SignInFormBase)

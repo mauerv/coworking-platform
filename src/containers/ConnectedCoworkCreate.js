@@ -1,9 +1,10 @@
 import { connect } from 'react-redux'
+import { getFirebase, getAuthUser } from '../selectors'
 import CoworkCreate from '../components/CoworkCreate'
 
 const mapStateToProps = state => ({
-	firebase: state.firebase,
-	authUser: state.authUser
+	firebase: getFirebase(state),
+	authUser: getAuthUser(state)
 })
 
 const ConnectedCoworkCreate = connect(

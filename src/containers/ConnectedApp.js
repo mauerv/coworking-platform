@@ -1,10 +1,11 @@
 import { connect } from 'react-redux'
 import { authPresent, authMissing } from '../actions'
+import { getAuthUser, getFirebase } from '../selectors'
 import App from '../components/App'
 
 const mapStateToProps = state => ({
-	authUser: state.authUser,
-	firebase: state.firebase
+	authUser: getAuthUser(state),
+	firebase: getFirebase(state)
 })
 
 const mapDispatchToProps = dispatch => ({

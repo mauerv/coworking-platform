@@ -1,9 +1,10 @@
 import { connect } from 'react-redux'
+import { getAuthUser } from '../selectors'
 
 import Account from '../components/Account'
 
 const mapStateToProps = state => ({
-	authUser: state.authUser
+	authUser: getAuthUser(state)
 })
 
 const ConnectedAccount = connect(

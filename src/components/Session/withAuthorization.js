@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { getFirebase, getAuthUser } from '../../selectors'
 import * as ROUTES from '../../constants/routes'
 
 const withAuthorization = condition => Component => {
@@ -32,8 +33,8 @@ const withAuthorization = condition => Component => {
 	}
 
 	const mapStateToProps = state => ({
-		authUser: state.authUser,
-		firebase: state.firebase
+		authUser: getAuthUser(state),
+		firebase: getFirebase(state)
 	})
 
 	const ConnectedWithAuthorization = connect(mapStateToProps)(WithAuthorization)

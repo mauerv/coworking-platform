@@ -11,10 +11,6 @@ import {
 	CardThumbnail
 } from './styles'
 
-//<CardThumbnail>
-	//<img src={`${process.env.PUBLIC_URL}/${images[0]}`} />
-//</CardThumbnail>
-
 const Card = ({ name, shortDescription, price, images, id }) => (
 	<CardLink to={`${ROUTES.COWORKS}/${id}`}>
 		<CardContent>

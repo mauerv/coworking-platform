@@ -6,6 +6,7 @@ import DisplayImage from './DisplayImage'
 import UploadButton from './UploadButton'
 
 import { ImageUploadWrapper } from './styles'
+import { getFirebase } from '../../selectors'
 
 class ImageUploadBase extends Component {
   state = {
@@ -58,7 +59,7 @@ class ImageUploadBase extends Component {
 }
 
 const mapStateToProps = state => ({
-	firebase: state.firebase
+	firebase: getFirebase(state)
 })
 
 const ImageUpload = connect(mapStateToProps)(ImageUploadBase)

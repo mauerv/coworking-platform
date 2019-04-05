@@ -2,6 +2,7 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 import { MainButton } from './styles'
+import { getFirebase, getAuthUser } from '../../selectors'
 
 const needsEmailVerification = authUser => 
 	authUser &&
@@ -58,8 +59,8 @@ const withEmailVerification = Component => {
 	}
 
 	const mapStateToProps = state => ({
-		authUser: state.authUser,
-		firebase: state.firebase
+		authUser: getAuthUser(state),
+		firebase: getFirebase(state)
 	})
 
 	return connect(mapStateToProps)(WithEmailVerification)
