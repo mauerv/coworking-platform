@@ -26,4 +26,12 @@ const Feature = ({title, text, linkText, onLinkClick, img}) => (
 	</FeatureWrapper>
 )
 
+Feature.propTypes = {
+	title: PropTypes.string.isRequired,
+	text: PropTypes.string.isRequired,
+	linkText: PropTypes.string.isRequired,
+	onLinkClick: PropTypes.func.isRequired,
+	img: PropTypes.string.isRequired
+}
+
 export default Feature
