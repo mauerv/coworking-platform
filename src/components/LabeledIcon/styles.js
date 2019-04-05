@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { MainIcon } from '../../theme/utilComponents'
 
-export const FigureWrapper = styled.div`
+export const LabeledIconWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 75px;
@@ -10,7 +10,7 @@ export const FigureWrapper = styled.div`
   margin: 10px;
 `
 
-export const FigureLabel = styled.p`
+export const IconLabel = styled.p`
 	color: ${props => props.theme.blue};
 	font-weight: 500;
 `

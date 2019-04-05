@@ -5,6 +5,8 @@ import Spinner from './Spinner'
 import DisplayImage from './DisplayImage'
 import UploadButton from './UploadButton'
 
+import { ImageUploadWrapper } from './styles'
+
 class ImageUploadBase extends Component {
   state = {
     uploading: false,
@@ -34,7 +36,7 @@ class ImageUploadBase extends Component {
   
   render() {
   	const { uploading } = this.state
-  	const { image, onRemoveImage, onChange } = this.props
+  	const { image, onRemoveImage } = this.props
 
   	const content = () => {
   		switch(true) {
@@ -48,9 +50,9 @@ class ImageUploadBase extends Component {
   	}
 
   	return (
-  		<div>
+  		<ImageUploadWrapper>
   			{content()}
-  		</div>
+  		</ImageUploadWrapper>
   	)
   }
 }

@@ -8,15 +8,13 @@ import {
 } from '../Session'
 
 import Grid from '../Grid'
-import Figure from '../Figure'
+import LabeledIcon from '../LabeledIcon'
 
 import { coworks } from '../../util/dummyData'
 
 import { 
 	HeroSlider, 
-	FlexColumn,
-	ProfileRow,
-	ProfileRowSplit 
+	ProfileRow
 } from './styles'
 
 const settings = {
@@ -26,7 +24,6 @@ const settings = {
 	slidesToShow: 1,
 	arrows: false,
 	slidesToScroll: 1,
-	slidesToShow: 1,
 	className: 'profile-carousel'
 }
 
@@ -64,11 +61,17 @@ const CoworkPage = ({ match }) => {
 			<ProfileRow>
 				<Grid 
 					gridTitle="Ammenities"
-					gridData={cowork.ammenities}
-					Component={Figure}
 					justifyContent='space-between'
 					alignTitle='left'
-				/>
+				>
+					{cowork.ammenities.map((ammenity, i) => (
+						<LabeledIcon 
+							iconName={ammenity.iconName}
+							label={ammenity.label}
+							key={i}
+						/>
+					))}
+				</Grid>
 			</ProfileRow>
 			<ProfileRow>
 				<h1>Opening Hours</h1>

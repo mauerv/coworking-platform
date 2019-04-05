@@ -1,12 +1,22 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import { 
-	CheckboxIcon,
+	UploadButtonWrapper,
+	UploadIcon,
+	UploadInput
 } from './styles'
 
-export default ({ onChange }) =>
-	<div>
+const UploadButton = ({ onChange }) =>
+	<UploadButtonWrapper>
 		<label htmlFor='single'>
-			<CheckboxIcon icon='image' size='10x' />
+			<UploadIcon icon='image' size='8x' />
 		</label>
-		<input type='file' id='single' onChange={onChange} />
-	</div>
+		<UploadInput type='file' id='single' onChange={onChange} />
+	</UploadButtonWrapper>
+
+UploadButton.propTypes = {
+	onChange: PropTypes.func.isRequired
+}
+
+export default UploadButton

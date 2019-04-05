@@ -28,13 +28,6 @@ export const FormItem = styled.div`
 	flex-grow: 1;
 `
 
-export const FormCheckbox = styled(FormItem)` 
-	align-items: center;
-	input {
-		margin: 10px 0;
-	}
-`
-
 export const TextLabel = styled.label`
 	margin-bottom: 5px;
 `

@@ -2,16 +2,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import { 
+	DisplayImageWrapper,
+	CloseIcon
+} from './styles'
+
 const DisplayImage = ({ image, onRemoveImage }) =>
-	<div>
-		<div
+	<DisplayImageWrapper>
+		<CloseIcon 
+			icon='times-circle' 
+			size='2x' 
 			onClick={() => onRemoveImage()}
-			className='delete'
-		>
-			<FontAwesomeIcon icon='times-circle' size='2x' />
-		</div>
+		/>
 		<img src={image} alt='' />
-	</div>
+	</DisplayImageWrapper>
 
 DisplayImage.propTypes = {
 	image: PropTypes.string.isRequired,

@@ -2,15 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 
-import { configureStore } from './store'
+import { configureStore } from './store/configureStore'
 
 import initIconLibrary from './util/initIconLibrary'
 import theme from './theme/customTheme'
 import { ThemeProvider } from 'styled-components'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-
-import ConnectedApp from './containers/ConnectedApp';
 
 initIconLibrary()
 

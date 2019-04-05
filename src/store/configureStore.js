@@ -4,11 +4,11 @@ import thunk from 'redux-thunk'
 
 import _ from 'lodash'
 
-import Firebase from './components/Firebase'
+import Firebase from '../components/Firebase'
 
-import rootReducer from './reducers'
+import rootReducer from '../reducers'
 
-import { loadAuthUser, saveAuthUser } from './util/localStorage'
+import { loadAuthUser, saveAuthUser } from '../util/localStorage'
 
 const getPreloadedState = () => {
 	const preloadedAuthUser = loadAuthUser()
@@ -44,8 +44,8 @@ export const configureStore = () => {
 
   if(process.env.NODE_ENV !== "production") {
 		if (module.hot) {
-			module.hot.accept('./reducers/index', () => {
-				const newRootReducer = require('./reducers/index').default
+			module.hot.accept('../reducers/index', () => {
+				const newRootReducer = require('../reducers/index').default
 				store.replaceReducer(newRootReducer)
 			})
 		}

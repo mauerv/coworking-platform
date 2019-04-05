@@ -16,7 +16,11 @@ const HomePage = () => (
 			gridTitle="Find the best work spaces in Mendoza"
 			gridData={coworks}
 			Component={Card}
-		/>
+		>
+			{coworks.map((cowork, i) => (
+				<Card {...cowork} key={i} />
+			))}
+		</Grid>
 	</HomeWrapper>
 )
 

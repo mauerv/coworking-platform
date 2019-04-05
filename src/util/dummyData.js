@@ -1,36 +1,40 @@
 export const ammenities = [
 	{
-		icon: 'mug-hot',
-		label: 'Coffee'
+		iconName: 'smoking',
+		id:'smoking',
+		label:'Smoking', 
+		name:'ammenitiesSmoking'					
 	},
 	{
-		icon: 'wifi',
-		label: 'Wifi'
+		iconName: 'mug-hot',
+		id: 'coffee',
+		label: 'Coffee' ,
+		name: 'ammenitiesCoffee'					
+	},					
+	{
+		iconName: 'snowflake',
+		id: 'fridge',
+		label: 'Fridge',
+		name: 'ammenitiesFridge'					
 	},
 	{
-		icon: 'snowflake',
-		label: 'Fridge'
+		iconName: 'handshake',
+		id: 'meetings',
+		label: 'Meetings',
+		name: 'ammenitiesMeetings'					
 	},
 	{
-		icon: 'smoking',
-		label: 'Smoking'
+		iconName: 'table-tennis',
+		id: 'pingpong',
+		label: 'PingPong', 
+		name: 'ammenitiesPingpong',					
 	},
 	{
-		icon: 'table-tennis',
-		label: 'PingPong'
-	},
-	{
-		icon: 'music',
-		label: 'Music'
-	},
-	{
-		icon: 'handshake',
-		label: 'Meeting Room'
-	},						
-	{
-		icon: 'dog',
-		label: 'Pet Friendly'
-	}
+		iconName: 'music',
+		id: 'music',
+		label: 'Music', 
+		name: 'ammenitiesMusic'					
+	}				
 ]
 
 export const coworks = [
@@ -44,35 +48,35 @@ export const coworks = [
 		reviews: [],
 		ammenities: [
 			{
-				icon: 'mug-hot',
+				iconName: 'mug-hot',
 				label: 'Coffee'
 			},
 			{
-				icon: 'wifi',
+				iconName: 'wifi',
 				label: 'Wifi'
 			},
 			{
-				icon: 'snowflake',
+				iconName: 'snowflake',
 				label: 'Fridge'
 			},
 			{
-				icon: 'smoking',
+				iconName: 'smoking',
 				label: 'Smoking'
 			},
 			{
-				icon: 'table-tennis',
+				iconName: 'table-tennis',
 				label: 'PingPong'
 			},
 			{
-				icon: 'music',
+				iconName: 'music',
 				label: 'Music'
 			},
 			{
-				icon: 'handshake',
+				iconName: 'handshake',
 				label: 'Meeting Room'
 			},						
 			{
-				icon: 'dog',
+				iconName: 'dog',
 				label: 'Pet Friendly'
 			}
 		],
@@ -96,35 +100,35 @@ export const coworks = [
 		reviews: [],
 		ammenities: [
 			{
-				icon: 'mug-hot',
+				iconName: 'mug-hot',
 				label: 'Coffee'
 			},
 			{
-				icon: 'wifi',
+				iconName: 'wifi',
 				label: 'Wifi'
 			},
 			{
-				icon: 'snowflake',
+				iconName: 'snowflake',
 				label: 'Fridge'
 			},
 			{
-				icon: 'smoking',
+				iconName: 'smoking',
 				label: 'Smoking'
 			},
 			{
-				icon: 'table-tennis',
+				iconName: 'table-tennis',
 				label: 'PingPong'
 			},
 			{
-				icon: 'music',
+				iconName: 'music',
 				label: 'Music'
 			},
 			{
-				icon: 'handshake',
+				iconName: 'handshake',
 				label: 'Meeting Room'
 			},						
 			{
-				icon: 'dog',
+				iconName: 'dog',
 				label: 'Pet Friendly'
 			}
 		],
@@ -148,35 +152,35 @@ export const coworks = [
 		reviews: [],
 		ammenities: [
 			{
-				icon: 'mug-hot',
+				iconName: 'mug-hot',
 				label: 'Coffee'
 			},
 			{
-				icon: 'wifi',
+				iconName: 'wifi',
 				label: 'Wifi'
 			},
 			{
-				icon: 'snowflake',
+				iconName: 'snowflake',
 				label: 'Fridge'
 			},
 			{
-				icon: 'smoking',
+				iconName: 'smoking',
 				label: 'Smoking'
 			},
 			{
-				icon: 'table-tennis',
+				iconName: 'table-tennis',
 				label: 'PingPong'
 			},
 			{
-				icon: 'music',
+				iconName: 'music',
 				label: 'Music'
 			},
 			{
-				icon: 'handshake',
+				iconName: 'handshake',
 				label: 'Meeting Room'
 			},						
 			{
-				icon: 'dog',
+				iconName: 'dog',
 				label: 'Pet Friendly'
 			}
 		],
@@ -200,35 +204,35 @@ export const coworks = [
 		reviews: [],
 		ammenities: [
 			{
-				icon: 'mug-hot',
+				iconName: 'mug-hot',
 				label: 'Coffee'
 			},
 			{
-				icon: 'wifi',
+				iconName: 'wifi',
 				label: 'Wifi'
 			},
 			{
-				icon: 'snowflake',
+				iconName: 'snowflake',
 				label: 'Fridge'
 			},
 			{
-				icon: 'smoking',
+				iconName: 'smoking',
 				label: 'Smoking'
 			},
 			{
-				icon: 'table-tennis',
+				iconName: 'table-tennis',
 				label: 'PingPong'
 			},
 			{
-				icon: 'music',
+				iconName: 'music',
 				label: 'Music'
 			},
 			{
-				icon: 'handshake',
+				iconName: 'handshake',
 				label: 'Meeting Room'
 			},						
 			{
-				icon: 'dog',
+				iconName: 'dog',
 				label: 'Pet Friendly'
 			}
 		],

@@ -1,12 +1,20 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
-import * as ROUTES from '../../constants/routes'
+import { compose } from 'recompose'
+
 import ImageUpload from '../ImageUpload'
+import Grid from '../Grid'
+import Checkbox from '../Checkbox'
+
 import { 
 	withAuthorization, 
 	withEmailVerification 
 } from '../Session'
-import { compose } from 'recompose'
+
+import { withRouter } from 'react-router-dom'
+import * as ROUTES from '../../constants/routes'
+
+import { ammenities } from '../../util/dummyData'
+
 import { 
 	FormWrapper,
 	FormRow,
@@ -14,13 +22,9 @@ import {
 	TextInput,
 	TextLabel,
 	TextArea,
-	FormCheckbox,
 	FormSubmit,
-	Alert,
-	AmmenitiesRow,
-	MainIcon
+	Alert
 } from './styles'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const INITIAL_STATE = {
 	name: '',
@@ -148,74 +152,19 @@ class CoworkCreate extends Component {
 							</TextArea>
 						</FormItem>
 					</FormRow>
-					<AmmenitiesRow>
-						<FormCheckbox>
-							<MainIcon icon="smoking" size='3x' alt="hot-mug" />
-							<label htmlFor="smoking">Smoking</label>
-							<input 
-								type="checkbox" 
-								checked={ammenitiesSmoking}
-								id="smoking" 
-								name="ammenitiesSmoking"
-								onChange={this.onCheckboxToggle}
+					<Grid>
+						{ammenities.map((ammenity, i) => (
+							<Checkbox 
+								iconName={ammenity.iconName}
+								id={ammenity.id}
+								label={ammenity.label}
+								checked={this.state[ammenity.name]}
+								name={ammenity.name}
+								onCheckboxToggle={this.onCheckboxToggle}
+								key={i}
 							/>
-						</FormCheckbox>
-						<FormCheckbox>
-							<MainIcon icon="mug-hot" size='3x' alt="hot-mug" />
-							<label htmlFor="coffee">Coffee</label>
-							<input 
-								type="checkbox" 
-								checked={ammenitiesCoffee}
-								id="coffee" 
-								name="ammenitiesCoffee"
-								onChange={this.onCheckboxToggle}
-							/>
-						</FormCheckbox>
-						<FormCheckbox>
-							<MainIcon icon="snowflake" size='3x' alt="hot-mug" />
-							<label htmlFor="fridge">Fridge</label>
-							<input 
-								type="checkbox" 
-								checked={ammenitiesFridge}
-								id="fridge" 
-								name="ammenitiesFridge"
-								onChange={this.onCheckboxToggle}
-							/>
-						</FormCheckbox>
-						<FormCheckbox>
-							<MainIcon icon="handshake" size='3x' alt="hot-mug" />
-							<label htmlFor="meetings">Meetings</label>
-							<input 
-								type="checkbox" 
-								checked={ammenitiesMeetings}
-								id="meetings"
-								name="ammenitiesMeetings"
-								onChange={this.onCheckboxToggle} 
-							/>
-						</FormCheckbox>
-						<FormCheckbox>
-							<MainIcon icon="table-tennis" size='3x' alt="hot-mug" />
-							<label htmlFor="pingpong">PingPong</label>
-							<input 
-								type="checkbox" 
-								checked={ammenitiesPingpong}
-								id="pingpong" 
-								name="ammenitiesPingpong"
-								onChange={this.onCheckboxToggle}
-							/>
-						</FormCheckbox>
-						<FormCheckbox>
-							<MainIcon icon="music" size='3x' alt="hot-mug" />
-							<label htmlFor="music">Music</label>
-							<input 
-								type="checkbox" 
-								checked={ammenitiesMusic}
-								id="music" 
-								name="ammenitiesMusic"
-								onChange={this.onCheckboxToggle}
-							/>
-						</FormCheckbox>
-					</AmmenitiesRow>
+						))}
+					</Grid>
 					<FormRow>
 						<FormItem>
 							<TextLabel htmlFor="hours-weekdays">Opening Hours Weekdays</TextLabel>
@@ -240,7 +189,7 @@ class CoworkCreate extends Component {
 							/>
 						</FormItem>
 					</FormRow>
-					<FormRow>
+					<Grid justifyContent='space-around'>
 						<ImageUpload 
 							image={imageOne}
 							onImageUpdate={url => this.setState({imageOne: url})}
@@ -256,7 +205,7 @@ class CoworkCreate extends Component {
 							onImageUpdate={url => this.setState({imageThree: url})}
 							onRemoveImage={() => this.setState({imageThree: ''})}
 						/>
-					</FormRow>
+					</Grid>
 					<FormSubmit type="submit" disabled={isInvalid}>Create Cowork</FormSubmit>
 					{error && <Alert>{error}</Alert>}
 				</FormWrapper>

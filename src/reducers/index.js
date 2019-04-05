@@ -1,4 +1,4 @@
-import { AUTH_USER_PRESENT, AUTH_USER_MISSING } from '../constants/actions'
+import { AUTH_USER_PRESENT, AUTH_USER_MISSING } from '../constants/actionTypes'
 
 const rootReducer = (state, action) => {
 	switch (action.type) {

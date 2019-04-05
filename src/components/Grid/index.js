@@ -6,21 +6,18 @@ import {
 	GridTitle 
 } from './styles'
 
-const Grid = ({ gridTitle, gridData, Component, justifyContent, alignTitle }) => (
+const Grid = ({ gridTitle, children, justifyContent, alignTitle }) => (
 	<div>
 		{gridTitle && <GridTitle alignTitle={alignTitle}>{gridTitle}</GridTitle>}
 		<GridWrapper justifyContent={justifyContent}>
-			{gridData.map((item, i ) => (
-				<Component {...item} key={i} />
-			))}
+			{children}
 		</GridWrapper>
 	</div>
 )
 
 Grid.propTypes = {
+	children: PropTypes.arrayOf(PropTypes.element).isRequired,
 	gridTitle: PropTypes.string,
-	gridData: PropTypes.array.isRequired,
-	Component: PropTypes.element.isRequired,
 	justifyContent: PropTypes.string,
 	alignTitle: PropTypes.string
 }
