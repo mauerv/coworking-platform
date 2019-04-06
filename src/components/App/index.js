@@ -39,7 +39,7 @@ class App extends Component {
 				<AppWrapper>
 					<Normalize />
 					<GlobalStyle />
-					<Navigation authUser={this.props.authUser}/>
+					<Navigation />
 					<ContentWrapper>
 						
 						{this.props.authUser ? (

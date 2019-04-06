@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import SignOutButton from '../../containers/SignOutButton'
+
+import { getAuthUser } from '../../selectors'
 
 import * as ROUTES from '../../constants/routes'
 
@@ -51,4 +54,8 @@ const NavigationNonAuth = () => (
 	</NavWrapper>
 )
 
-export default Navigation
+const mapStateToProps = state => ({
+	authUser: getAuthUser(state)
+})
+
+export default connect(mapStateToProps)(Navigation)
