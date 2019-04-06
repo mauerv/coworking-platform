@@ -52,12 +52,15 @@ class CoworkCreate extends Component {
 	onCreateCowork = event => {
 		event.preventDefault()
 
-		this.props.firebase.coworks().push({
+		const { authUser, firebase, history } = this.props
+
+		firebase.coworks().push({
 			...this.state,
-			userId: this.props.authUser.uid
+			userId: authUser.uid
 		}).then(ref => {
+			firebase.user(authUser.uid).child('coworks').push(ref.key)
 			this.setState({ ...INITIAL_STATE })
-			this.props.history.push(`${ROUTES.COWORKS}/${ref.key}`)
+			history.push(`${ROUTES.COWORKS}/${ref.key}`)
 		})
 	}
 

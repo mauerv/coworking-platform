@@ -48,7 +48,8 @@ class SignUpFormBase extends Component {
 					.user(authUser.user.uid)
 					.set({
 						username,
-						email
+						email,
+						coworks: []
 					})
 			})
 			.then(() => {

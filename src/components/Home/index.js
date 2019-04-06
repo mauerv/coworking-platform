@@ -27,7 +27,7 @@ class HomePage extends Component {
 
 	render() {
 		const { coworks } = this.props
-		console.log(coworks[0])
+		
 		return (
 			<HomeWrapper>
 				<Grid 

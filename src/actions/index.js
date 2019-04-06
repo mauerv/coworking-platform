@@ -1,7 +1,8 @@
 import { 
 	AUTH_USER_PRESENT, 
 	AUTH_USER_MISSING, 
-	COWORK_LIST_UPDATE
+	COWORK_LIST_UPDATE,
+	USER_DATA_SHOW
 } from '../constants/actionTypes'
 
 export const doAuthUserPresent = authUser => ({
@@ -16,4 +17,9 @@ export const doAuthUserMissing = () => ({
 export const doCoworkListUpdate = coworks => ({
 	type: COWORK_LIST_UPDATE,
 	payload: coworks
+})
+
+export const doUserDataShow = user => ({
+	type: USER_DATA_SHOW,
+	payload: user
 })

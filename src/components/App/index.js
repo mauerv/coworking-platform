@@ -10,12 +10,12 @@ import { AppWrapper, ContentWrapper } from './styles'
 
 import ConnectedHomePage from '../../containers/ConnectedHomePage'
 import ConnectedCoworkCreate from '../../containers/ConnectedCoworkCreate'
+import ConnectedAccountPage from '../../containers/ConnectedAccount'
 import Navigation from '../Navigation'
 import LandingPage from '../Landing'
 import SignUpPage from '../SignUp'
 import SignInPage from '../SignIn'
 import PasswordForgetPage from '../PasswordForget'
-import AccountPage from '../Account'
 import Footer from '../Footer'
 import CoworkPage from '../CoworkPage'
 
@@ -51,7 +51,7 @@ class App extends Component {
 						<Route path={ROUTES.SIGN_UP} component={SignUpPage} />
 						<Route path={ROUTES.SIGN_IN} component={SignInPage} />
 						<Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
-						<Route path={ROUTES.ACCOUNT} component={AccountPage} />
+						<Route path={ROUTES.ACCOUNT} component={ConnectedAccountPage} />
 						<Route exact path={ROUTES.COWORK} component={CoworkPage} />
 						<Route path={ROUTES.CREATE} component={ConnectedCoworkCreate} />
 					</ContentWrapper>

@@ -6,7 +6,6 @@ import { getAuthUser, getFirebase } from '../selectors'
 
 import { doAuthUserPresent, doAuthUserMissing } from '../actions'
 
-
 const mapStateToProps = state => ({
 	authUser: getAuthUser(state),
 	firebase: getFirebase(state)
