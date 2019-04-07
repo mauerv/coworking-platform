@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { withFirebase } from '../Firebase'
+import { withFirebase } from '../../firebase'
 
 import * as ROUTES from '../../constants/routes'
 

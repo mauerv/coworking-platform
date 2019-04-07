@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { connect } from 'react-redux'
 import { compose } from 'recompose'
 
-import { withFirebase } from '../Firebase'
+import { withFirebase } from '../../firebase'
 
 import { SignUpLink } from '../SignUp'
 import { PasswordForgetLink } from '../PasswordForget'

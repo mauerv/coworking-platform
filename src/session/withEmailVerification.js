@@ -2,9 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'recompose'
 
-import { withFirebase } from '../Firebase'
+import { withFirebase } from '../firebase'
 
-import { getAuthUser } from '../../selectors'
+import { getAuthUser } from '../selectors'
 
 import { MainButton } from './styles'
 

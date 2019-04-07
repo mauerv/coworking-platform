@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 
-import { withFirebase } from '../Firebase'
+import { withFirebase } from '../../firebase'
 
 import { 
 	Alert, 

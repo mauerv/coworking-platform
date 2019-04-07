@@ -1,13 +1,13 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { compose } from 'recompose'
 
-import { withFirebase } from '../Firebase'
+import { withFirebase } from '../firebase'
  
-import { getAuthUser } from '../../selectors'
+import { getAuthUser } from '../selectors'
 
-import * as ROUTES from '../../constants/routes'
+import * as ROUTES from '../constants/routes'
 
 export default condition => Component => {
 	class WithAuthorization extends React.Component {

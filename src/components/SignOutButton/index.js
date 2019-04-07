@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { withFirebase } from '../Firebase'
+import { withFirebase } from '../../firebase'
 
 import Button from '../Button'
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 
 import { PasswordForgetForm } from '../PasswordForget'
 import PasswordChangeForm from '../PasswordChange'
@@ -13,7 +12,7 @@ import {
 	PasswordManageWrapper 
 } from './styles'
 
-export default class AccountPage extends Component {
+export default class Account extends Component {
 	render() {
 		const { user, history } = this.props
 

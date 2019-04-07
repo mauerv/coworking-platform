@@ -1,10 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
 
 import SignOutButton from '../SignOutButton'
-
-import { getAuthUser } from '../../selectors'
 
 import * as ROUTES from '../../constants/routes'
 
@@ -15,8 +12,7 @@ import {
 	NavLogo
 } from './styles'
 
-
-const Navigation = ({ authUser }) => (	
+export default ({ authUser }) => (	
 	<div>
 		{authUser ? <NavigationAuth /> : <NavigationNonAuth />}
 	</div>
@@ -53,9 +49,3 @@ const NavigationNonAuth = () => (
 		</NavList>
 	</NavWrapper>
 )
-
-const mapStateToProps = state => ({
-	authUser: getAuthUser(state)
-})
-
-export default connect(mapStateToProps)(Navigation)

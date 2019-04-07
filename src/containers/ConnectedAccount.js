@@ -6,7 +6,7 @@ import {
 	withAuthorization, 
 	withEmailVerification,
 	userIsAuthenticated 
-} from '../components/Session'
+} from '../session'
 
 import Account from '../components/Account'
 

@@ -5,7 +5,7 @@ import {
 	withAuthorization, 
 	withEmailVerification,
 	userIsAuthenticated 
-} from '../components/Session'
+} from '../session'
 
 import Home from '../components/Home'
 

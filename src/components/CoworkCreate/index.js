@@ -6,7 +6,7 @@ import {
 	withAuthorization, 
 	withEmailVerification,
 	userIsAuthenticated
-} from '../Session'
+} from '../../session'
 
 import ImageUpload from '../ImageUpload'
 import Grid from '../Grid'

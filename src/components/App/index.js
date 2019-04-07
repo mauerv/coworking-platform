@@ -4,12 +4,12 @@ import {
 	Route 
 } from 'react-router-dom'
 
-import { withFirebase } from '../Firebase'
+import { withFirebase } from '../../firebase'
 
 import ConnectedHome from '../../containers/ConnectedHome'
 import ConnectedCoworkCreate from '../../containers/ConnectedCoworkCreate'
 import ConnectedAccount from '../../containers/ConnectedAccount'
-import Navigation from '../Navigation'
+import ConnectedNavigation from '../../containers/ConnectedNavigation'
 import Landing from '../Landing'
 import SignUp from '../SignUp'
 import SignIn from '../SignIn'
@@ -41,7 +41,7 @@ class App extends Component {
 				<AppWrapper>
 					<Normalize />
 					<GlobalStyle />
-					<Navigation />
+					<ConnectedNavigation />
 					<ContentWrapper>
 						
 						{this.props.authUser ? (

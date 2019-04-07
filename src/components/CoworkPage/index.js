@@ -6,7 +6,7 @@ import {
 	withAuthorization, 
 	withEmailVerification, 
 	userIsAuthenticated
-} from '../Session'
+} from '../../session'
 
 import Grid from '../Grid'
 import LabeledIcon from '../LabeledIcon'
