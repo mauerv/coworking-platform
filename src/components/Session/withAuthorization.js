@@ -9,7 +9,7 @@ import { getAuthUser } from '../../selectors'
 
 import * as ROUTES from '../../constants/routes'
 
-const withAuthorization = condition => Component => {
+export default condition => Component => {
 	class WithAuthorization extends React.Component {
 		componentDidMount() {
 			this.listener = this.props.firebase.onAuthUserListener(
@@ -47,5 +47,3 @@ const withAuthorization = condition => Component => {
 		connect(mapStateToProps)
 	)(WithAuthorization)
 }
-
-export default withAuthorization

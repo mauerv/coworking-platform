@@ -3,7 +3,7 @@ import React from 'react'
 import PageHeader from '../PageHeader'
 import Feature from '../Feature'
 
-const Landing = () => (
+export default () => (
 	<div>
 		<PageHeader />
 		<Feature 
@@ -22,6 +22,3 @@ const Landing = () => (
 		/>
 	</div>
 )
-export default Landing
-
-

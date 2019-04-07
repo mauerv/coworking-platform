@@ -14,7 +14,7 @@ import {
 	FormTitle
 } from './styles'
 
-const PasswordForgetPage = () => (
+export default () => (
 	<div>
 		<FormTitle>PasswordForget</FormTitle>
 		<PasswordForgetForm />
@@ -82,7 +82,5 @@ const PasswordForgetLink = () => (
 )
 
 const PasswordForgetForm = withFirebase(PasswordForgetFormBase)
-
-export default PasswordForgetPage
 
 export { PasswordForgetForm, PasswordForgetLink }

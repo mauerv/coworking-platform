@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
 
 import Firebase, { FirebaseContext } from './components/Firebase'
-import { configureStore } from './store/configureStore'
+import configureStore from './store/configureStore'
 import initIconLibrary from './util/initIconLibrary'
 import theme from './theme/customTheme'
 

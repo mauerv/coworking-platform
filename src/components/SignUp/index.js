@@ -15,7 +15,7 @@ import {
 	FormTitle
 } from '../../theme/utilComponents'
 
-const SignUpPage = () => (
+export default () => (
 	<div>
 		<FormTitle>SignUp</FormTitle>
 		<SignUpForm />
@@ -132,7 +132,5 @@ const SignUpForm = compose(
 	withFirebase,
 	withRouter
 )(SignUpFormBase)
-
-export default SignUpPage
 
 export { SignUpForm, SignUpLink }

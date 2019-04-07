@@ -2,7 +2,7 @@ import { COWORK_LIST_UPDATE } from '../constants/actionTypes'
 
 const initialState = []
 
-const coworksReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
 	switch (action.type) {
 		case COWORK_LIST_UPDATE:
 			return applyCoworkListUpdate(state, action)
@@ -11,10 +11,6 @@ const coworksReducer = (state = initialState, action) => {
 	}
 }
 
-const applyCoworkListUpdate = (state, action) => ([
+export const applyCoworkListUpdate = (state, action) => ([
 	...action.payload
 ])
-
-export default coworksReducer
-
-export { applyCoworkListUpdate }

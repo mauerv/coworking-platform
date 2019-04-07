@@ -2,13 +2,10 @@ import React from 'react'
 
 import { FooterWrapper, FooterLogo } from './styles'
 
-const Footer = () => (
+export default () => (
 	<FooterWrapper>
 		<FooterLogo>
 			COWORK
 		</FooterLogo>
 	</FooterWrapper>
 )
-
-export default Footer
-

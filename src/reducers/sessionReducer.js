@@ -4,7 +4,7 @@ const initialState = {
 	authUser: null
 }
 
-const sessionReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
 	switch (action.type) {
 		case AUTH_USER_SET:
 			return applyAuthUserSet(state, action)
@@ -13,11 +13,7 @@ const sessionReducer = (state = initialState, action) => {
 	}
 }
 
-const applyAuthUserSet = (state, action) => ({
+export const applyAuthUserSet = (state, action) => ({
 	 ...state, 
 	 authUser: action.payload
 })
-
-export default sessionReducer	
-
-export { applyAuthUserSet }

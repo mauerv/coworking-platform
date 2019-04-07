@@ -15,7 +15,7 @@ const getPreloadedState = () => {
 	return preloadedState
 }
 
-export const configureStore = () => {
+export default () => {
 	const preloadedState = getPreloadedState()
 
 	const middlewares = [thunk]

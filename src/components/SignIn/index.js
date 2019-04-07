@@ -19,7 +19,7 @@ import {
 	ContentWrapper
 } from './styles'
 
-const SignInPage = () => (
+export default () => (
 	<ContentWrapper>
 		<FormTitle>Sign In</FormTitle>
 		<SignInForm />
@@ -95,7 +95,5 @@ const SignInForm = compose(
 	withFirebase,
 	withRouter
 )(SignInFormBase)
-
-export default SignInPage
 
 export { SignInForm }

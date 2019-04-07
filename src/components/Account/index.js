@@ -13,7 +13,7 @@ import {
 	PasswordManageWrapper 
 } from './styles'
 
-class AccountPage extends Component {
+export default class AccountPage extends Component {
 	render() {
 		const { user, history } = this.props
 
@@ -42,5 +42,3 @@ class AccountPage extends Component {
 		)
 	}
 }
-
-export default AccountPage

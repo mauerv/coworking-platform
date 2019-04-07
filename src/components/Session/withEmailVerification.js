@@ -15,7 +15,7 @@ const needsEmailVerification = authUser =>
 		.map(provider => provider.providerId)
 		.includes('password')
 
-const withEmailVerification = Component => {
+export default Component => {
 	class WithEmailVerification extends React.Component {
 		constructor(props) {
 			super(props) 
@@ -71,5 +71,3 @@ const withEmailVerification = Component => {
 		connect(mapStateToProps)
 	)(WithEmailVerification)
 }
-
-export default withEmailVerification

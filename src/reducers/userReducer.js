@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
 	}
 }
 
-const applyUserDataShow = (state, action) => ({
+export const applyUserDataShow = (state, action) => ({
 	...state,
 	coworks: action.payload
 })
