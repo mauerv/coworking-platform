@@ -10,7 +10,6 @@ import {
 import Home from '../components/Home'
 
 import { getCoworks } from '../selectors'
-
 import { doCoworkListUpdate } from '../actions'
 
 const mapStateToProps = state => ({

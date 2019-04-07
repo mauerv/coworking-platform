@@ -8,13 +8,9 @@ import { userIsAuthenticated } from '../Session'
 import UserList from './UserList'
 
 class Admin extends Component {
-	constructor(props) {
-		super(props)
-
-		this.state = {
-			loading: false,
-			users: []
-		}
+	state = { 
+		loading: false, 
+		users: [] 
 	}
 
 	componentDidMount() {

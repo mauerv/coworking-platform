@@ -10,9 +10,8 @@ import {
 
 import Account from '../components/Account'
 
-import { doUserDataShow } from '../actions'
-
 import { getAuthUser, getUser } from '../selectors'
+import { doUserDataShow } from '../actions'
 
 const mapStateToProps = state => ({
 	authUser: getAuthUser(state),

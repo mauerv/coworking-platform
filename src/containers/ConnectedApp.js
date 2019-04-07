@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import App from '../components/App'
 
 import { getAuthUser } from '../selectors'
-
 import { doAuthUserSet } from '../actions'
 
 const mapStateToProps = state => ({

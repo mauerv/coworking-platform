@@ -47,11 +47,7 @@ const INITIAL_STATE = {
 }
 
 class CoworkCreate extends Component {
-	constructor(props) {
-		super(props)
-
-		this.state = { ...INITIAL_STATE }
-	}
+	state = { ...INITIAL_STATE }
 
 	onCreateCowork = event => {
 		event.preventDefault()

@@ -17,11 +17,7 @@ const needsEmailVerification = authUser =>
 
 export default Component => {
 	class WithEmailVerification extends React.Component {
-		constructor(props) {
-			super(props) 
-
-			this.state = { isSent: false }
-		}
+		state = { isSent: false }
 
 		onSendEmailVerification = () => {
 			this.props.firebase
