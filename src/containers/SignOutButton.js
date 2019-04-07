@@ -1,8 +1,13 @@
+import React from 'react'
 import { connect } from 'react-redux'
 
-import BaseSignOutButton from '../components/SignOut'
+import Button from '../components/Button'
 
 import { getFirebase } from '../selectors'
+
+const BaseSignOutButton = ({ firebase }) => (
+	<Button onClick={firebase.doSignOut} text='Sign Out' />
+)
 
 const mapStateToProps = state => ({
 	firebase: getFirebase(state)
