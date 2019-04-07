@@ -15,13 +15,9 @@ const mapStateToProps = state => ({
 	user: getUser(state)
 })
 
-const mapDispatchToProps = dispatch => ({
-	onUserDataShow: user => dispatch(doUserDataShow(user))
-})
-
 const ConnectedAccountPage = connect(
 	mapStateToProps,
-	mapDispatchToProps
+	{ onUserDataShow: doUserDataShow }
 )(AccountPage)
 
 const condition = authUser => !!authUser

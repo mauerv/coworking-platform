@@ -11,14 +11,9 @@ const mapStateToProps = state => ({
 	firebase: getFirebase(state)
 })
 
-const mapDispatchToProps = dispatch => ({
-	authUserPresent: authUser => dispatch(doAuthUserPresent(authUser)),
-	authUserMissing: () => dispatch(doAuthUserMissing())
-})
-
 const ConnectedApp = connect(
 	mapStateToProps,
-	mapDispatchToProps	
+	{ authUserPresent: doAuthUserPresent, authUserMissing: doAuthUserMissing}	
 )(App)
 
 export default ConnectedApp

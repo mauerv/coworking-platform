@@ -13,14 +13,10 @@ const mapStateToProps = state => ({
 	coworks: getCoworks(state)
 })
 
-const mapDispatchToProps = dispatch => ({
-	onCoworksUpdate: coworks => dispatch(doCoworkListUpdate(coworks))
-})
-
 const ConnectedHomePage = connect(
 	mapStateToProps,
-	mapDispatchToProps
-	)(HomePage)
+	{ onCoworksUpdate: doCoworkListUpdate }
+)(HomePage)
 
 const condition = authUser => !!authUser
 
