@@ -4,19 +4,10 @@ import throttle from 'lodash/throttle'
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly'
 
 import rootReducer from '../reducers'
-import { loadAuthUser, saveAuthUser } from '../util/localStorage'
-
-const getPreloadedState = () => {
-	const preloadedAuthUser = loadAuthUser()
-	const preloadedState = {
-		...preloadedAuthUser
-	}
-
-	return preloadedState
-}
+import { loadState, saveState } from '../util/localStorage'
 
 export default () => {
-	const preloadedState = getPreloadedState()
+	const preloadedState = loadState()
 
 	const middlewares = [thunk]
 	const middlewareEnhancer = applyMiddleware(...middlewares)
@@ -32,8 +23,9 @@ export default () => {
 	)
 
 	store.subscribe(throttle(() => {
-		saveAuthUser({
-			authUser: store.getState().authUser
+		saveState({
+			session: store.getState().session,
+			coworks: store.getState().coworks
 		})
 	}, 1000))
 

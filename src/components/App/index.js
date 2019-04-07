@@ -26,12 +26,8 @@ import { AppWrapper, ContentWrapper } from './styles'
 class App extends Component {
 	componentDidMount() {
 		this.listener = this.props.firebase.onAuthUserListener(
-			authUser => {
-				this.props.onAuthUserSet(authUser)
-			},
-			() => {
-				this.props.onAuthUserSet(null)
-			}
+			authUser => this.props.onAuthUserSet(authUser),
+			() => this.props.onAuthUserSet(null)
 		)
 	}
 
