@@ -2,7 +2,11 @@ import { connect } from 'react-redux'
 import { compose } from 'recompose'
 import { withRouter } from 'react-router-dom'
 
-import { withAuthorization, withEmailVerification } from '../components/Session'
+import { 
+	withAuthorization, 
+	withEmailVerification,
+	userIsAuthenticated 
+} from '../components/Session'
 
 import Account from '../components/Account'
 
@@ -15,15 +19,12 @@ const mapStateToProps = state => ({
 	user: getUser(state)
 })
 
-const ConnectedAccount = connect(
-	mapStateToProps,
-	{ onUserDataShow: doUserDataShow }
-)(Account)
-
-const condition = authUser => !!authUser
-
 export default compose(
 	withEmailVerification,
-	withAuthorization(condition),
-	withRouter
-)(ConnectedAccount)
+	withAuthorization(userIsAuthenticated),
+	withRouter,
+  connect(
+		mapStateToProps,
+		{ onUserDataShow: doUserDataShow }
+	)
+)(Account)

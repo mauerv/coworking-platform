@@ -4,13 +4,10 @@ import CoworkCreate from '../components/CoworkCreate'
 
 import { getAuthUser } from '../selectors'
 
-
 const mapStateToProps = state => ({
 	authUser: getAuthUser(state)
 })
 
-const ConnectedCoworkCreate = connect(
+export default connect(
 	mapStateToProps
 )(CoworkCreate)
-
-export default ConnectedCoworkCreate

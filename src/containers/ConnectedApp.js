@@ -10,9 +10,7 @@ const mapStateToProps = state => ({
 	authUser: getAuthUser(state),
 })
 
-const ConnectedApp = connect(
+export default connect(
 	mapStateToProps,
 	{ onAuthUserSet: doAuthUserSet }	
 )(App)
-
-export default ConnectedApp

@@ -2,7 +2,11 @@ import React, { Component } from 'react'
 import { compose } from 'recompose'
 import { withRouter } from 'react-router-dom'
 
-import { withAuthorization, withEmailVerification } from '../Session'
+import { 
+	withAuthorization, 
+	withEmailVerification,
+	userIsAuthenticated
+} from '../Session'
 
 import ImageUpload from '../ImageUpload'
 import Grid from '../Grid'
@@ -214,10 +218,8 @@ class CoworkCreate extends Component {
 	}
 }
 
-const condition = authUser => !!authUser
-
 export default compose(
 	withEmailVerification,
-	withAuthorization(condition),
+	withAuthorization(userIsAuthenticated),
 	withRouter
 )(CoworkCreate)

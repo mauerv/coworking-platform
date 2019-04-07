@@ -2,7 +2,11 @@ import React from 'react'
 import Slider from 'react-slick'
 import { compose } from 'recompose'
 
-import { withAuthorization, withEmailVerification } from '../Session'
+import { 
+	withAuthorization, 
+	withEmailVerification, 
+	userIsAuthenticated
+} from '../Session'
 
 import Grid from '../Grid'
 import LabeledIcon from '../LabeledIcon'
@@ -83,9 +87,7 @@ const CoworkPage = ({ match }) => {
 	)
 }
 
-const condition = authUser => !!authUser
-
 export default compose(
 	withEmailVerification,
-	withAuthorization(condition)
+	withAuthorization(userIsAuthenticated)
 )(CoworkPage)
