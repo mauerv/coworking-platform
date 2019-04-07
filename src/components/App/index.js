@@ -25,10 +25,10 @@ class App extends Component {
 	componentDidMount() {
 		this.listener = this.props.firebase.onAuthUserListener(
 			authUser => {
-				this.props.onSetAuthUser(authUser)
+				this.props.onAuthUserSet(authUser)
 			},
 			() => {
-				this.props.onSetAuthUser(null)
+				this.props.onAuthUserSet(null)
 			}
 		)
 	}
