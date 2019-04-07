@@ -3,15 +3,13 @@ import thunk from 'redux-thunk'
 import throttle from 'lodash/throttle'
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly'
 
-import Firebase from '../components/Firebase'
 import rootReducer from '../reducers'
 import { loadAuthUser, saveAuthUser } from '../util/localStorage'
 
 const getPreloadedState = () => {
 	const preloadedAuthUser = loadAuthUser()
 	const preloadedState = {
-		...preloadedAuthUser,
-		firebase: new Firebase()
+		...preloadedAuthUser
 	}
 
 	return preloadedState

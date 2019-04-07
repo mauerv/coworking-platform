@@ -3,10 +3,8 @@ import {
 	BrowserRouter as Router,
 	Route 
 } from 'react-router-dom'
-// Style Imports
-import GlobalStyle from '../../theme/globalStyle'
-import { Normalize } from 'styled-normalize'
-import { AppWrapper, ContentWrapper } from './styles'
+
+import { withFirebase } from '../Firebase'
 
 import ConnectedHome from '../../containers/ConnectedHome'
 import ConnectedCoworkCreate from '../../containers/ConnectedCoworkCreate'
@@ -20,6 +18,10 @@ import Footer from '../Footer'
 import CoworkPage from '../CoworkPage'
 
 import * as ROUTES from '../../constants/routes'
+
+import GlobalStyle from '../../theme/globalStyle'
+import { Normalize } from 'styled-normalize'
+import { AppWrapper, ContentWrapper } from './styles'
 
 class App extends Component {
 	componentDidMount() {
@@ -66,4 +68,4 @@ class App extends Component {
 	}
 }
 
-export default App
+export default withFirebase(App)

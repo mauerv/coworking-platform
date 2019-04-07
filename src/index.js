@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
 
+import Firebase, { FirebaseContext } from './components/Firebase'
 import { configureStore } from './store/configureStore'
 import initIconLibrary from './util/initIconLibrary'
 import theme from './theme/customTheme'
@@ -22,7 +23,9 @@ let render = () => {
 	ReactDOM.render(
 		<Provider store={store}>
 			<ThemeProvider theme={theme}>
-				<ConnectedApp /> 
+				<FirebaseContext.Provider value={new Firebase()}>
+					<ConnectedApp /> 
+				</FirebaseContext.Provider>
 			</ThemeProvider>
 		</Provider>,
 		rootEl

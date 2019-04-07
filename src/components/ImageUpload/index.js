@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import { withFirebase } from '../Firebase'
+
 import Spinner from './Spinner'
 import DisplayImage from './DisplayImage'
 import UploadButton from './UploadButton'
 
-import { getFirebase } from '../../selectors'
-
 import { ImageUploadWrapper } from './styles'
 
-class ImageUploadBase extends Component {
+class ImageUpload extends Component {
   state = {
     uploading: false,
   }
@@ -59,10 +59,4 @@ class ImageUploadBase extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-	firebase: getFirebase(state)
-})
-
-const ImageUpload = connect(mapStateToProps)(ImageUploadBase)
-
-export default ImageUpload
+export default withFirebase(ImageUpload)

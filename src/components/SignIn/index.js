@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getFirebase } from '../../selectors'
+import { compose } from 'recompose'
+
+import { withFirebase } from '../Firebase'
 
 import { SignUpLink } from '../SignUp'
 import { PasswordForgetLink } from '../PasswordForget'
+
+import * as ROUTES from '../../constants/routes'
 
 import { 
 	Alert, 
@@ -14,8 +18,6 @@ import {
 	FormTitle,
 	ContentWrapper
 } from './styles'
-
-import * as ROUTES from '../../constants/routes'
 
 const SignInPage = () => (
 	<ContentWrapper>
@@ -89,12 +91,10 @@ class SignInFormBase extends Component {
 	}
 }
 
-const mapStateToProps = state => ({
-	firebase: getFirebase(state)
-})
-
-const ConnectedSignInForm = connect(mapStateToProps)(SignInFormBase)
-const SignInForm = withRouter(ConnectedSignInForm)
+const SignInForm = compose(
+	withFirebase,
+	withRouter
+)(SignInFormBase)
 
 export default SignInPage
 

@@ -1,7 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { compose } from 'recompose'
 
-import { getFirebase, getAuthUser } from '../../selectors'
+import { withFirebase } from '../Firebase'
+
+import { getAuthUser } from '../../selectors'
 
 import { MainButton } from './styles'
 
@@ -60,11 +63,13 @@ const withEmailVerification = Component => {
 	}
 
 	const mapStateToProps = state => ({
-		authUser: getAuthUser(state),
-		firebase: getFirebase(state)
+		authUser: getAuthUser(state)
 	})
 
-	return connect(mapStateToProps)(WithEmailVerification)
+	return compose(
+		withFirebase,
+		connect(mapStateToProps)
+	)(WithEmailVerification)
 }
 
 export default withEmailVerification

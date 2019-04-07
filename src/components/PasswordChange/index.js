@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { getFirebase } from '../../selectors'
+import { withFirebase } from '../Firebase'
 
 import { 
 	Alert, 
@@ -16,7 +16,7 @@ const INITIAL_STATE = {
 	error: null
 }
 
-class BasePasswordChangeForm extends Component {
+class PasswordChangeForm extends Component {
 	constructor(props) {
 		super(props)
 
@@ -74,8 +74,4 @@ class BasePasswordChangeForm extends Component {
 	}
 }
 
-const mapStateToProps = state => ({
-	firebase: getFirebase(state)
-})
-
-export default connect(mapStateToProps)(BasePasswordChangeForm)
+export default withFirebase(PasswordChangeForm)
