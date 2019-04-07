@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import _ from 'lodash'
+import throttle from 'lodash/throttle'
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly'
 
 import Firebase from '../components/Firebase'
@@ -33,7 +33,7 @@ export const configureStore = () => {
 		composedEnhancer
 	)
 
-	store.subscribe(_.throttle(() => {
+	store.subscribe(throttle(() => {
 		saveAuthUser({
 			authUser: store.getState().authUser
 		})
