@@ -5,7 +5,7 @@ import Card from '../Card'
 
 import { HomeWrapper } from './styles'
 
-class HomePage extends Component {
+class Home extends Component {
 	componentDidMount() {
 		this.props.firebase.coworks().on('value', snapshot => {
 			const coworksObject = snapshot.val()
@@ -49,4 +49,4 @@ class HomePage extends Component {
 	}
 }
 
-export default HomePage
+export default Home

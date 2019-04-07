@@ -3,7 +3,7 @@ import { compose } from 'recompose'
 
 import { withAuthorization, withEmailVerification } from '../components/Session'
 
-import HomePage from '../components/Home'
+import Home from '../components/Home'
 
 import { getCoworks } from '../selectors'
 
@@ -13,14 +13,14 @@ const mapStateToProps = state => ({
 	coworks: getCoworks(state)
 })
 
-const ConnectedHomePage = connect(
+const ConnectedHome = connect(
 	mapStateToProps,
 	{ onCoworksUpdate: doCoworkListUpdate }
-)(HomePage)
+)(Home)
 
 const condition = authUser => !!authUser
 
 export default compose(
 	withEmailVerification,
 	withAuthorization(condition)
-)(ConnectedHomePage)
+)(ConnectedHome)
