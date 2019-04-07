@@ -1,4 +1,4 @@
-export const getAuthUser = state => state.authUser.authUser
+export const getAuthUser = state => state.session.authUser
 
 export const getFirebase = state => state.firebase
 

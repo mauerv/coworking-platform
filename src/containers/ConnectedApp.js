@@ -4,7 +4,7 @@ import App from '../components/App'
 
 import { getAuthUser, getFirebase } from '../selectors'
 
-import { doAuthUserPresent, doAuthUserMissing } from '../actions'
+import { doAuthUserSet } from '../actions'
 
 const mapStateToProps = state => ({
 	authUser: getAuthUser(state),
@@ -13,7 +13,7 @@ const mapStateToProps = state => ({
 
 const ConnectedApp = connect(
 	mapStateToProps,
-	{ authUserPresent: doAuthUserPresent, authUserMissing: doAuthUserMissing}	
+	{ onSetAuthUser: doAuthUserSet }	
 )(App)
 
 export default ConnectedApp

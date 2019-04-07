@@ -24,8 +24,12 @@ import * as ROUTES from '../../constants/routes'
 class App extends Component {
 	componentDidMount() {
 		this.listener = this.props.firebase.onAuthUserListener(
-			this.props.authUserPresent,
-			this.props.authUserMissing
+			authUser => {
+				this.props.onSetAuthUser(authUser)
+			},
+			() => {
+				this.props.onSetAuthUser(null)
+			}
 		)
 	}
 

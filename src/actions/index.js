@@ -1,17 +1,12 @@
 import { 
-	AUTH_USER_PRESENT, 
-	AUTH_USER_MISSING, 
+	AUTH_USER_SET,  
 	COWORK_LIST_UPDATE,
 	USER_DATA_SHOW
 } from '../constants/actionTypes'
 
-export const doAuthUserPresent = authUser => ({
-	type: AUTH_USER_PRESENT,
+export const doAuthUserSet = authUser => ({
+	type: AUTH_USER_SET,
 	payload: authUser
-})
-
-export const doAuthUserMissing = () => ({
-	type: AUTH_USER_MISSING
 })
 
 export const doCoworkListUpdate = coworks => ({
