@@ -8,14 +8,14 @@ import GlobalStyle from '../../theme/globalStyle'
 import { Normalize } from 'styled-normalize'
 import { AppWrapper, ContentWrapper } from './styles'
 
-import ConnectedHomePage from '../../containers/ConnectedHomePage'
+import ConnectedHome from '../../containers/ConnectedHome'
 import ConnectedCoworkCreate from '../../containers/ConnectedCoworkCreate'
-import ConnectedAccountPage from '../../containers/ConnectedAccount'
+import ConnectedAccount from '../../containers/ConnectedAccount'
 import Navigation from '../Navigation'
-import LandingPage from '../Landing'
-import SignUpPage from '../SignUp'
-import SignInPage from '../SignIn'
-import PasswordForgetPage from '../PasswordForget'
+import Landing from '../Landing'
+import SignUp from '../SignUp'
+import SignIn from '../SignIn'
+import PasswordForget from '../PasswordForget'
 import Footer from '../Footer'
 import CoworkPage from '../CoworkPage'
 
@@ -43,15 +43,15 @@ class App extends Component {
 					<ContentWrapper>
 						
 						{this.props.authUser ? (
-							<Route exact path={ROUTES.HOME} component={ConnectedHomePage} />
+							<Route exact path={ROUTES.HOME} component={ConnectedHome} />
 						) : (
-							<Route exact path={ROUTES.HOME} component={LandingPage} />
+							<Route exact path={ROUTES.HOME} component={Landing} />
 						)}
 
-						<Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-						<Route path={ROUTES.SIGN_IN} component={SignInPage} />
-						<Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
-						<Route path={ROUTES.ACCOUNT} component={ConnectedAccountPage} />
+						<Route path={ROUTES.SIGN_UP} component={SignUp} />
+						<Route path={ROUTES.SIGN_IN} component={SignIn} />
+						<Route path={ROUTES.PASSWORD_FORGET} component={PasswordForget} />
+						<Route path={ROUTES.ACCOUNT} component={ConnectedAccount} />
 						<Route exact path={ROUTES.COWORK} component={CoworkPage} />
 						<Route path={ROUTES.CREATE} component={ConnectedCoworkCreate} />
 					</ContentWrapper>

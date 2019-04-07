@@ -5,7 +5,7 @@ import { withAuthorization, withEmailVerification } from '../Session'
 
 import UserList from './UserList'
 
-class BaseAdminPage extends Component {
+class Admin extends Component {
 	constructor(props) {
 		super(props)
 
@@ -57,4 +57,4 @@ const condition = authUser => !!authUser
 export default compose(
 	withEmailVerification,
 	withAuthorization(condition)
-)(BaseAdminPage)
+)(Admin)

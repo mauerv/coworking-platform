@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 
 import { withAuthorization, withEmailVerification } from '../components/Session'
 
-import AccountPage from '../components/Account'
+import Account from '../components/Account'
 
 import { doUserDataShow } from '../actions'
 
@@ -15,10 +15,10 @@ const mapStateToProps = state => ({
 	user: getUser(state)
 })
 
-const ConnectedAccountPage = connect(
+const ConnectedAccount = connect(
 	mapStateToProps,
 	{ onUserDataShow: doUserDataShow }
-)(AccountPage)
+)(Account)
 
 const condition = authUser => !!authUser
 
@@ -26,4 +26,4 @@ export default compose(
 	withEmailVerification,
 	withAuthorization(condition),
 	withRouter
-)(ConnectedAccountPage)
+)(ConnectedAccount)
