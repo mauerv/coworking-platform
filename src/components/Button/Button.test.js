@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme';
+
 import Button from './'
 
 const setup = () => {
@@ -7,7 +8,6 @@ const setup = () => {
 		onClick: jest.fn(),
 		text: 'Click Me'
 	}
-
 	const component = shallow(<Button {...props} />)
 
 	return {
@@ -16,7 +16,7 @@ const setup = () => {
 	}
 }
 
-it('should render without crashing', () => {
+it('should render the correct text', () => {
 	const { component } = setup()
 	expect(component.find('button').text()).toBe('Click Me')
 })

@@ -6,7 +6,7 @@ import {
 	HeaderText
 	} from './styles'
 
-export default () => (
+const PageHeader = () => (
 	<HeaderWrapper>
 		<HeaderImage>
 			COWORK
@@ -16,3 +16,5 @@ export default () => (
 		</HeaderText>
 	</HeaderWrapper>
 )
+
+export default PageHeader
