@@ -51,15 +51,11 @@ class CoworkPage extends Component {
 			<div>
 				<HeroSlider>
 					<Slider {...settings}>
-							<div key={0}>
-								<img src={cowork.imageOne} alt='' /> 
+						{cowork.images.map((image, i) => (
+							<div key={i}>
+								<img src={image} alt='' /> 
 							</div>
-							<div key={1}>
-								<img src={cowork.imageTwo} alt='' /> 
-							</div>
-							<div key={2}>
-								<img src={cowork.imageThree} alt='' /> 
-							</div>
+						))}
 					</Slider>
 				</HeroSlider>
 				<ProfileRow>

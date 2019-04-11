@@ -18,7 +18,6 @@ export default class Home extends Component {
 
 	render() {
 		const { coworks } = this.props
-		
 		return (
 			<HomeWrapper>
 				<Grid 
@@ -30,7 +29,7 @@ export default class Home extends Component {
 						 name={cowork.name} 
 						 shortDescription={cowork.smallDescription} 
 						 price={24}
-						 images={[cowork.imageOne, cowork.imageTwo, cowork.imageThree]} 
+						 images={cowork.images} 
 						 id={cowork.uid}
 						/>
 					))}

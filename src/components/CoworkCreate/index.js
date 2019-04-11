@@ -41,6 +41,7 @@ class CoworkCreate extends Component {
 		}
 		firebase.coworks().push(coworkData).then(ref => {
 			// Upload each image and push the return ref into the coworkData.images array.
+			let imageIndex = 0
 			for (let key in values.images) {
 				const imgToUpload = values.images[key][0]
 				const storageRef = firebase.storage.ref()
@@ -50,9 +51,11 @@ class CoworkCreate extends Component {
 	  		storageRef.child(snapshot.ref.fullPath).getDownloadURL()
 	  			.then(url => {
 	  				 // Push images to correct cowork
-	  				 ref.child('images').push(url)
+	  				 ref.child(`images/${imageIndex}`).set(url)
+	  				 imageIndex++
 	  			})
 	  		})
+	  		
 			}
 			firebase.user(authUser.uid).child('coworks').push(ref.key)
 			history.push(`${ROUTES.COWORKS}/${ref.key}`)
