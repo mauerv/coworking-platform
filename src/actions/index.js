@@ -1,7 +1,9 @@
 import { 
 	AUTH_USER_SET,  
-	COWORK_LIST_UPDATE,
-	USER_DATA_SHOW
+	COWORK_LIST_SET,
+	COWORK_SET,
+	USER_DATA_SET,
+	AMMENITY_LIST_SET
 } from '../constants/actionTypes'
 
 export const doAuthUserSet = authUser => ({
@@ -9,12 +11,22 @@ export const doAuthUserSet = authUser => ({
 	payload: authUser
 })
 
-export const doCoworkListUpdate = coworks => ({
-	type: COWORK_LIST_UPDATE,
+export const doCoworkListSet = coworks => ({
+	type: COWORK_LIST_SET,
 	payload: coworks
 })
 
-export const doUserDataShow = user => ({
-	type: USER_DATA_SHOW,
+export const doCoworkSet = cowork => ({
+	type: COWORK_SET,
+	payload: cowork
+})
+
+export const doUserDataSet = user => ({
+	type: USER_DATA_SET,
 	payload: user
+})
+
+export const doAmmenityListSet = ammenities => ({
+	type: AMMENITY_LIST_SET,
+	payload: ammenities
 })

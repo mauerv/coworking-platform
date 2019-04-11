@@ -1,4 +1,4 @@
-import { USER_DATA_SHOW} from '../constants/actionTypes'
+import { USER_DATA_SET} from '../constants/actionTypes'
 
 const initialState = {
 	coworks: []
@@ -6,14 +6,14 @@ const initialState = {
 
 export default (state = initialState, action) => {
 	switch (action.type) {
-		case USER_DATA_SHOW:
-			return applyUserDataShow(state, action)
+		case USER_DATA_SET:
+			return applyUserDataSet(state, action)
 		default: 
 			return state
 	}
 }
 
-export const applyUserDataShow = (state, action) => ({
+export const applyUserDataSet = (state, action) => ({
 	...state,
 	coworks: action.payload
 })

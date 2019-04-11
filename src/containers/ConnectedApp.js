@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import App from '../components/App'
 
 import { getAuthUser } from '../selectors'
-import { doAuthUserSet } from '../actions'
+import { doAuthUserSet, doAmmenityListSet } from '../actions'
 
 const mapStateToProps = state => ({
 	authUser: getAuthUser(state),
@@ -11,5 +11,8 @@ const mapStateToProps = state => ({
 
 export default connect(
 	mapStateToProps,
-	{ onAuthUserSet: doAuthUserSet }	
+	{ 
+		onAuthUserSet: doAuthUserSet,
+		onAmmenityListSet: doAmmenityListSet 
+	}	
 )(App)

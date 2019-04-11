@@ -19,6 +19,7 @@
     "redbox-react": "^1.6.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
+    "redux-form": "^8.1.0",
     "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^4.1.3",

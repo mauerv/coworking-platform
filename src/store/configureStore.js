@@ -25,7 +25,8 @@ export default () => {
 	store.subscribe(throttle(() => {
 		saveState({
 			session: store.getState().session,
-			coworks: store.getState().coworks
+			coworks: store.getState().coworks,
+			ammenities: store.getState().ammenities
 		})
 	}, 1000))
 

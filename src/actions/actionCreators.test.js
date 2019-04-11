@@ -1,7 +1,7 @@
 import * as actions from './index'
 import * as types from '../constants/actionTypes'
 
-it('should create an action to set auth user', () => {
+it('doAuthUserSet should create an action to set auth user', () => {
 	let expectedAction = {
 		type: types.AUTH_USER_SET,
 		payload: { name: 'Test' }
@@ -17,20 +17,45 @@ it('should create an action to set auth user', () => {
 	expect(actions.doAuthUserSet(null)).toEqual(expectedAction)
 })
 
-it('should create an action to update the list of coworks', () => {
+it('doCoworkListSet should create an action to update the list of coworks', () => {
 	const expectedAction = {
-		type: types.COWORK_LIST_UPDATE,
+		type: types.COWORK_LIST_SET,
 		payload: [1, 2, 3, 4] 
 	}
 
-	expect(actions.doCoworkListUpdate([1, 2, 3, 4])).toEqual(expectedAction)
+	expect(actions.doCoworkListSet([1, 2, 3, 4])).toEqual(expectedAction)
 })
 
-it('should create an action to show user data', () => {
+it('doCoworkSet should create an action to add a cowork to the coworks substate', () => {
 	const expectedAction = {
-		type: types.USER_DATA_SHOW,
+		type: types.COWORK_SET,
+		payload: [1, 2, 3, 4]
+	}
+
+	expect(actions.doCoworkSet([1, 2, 3, 4])).toEqual(expectedAction)
+})
+
+it('doUserDataSet should create an action to show user data', () => {
+	const expectedAction = {
+		type: types.USER_DATA_SET,
 		payload: { name: 'user' } 
 	}
 
-	expect(actions.doUserDataShow({ name: 'user' })).toEqual(expectedAction)
+	expect(actions.doUserDataSet({ name: 'user' })).toEqual(expectedAction)
+})
+
+it('doAmmenityListSet should create an action to update the list of ammenities', () => {
+	const inputData = {
+		coffee: {
+			label: 'Coffee',
+			icon: 'mug-hot'
+		}
+	}
+
+	const expectedAction = {
+		type: types.AMMENITY_LIST_SET,
+		payload: inputData 
+	}
+
+	expect(actions.doAmmenityListSet(inputData)).toEqual(expectedAction)
 })

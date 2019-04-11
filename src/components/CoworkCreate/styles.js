@@ -1,35 +1,18 @@
 import styled from 'styled-components'
-
+import { Field } from 'redux-form'
+ 
 import { 
-	MainButton,
+	Alert,	
 	MainIcon, 
-	Alert 
+	FormWrapper,
+	FormRow,
+	FormItem,
+	FormLabel,
+	FormSubmit
 } from '../../theme/utilComponents'
 
-export const FormWrapper = styled.form` 
-	display: flex;
-	flex-direction: column;
-`
-
-export const FormRow = styled.div`
-	display: flex;
-	justify-content: flex-start;
-	margin: 20px 0;
-`
-
-export const AmmenitiesRow = styled(FormRow)`
-	flex-wrap: wrap;
-`
-
-export const FormItem = styled.div`
-	display: flex;
-	flex-direction: column;
-	margin-right: 20px;
-	flex-grow: 1;
-`
-
-export const TextLabel = styled.label`
-	margin-bottom: 5px;
+export const CreateCoworkWrapper = styled.div`
+	
 `
 
 export const TextInput = styled.input`
@@ -47,10 +30,12 @@ export const TextArea = styled.textarea`
   border-image: initial;	
 `
 
-export const FormSubmit = styled(MainButton)`
-	margin: 20px;
-  padding: 10px 50px; 
-  align-self: center;
-`
-
-export { Alert, MainIcon }
+export { 
+	Alert, 
+	MainIcon, 
+	FormWrapper,
+	FormRow,
+	FormItem,
+	FormLabel,
+	FormSubmit
+}

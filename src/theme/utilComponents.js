@@ -36,16 +36,34 @@ export const Alert = styled.p`
   border: 1px solid transparent;
   border-radius: 4px;
 `
+
+// Form Components //
+
+export const FormWrapper = styled.form`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+`
+export const FormRow = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  margin: 20px 0;
+`
+
+export const FormItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+  flex-grow: 1;
+`
 export const FormTitle = styled.h1`
   text-align: center;
   margin: 40px;
   color: ${props => props.theme.darkBlue};
 `
 
-export const FormWrapper = styled.form`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+export const FormLabel = styled.label`
+  margin-bottom: 5px;
 `
 
 export const FormInput = styled.input`
@@ -57,5 +75,6 @@ export const FormInput = styled.input`
 export const FormSubmit = styled(MainButton)`
   margin: 20px;
   padding: 10px 50px; 
+  align-self: center;
 `
 

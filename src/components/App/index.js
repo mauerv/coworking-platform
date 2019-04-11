@@ -10,12 +10,13 @@ import ConnectedHome from '../../containers/ConnectedHome'
 import ConnectedCoworkCreate from '../../containers/ConnectedCoworkCreate'
 import ConnectedAccount from '../../containers/ConnectedAccount'
 import ConnectedNavigation from '../../containers/ConnectedNavigation'
+import ConnectedCoworkPage from '../../containers/ConnectedCoworkPage'
 import Landing from '../Landing'
 import SignUp from '../SignUp'
 import SignIn from '../SignIn'
 import PasswordForget from '../PasswordForget'
 import Footer from '../Footer'
-import CoworkPage from '../CoworkPage'
+
 
 import * as ROUTES from '../../constants/routes'
 
@@ -29,10 +30,15 @@ class App extends Component {
 			authUser => this.props.onAuthUserSet(authUser),
 			() => this.props.onAuthUserSet(null)
 		)
+
+		this.props.firebase.ammenities().on('value', snapshot => {
+			this.props.onAmmenityListSet(snapshot.val())
+		})
 	}
 
 	componentWillUnmount() {
 		this.listener()
+		this.props.firebase.ammenities().off()
 	}
 
 	render() {
@@ -54,7 +60,7 @@ class App extends Component {
 						<Route path={ROUTES.SIGN_IN} component={SignIn} />
 						<Route path={ROUTES.PASSWORD_FORGET} component={PasswordForget} />
 						<Route path={ROUTES.ACCOUNT} component={ConnectedAccount} />
-						<Route exact path={ROUTES.COWORK} component={CoworkPage} />
+						<Route exact path={ROUTES.COWORK} component={ConnectedCoworkPage} />
 						<Route path={ROUTES.CREATE} component={ConnectedCoworkCreate} />
 					</ContentWrapper>
 					<Footer />

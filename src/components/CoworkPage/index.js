@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Slider from 'react-slick'
 import { compose } from 'recompose'
 
@@ -10,8 +10,6 @@ import {
 
 import Grid from '../Grid'
 import LabeledIcon from '../LabeledIcon'
-
-import { coworks } from '../../util/dummyData'
 
 import { 
 	HeroSlider, 
@@ -28,63 +26,77 @@ const settings = {
 	className: 'profile-carousel'
 }
 
-const getCoworkById = (id) => {
-	for (var i = 0; i < coworks.length; i++) {
-		if (coworks[i].id == id) {
-			return coworks[i]
+class CoworkPage extends Component {
+	componentDidMount() {
+		// fetch data from firebase if it's not on redux 
+		if (this.props.cowork === undefined) {
+			const { cowork_id } = this.props.match.params;
+			this.props.firebase.cowork(cowork_id).on('value', snapshot => {
+				// if the cowork doesn't exist on redux, show a 404 error
+
+				// if it is, dispatch action to add data to store
+				this.props.doCoworkSet({ ...snapshot.val(), uid: cowork_id })
+			})
 		}
 	}
-} 
 
-const CoworkPage = ({ match }) => {
-	const cowork = getCoworkById(match.params.cowork_id);
+	componentWillUnmount() {
+		this.props.firebase.cowork().off()
+	}
 
-	return (
-		<div>
-			<HeroSlider>
-				<Slider {...settings}>
-					{cowork.images.map((image, i) => (
-						<div key={i}>
-							<img src={`${process.env.PUBLIC_URL}/${image}`} alt='' /> 
-						</div>
-					))}
-				</Slider>
-			</HeroSlider>
-			<ProfileRow>
-				<div>
-					<h1>{cowork.name}</h1>
-					<p>{cowork.location}</p>
-					<p>
-						{cowork.description}
-					</p>
-				</div>
-			</ProfileRow>
-			<ProfileRow>
-				<Grid 
-					gridTitle="Ammenities"
-					justifyContent='space-between'
-					alignTitle='left'
-				>
-					{cowork.ammenities.map((ammenity, i) => (
-						<LabeledIcon 
-							iconName={ammenity.iconName}
-							label={ammenity.label}
-							key={i}
-						/>
-					))}
-				</Grid>
-			</ProfileRow>
-			<ProfileRow>
-				<h1>Opening Hours</h1>
-				<p><strong>Monday/Friday: </strong>{cowork.weekdaySchedule}</p>
-				<p><strong>Weekends: </strong>{cowork.weekendSchedule}</p>
-			</ProfileRow>
-			<ProfileRow>
-				<h1>Daily Price</h1>
-				<p>${cowork.price}</p>
-			</ProfileRow>				
-		</div>
-	)
+	render() {
+		const { cowork } = this.props
+
+		return (
+			<div>
+				<HeroSlider>
+					<Slider {...settings}>
+							<div key={0}>
+								<img src={cowork.imageOne} alt='' /> 
+							</div>
+							<div key={1}>
+								<img src={cowork.imageTwo} alt='' /> 
+							</div>
+							<div key={2}>
+								<img src={cowork.imageThree} alt='' /> 
+							</div>
+					</Slider>
+				</HeroSlider>
+				<ProfileRow>
+					<div>
+						<h1>{cowork.name}</h1>
+						<p>{cowork.coworkLocation}</p>
+						<p>
+							{cowork.description}
+						</p>
+					</div>
+				</ProfileRow>
+				<ProfileRow>
+					<Grid 
+						gridTitle="Ammenities"
+						justifyContent='space-between'
+						alignTitle='left'
+					>
+						
+					<LabeledIcon 
+						iconName={'mug-hot'}
+						label={'Coffee'}
+						key={0}
+					/>
+					</Grid>
+				</ProfileRow>
+				<ProfileRow>
+					<h1>Opening Hours</h1>
+					<p><strong>Monday/Friday: </strong>{cowork.openingWeekday}</p>
+					<p><strong>Weekends: </strong>{cowork.openingWeekend}</p>
+				</ProfileRow>
+				<ProfileRow>
+					<h1>Daily Price</h1>
+					<p>$10</p>
+				</ProfileRow>				
+			</div>
+		)
+	}
 }
 
 export default compose(

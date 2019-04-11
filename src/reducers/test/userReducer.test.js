@@ -6,10 +6,10 @@ it('should return the initial state', () => {
 	expect(userReducer(undefined, {})).toEqual({ coworks: [] })
 })
 
-it('should handle USER_DATA_SHOW', () => {
+it('should handle USER_DATA_SET', () => {
 	const initialState = { coworks: [] } 
 	const action = {
-		type: types.USER_DATA_SHOW,
+		type: types.USER_DATA_SET,
 		payload: [1, 2, 3]
 	}
 	const nextState = { coworks: [1, 2, 3] }

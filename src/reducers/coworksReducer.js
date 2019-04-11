@@ -1,16 +1,16 @@
-import { COWORK_LIST_UPDATE } from '../constants/actionTypes'
+import { COWORK_LIST_SET } from '../constants/actionTypes'
 
-const initialState = []
+const initialState = {}
 
 export default (state = initialState, action) => {
 	switch (action.type) {
-		case COWORK_LIST_UPDATE:
-			return applyCoworkListUpdate(state, action)
+		case COWORK_LIST_SET:
+			return applyCoworkListSet(state, action)
 		default: 
 			return state
 	}
 }
 
-export const applyCoworkListUpdate = (state, action) => ([
+export const applyCoworkListSet = (state, action) => ({
 	...action.payload
-])
+})

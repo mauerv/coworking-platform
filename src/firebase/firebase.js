@@ -77,6 +77,12 @@ class Firebase {
 	cowork = uid => this.db.ref(`coworks/${uid}`)
 
 	coworks = () => this.db.ref('coworks')
+
+	// *** Ammenities API ***
+
+	ammenity = uid => this.db.ref(`ammenities/${uid}`)
+
+	ammenities = () => this.db.ref('ammenities')
 }
 
 export default Firebase

@@ -3,6 +3,10 @@ import styled from 'styled-components'
 import { ContainerTitle } from '../../theme/utilComponents'
 
 export const GridWrapper = styled.div`
+	width: 100%;
+`
+
+export const GridItems = styled.div`
 	display: flex;
   flex-wrap: wrap;
   justify-content: ${props => props.justifyContent ? props.justifyContent : 'center'};

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { compose } from 'recompose'
 import { withRouter } from 'react-router-dom'
+import { Field, FormSection, reduxForm } from 'redux-form'
 
 import { 
 	withAuthorization, 
@@ -14,202 +15,112 @@ import Checkbox from '../Checkbox'
 
 import * as ROUTES from '../../constants/routes'
 
-import { ammenities } from '../../util/dummyData'
-
-import { 
+import {
+	CreateCoworkWrapper,
 	FormWrapper,
 	FormRow,
 	FormItem,
+	FormLabel,
 	TextInput,
-	TextLabel,
-	TextArea,
-	FormSubmit,
-	Alert
+	FormSubmit
 } from './styles'
 
-const INITIAL_STATE = {
-	name: '',
-	coworkLocation: '',
-	smallDescription: '',
-	description: '',
-	ammenitiesSmoking: false,
-	ammenitiesCoffee: false,
-	ammenitiesFridge: false,
-	ammenitiesMeetings: false,
-	ammenitiesPingpong: false,
-	ammenitiesMusic: false,
-	openingWeekday: '',
-	openingWeekend: '',
-	imageOne: '',
-	imageTwo: '',
-	imageThree: '',
-	error: null
-}
-
 class CoworkCreate extends Component {
-	state = { ...INITIAL_STATE }
-
-	onCreateCowork = event => {
-		event.preventDefault()
-
+	onCreateCowork = values => {
 		const { authUser, firebase, history } = this.props
-
-		firebase.coworks().push({
-			...this.state,
-			userId: authUser.uid
-		}).then(ref => {
+		const coworkData = {}
+		coworkData.coworkName = values.description
+		coworkData.coworkLocation = values.coworkLocation
+		coworkData.smallDescription = values.smallDescription
+		coworkData.description = values.description
+		coworkData.openingWeekday = values.openingWeekday
+		coworkData.openingWeekend = values.openingWeekend
+		coworkData.ammenities = []
+		for (let key in values.ammenities) {
+			coworkData.ammenities.push(key)
+		}
+		firebase.coworks().push(coworkData).then(ref => {
+			// Upload each image and push the return ref into the coworkData.images array.
+			for (let key in values.images) {
+				const imgToUpload = values.images[key][0]
+				const storageRef = firebase.storage.ref()
+				const imgRef = storageRef.child(imgToUpload.name)
+				imgRef.put(imgToUpload).then(snapshot => {
+	      // Using the returned snapshot get the image URL.
+	  		storageRef.child(snapshot.ref.fullPath).getDownloadURL()
+	  			.then(url => {
+	  				 // Push images to correct cowork
+	  				 ref.child('images').push(url)
+	  			})
+	  		})
+			}
 			firebase.user(authUser.uid).child('coworks').push(ref.key)
-			this.setState({ ...INITIAL_STATE })
 			history.push(`${ROUTES.COWORKS}/${ref.key}`)
 		})
 	}
 
-	onTextInputChange = event => {
-		this.setState({ [event.target.name]: event.target.value })
-	}
+	renderField = ({ input, label, type, meta: { touched, error } }) => (
+		<FormItem>
+			<FormLabel>{label}</FormLabel>
+			<TextInput {...input} type={type} placeholder={label} />
+			{touched && error && <span>{error}</span>}
+		</FormItem>
+	)
 
-	onCheckboxToggle = event => {	
-		this.setState({ [event.target.name]: event.target.checked })
+	renderFileUpload = ({ input, type, meta: { touched, error, warning } }) => {
+		delete input.value
+
+		return (
+			<FormItem>
+				<FormLabel htmlFor={input.name}>
+					<input {...input} type={type} />
+				</FormLabel>
+			</FormItem>
+		)
 	}
 
 	render() {
-		const { 
-			name, 
-			smallDescription, 
-			coworkLocation, 
-			description,
-			ammenitiesSmoking,
-			ammenitiesCoffee,
-			ammenitiesFridge,
-			ammenitiesMeetings,
-			ammenitiesPingpong,
-			ammenitiesMusic,
-			openingWeekday,
-			openingWeekend,
-			imageOne,
-			imageTwo,
-			imageThree,
-			error 
-		} = this.state
-
-		const isInvalid = 
-			name === '' || 
-			smallDescription === '' ||
-			description === '' ||
-			openingWeekday === '' ||
-			openingWeekend === ''
-
+		const { handleSubmit, ammenities } = this.props
 		return (
-			<div>
-				<FormWrapper onSubmit={this.onCreateCowork}>
+			<CreateCoworkWrapper>
+				<FormWrapper onSubmit={handleSubmit(this.onCreateCowork)}>
 					<FormRow>
-						<FormItem>
-							<TextLabel htmlFor="cowork-name">Cowork Name</TextLabel>
-							<TextInput 
-								id="cowork-name"
-								name="name"
-								type="text"
-								value={name}
-								placeholder="Cowork Name"
-								onChange={this.onTextInputChange}
-							/>
-						</FormItem>
-						<FormItem>
-							<TextLabel htmlFor="location">Location</TextLabel>
-							<TextInput 
-								id="location"
-								name="coworkLocation"
-								type="text"
-								value={coworkLocation}
-								placeholder="Cowork Location"
-								onChange={this.onTextInputChange}
-							/>
-						</FormItem>
+						<Field name='coworkName' component={this.renderField} label='Cowork Name'/>
+						<Field name='coworkLocation' component={this.renderField} label='Cowork Location' />
 					</FormRow>
 					<FormRow>
-						<FormItem>
-							<TextLabel htmlFor="small-description">Small Description</TextLabel>
-							<TextInput 
-								id="small-description"
-								name="smallDescription"
-								type="text"
-								value={smallDescription}
-								placeholder="Small Description"
-								onChange={this.onTextInputChange}
-							/>
-						</FormItem>
+						<Field name='smallDescription' component={this.renderField} label='Small Description' /> 
 					</FormRow>
 					<FormRow>
-						<FormItem>
-							<TextLabel htmlFor="description">Description</TextLabel>
-							<TextArea 
-								id="description" 
-								name="description"
-								value={description}
-								onChange={this.onTextInputChange}
-							>
-
-							</TextArea>
-						</FormItem>
+						<Field name='description' type='textarea' component={this.renderField} label='Description' /> 
 					</FormRow>
-					<Grid>
-						{ammenities.map((ammenity, i) => (
-							<Checkbox 
-								iconName={ammenity.iconName}
-								id={ammenity.id}
-								label={ammenity.label}
-								checked={this.state[ammenity.name]}
-								name={ammenity.name}
-								onCheckboxToggle={this.onCheckboxToggle}
-								key={i}
-							/>
-						))}
+					<FormSection name='ammenities'>
+						<Grid justifyContent='space-around'>
+							{ammenities.map((ammenity, index) => (
+								<Field 
+									{...ammenity} 
+									key={ammenity.label}
+									name={ammenity.uid} 
+									type='checkbox' 
+									component={Checkbox} 
+								/>
+							))}
+						</Grid>
+					</FormSection>
+					<FormRow>
+						<Field name='openingWeekday' component={this.renderField} label='Opening Weekday' /> 
+						<Field name='openingWeekend' component={this.renderField} label='Opening Weekend' />
+					</FormRow>
+					<Grid justifyContent='space-around' gridTitle='Add Images' >
+						<FormSection name='images'>
+							<Field name='picture1' type='file' component={this.renderFileUpload} label='Upload Image' />
+							<Field name='picture2' type='file' component={this.renderFileUpload} label='Upload Image' />
+							<Field name='picture3' type='file' component={this.renderFileUpload} label='Upload Image' />
+						</FormSection>
 					</Grid>
-					<FormRow>
-						<FormItem>
-							<TextLabel htmlFor="hours-weekdays">Opening Hours Weekdays</TextLabel>
-							<TextInput 
-								id="hours-weekdays"
-								name="openingWeekday"
-								type="text"
-								value={openingWeekday}
-								placeholder="8:00 - 20:00"
-								onChange={this.onTextInputChange}
-							/>	
-						</FormItem>
-						<FormItem>				
-							<TextLabel htmlFor="hours-weekends">Opening Hours Weekends</TextLabel>
-							<TextInput 
-								id="hours-weekends"
-								name="openingWeekend"
-								type="text"
-								value={openingWeekend}
-								placeholder="Closed"
-								onChange={this.onTextInputChange}
-							/>
-						</FormItem>
-					</FormRow>
-					<Grid justifyContent='space-around'>
-						<ImageUpload 
-							image={imageOne}
-							onImageUpdate={url => this.setState({imageOne: url})}
-							onRemoveImage={() => this.setState({imageOne: ''})} 
-						/>
-						<ImageUpload 
-							image={imageTwo}
-							onImageUpdate={url => this.setState({imageTwo: url})}
-							onRemoveImage={() => this.setState({imageTwo: ''})}
-						/>
-						<ImageUpload 
-							image={imageThree}
-							onImageUpdate={url => this.setState({imageThree: url})}
-							onRemoveImage={() => this.setState({imageThree: ''})}
-						/>
-					</Grid>
-					<FormSubmit type="submit" disabled={isInvalid}>Create Cowork</FormSubmit>
-					{error && <Alert>{error}</Alert>}
+					<FormSubmit type="submit">Create Cowork</FormSubmit>
 				</FormWrapper>
-			</div>
+			</CreateCoworkWrapper>
 		)
 	}
 }
@@ -217,5 +128,8 @@ class CoworkCreate extends Component {
 export default compose(
 	withEmailVerification,
 	withAuthorization(userIsAuthenticated),
-	withRouter
+	withRouter,
+	reduxForm({
+		form: 'createCowork'
+	})
 )(CoworkCreate)

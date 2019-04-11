@@ -7,37 +7,21 @@ import {
  MainIcon
 } from './styles'
 
-const Checkbox = ({ 
-	iconName, 
-	iconSize,
-	id,  
+const	Checkbox = ({ 
+	input, 
 	label, 
-	checked, 
-	name, 
-	onCheckboxToggle 
+	type, 
+	icon, 
+	iconSize, 
+	meta: { touched, error } 
 }) => (
-  <CheckboxWrapper>
-    <MainIcon icon={iconName} size={iconSize || '3x'} alt={iconName} />
-    <CheckboxLabel htmlFor={id}>{label}</CheckboxLabel>
-    <input 
-			type="checkbox" 
-			checked={checked}
-			id={id} 
-			name={name}
-			onChange={onCheckboxToggle}
-		/>
-  </CheckboxWrapper>
-)
-
-Checkbox.propTypes = {
-	iconName: PropTypes.string.isRequired,
-	iconSize: PropTypes.string,
-	label: PropTypes.string.isRequired,
-	checked: PropTypes.bool.isRequired,
-	id: PropTypes.string.isRequired,
-	name: PropTypes.string.isRequired,
-	onCheckboxToggle: PropTypes.func.isRequired
-}
+		<CheckboxWrapper>
+			<MainIcon icon={icon} size={iconSize || '3x'} alt={icon} />
+			<CheckboxLabel>{label}</CheckboxLabel>
+			<input {...input} type={type} />
+			{touched && error && <span>{error}</span>}
+		</CheckboxWrapper>
+	)
 
 export default Checkbox
 

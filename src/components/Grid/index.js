@@ -3,16 +3,17 @@ import PropTypes from 'prop-types'
 
 import { 
 	GridWrapper,
+	GridItems,
 	GridTitle 
 } from './styles'
 
 const Grid = ({ gridTitle, children, justifyContent, alignTitle }) => (
-	<div>
+	<GridWrapper>
 		{gridTitle && <GridTitle alignTitle={alignTitle}>{gridTitle}</GridTitle>}
-		<GridWrapper justifyContent={justifyContent}>
+		<GridItems justifyContent={justifyContent}>
 			{children}
-		</GridWrapper>
-	</div>
+		</GridItems>
+	</GridWrapper>
 )
 
 Grid.propTypes = {
