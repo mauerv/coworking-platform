@@ -21,6 +21,6 @@ export default compose(
 	withAuthorization(userIsAuthenticated),
 	connect(
 		mapStateToProps,
-		{ doCoworkListSet: doCoworkListSet }
+		{ onCoworkListSet: doCoworkListSet }
 	)
 )(Home)

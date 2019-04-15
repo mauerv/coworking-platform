@@ -28,35 +28,31 @@ import {
 class CoworkCreate extends Component {
 	onCreateCowork = values => {
 		const { authUser, firebase, history } = this.props
-		const coworkData = {}
-		coworkData.coworkName = values.description
-		coworkData.coworkLocation = values.coworkLocation
-		coworkData.smallDescription = values.smallDescription
-		coworkData.description = values.description
-		coworkData.openingWeekday = values.openingWeekday
-		coworkData.openingWeekend = values.openingWeekend
-		coworkData.ammenities = []
-		for (let key in values.ammenities) {
-			coworkData.ammenities.push(key)
-		}
-		firebase.coworks().push(coworkData).then(ref => {
-			let imageIndex = 0
-			for (let key in values.images) {
-				const imgToUpload = values.images[key][0]
-				const storageRef = firebase.storage.ref()
-				const imgRef = storageRef.child(imgToUpload.name)
-				imgRef.put(imgToUpload).then(snapshot => {
-	  		storageRef.child(snapshot.ref.fullPath).getDownloadURL()
-	  			.then(url => {
-	  				 ref.child(`images/${imageIndex}`).set(url)
-	  				 imageIndex++
-	  			})
-	  		})
-	  		
-			}
-			firebase.user(authUser.uid).child('coworks').push(ref.key)
-			history.push(`${ROUTES.COWORKS}/${ref.key}`)
+		const { ...coworkData } = values
+		coworkData.ammenities = Object.keys(values.ammenities)
+		const storage = firebase.storage.ref()
+
+		Promise.all(
+			Object.keys(values.images).map(key => {
+				let img = values.images[key][0]
+				return storage.child(img.name).put(img)
+			})
+		)
+		.then(uploadedImgs => {
+			return Promise.all(
+				uploadedImgs.map(uploadedImg => {
+					return storage.child(uploadedImg.ref.fullPath).getDownloadURL()
+				})
+			)
 		})
+		.then(urls => {
+			coworkData.images = urls
+			firebase.coworks().push(coworkData).then(ref => {
+				firebase.user(authUser.uid).child('coworks').push(ref.key)
+				this.props.onCoworkListSet({ [ref.key]: coworkData })
+				history.push(`${ROUTES.COWORKS}/${ref.key}`)
+			})
+		})	
 	}
 
 	renderField = ({ input, label, type, meta: { touched, error } }) => (

@@ -6,7 +6,14 @@ const state = {
 		'a': { name: 'Olegario' },
 		'b': { name: 'Linka' }
 	},
-	user: { name: 'Mauro' },
+	user: { 
+		name: 'Mauro',
+		email: 'mau@gmail.com',
+		coworks: {
+			's': 'sa',
+			't': 'ta'
+		} 
+	},
 	ammenities: {
 		'x': { label: 'Coffee' },
 		'y': { label: 'Fridge' }
@@ -47,6 +54,17 @@ it('getUser should get the user data from state', () => {
 
 	expect(selectors.getUser(state)).toEqual(expectedSubState)
 })
+
+export const getUser = state => ({
+	username: state.user.username,
+	email: state.user.email,
+	coworks: _getUserCoworksData(state.user.coworks, state)
+})
+
+const _getUserCoworksData = (ids, state) => 
+	getIdListFromObj(ids).map(id => ({...state.coworks[id], uid: id }))
+
+
 
 it('getAmmenities should get an array of ammenities from state', () => {
 	const expectedSubState = [

@@ -8,7 +8,8 @@ import { HomeWrapper } from './styles'
 export default class Home extends Component {
 	componentDidMount() {
 		this.props.firebase.coworks().on('value', snapshot => {
-			this.props.doCoworkListSet(snapshot.val())
+			console.log(snapshot.val())
+			this.props.onCoworkListSet(snapshot.val())
 		})
 	}
 

@@ -15,21 +15,25 @@ import {
 } from './styles'
 
 export default class Account extends Component {
+	state = {
+		loadingCoworks: true
+	}
+
 	componentDidMount() {
 		this.props.firebase.user(this.props.authUser.uid).on('value', snapshot => {
-			this.props.onUserDataSet(snapshot.val())
-			const coworkIds = getIdListFromObj(snapshot.val().coworks)
+			const user = snapshot.val()
+			this.props.onUserDataSet(user)
+			const coworkIds = getIdListFromObj(user.coworks)
 			Promise.all(
 		    coworkIds.map(id => this.props.firebase.cowork(id).once('value'))
 		  ).then(coworks => {
 		  	const coworksDataList = coworks.map(cowork => cowork.val())
-		  	console.log(coworksDataList)
 		  	const coworksData = {}
 		  	for (var i = coworkIds.length - 1; i >= 0; i--) {
 		  		coworksData[coworkIds[i]] = coworksDataList[i]
 		  	}
-		  	console.log('Coworks', coworksData)
 		  	this.props.onCoworkListSet(coworksData)
+		  	this.setState({ loadingCoworks: false })
 		  })
 		})
 	}
@@ -42,8 +46,10 @@ export default class Account extends Component {
 		const { user, history } = this.props
 
 		return (
-			<div> {/* TODO: This ternary doesn't work. */}
-				{user.coworks !== undefined ? (
+			<div> 
+				{user.coworks !== undefined &&
+				 user.coworks.length !== 0 && 
+				 this.state.loadingCoworks === false ? (
 					<List listTitle={"My Coworks"} items={user.coworks} />
 				) : (
 					<FigureWithButton 

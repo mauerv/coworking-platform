@@ -16,6 +16,5 @@ export default (state = initialState, action) => {
 }
 
 export const applyUserDataSet = (state, action) => ({
-	...state,
 	...action.payload
 })
