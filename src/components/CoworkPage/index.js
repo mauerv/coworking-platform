@@ -28,15 +28,18 @@ const settings = {
 
 class CoworkPage extends Component {
 	componentDidMount() {
-		// fetch data from firebase if it's not on redux 
-		if (this.props.cowork === undefined) {
-			const { cowork_id } = this.props.match.params;
-			this.props.firebase.cowork(cowork_id).on('value', snapshot => {
-				// if the cowork doesn't exist on redux, show a 404 error
-
-				// if it is, dispatch action to add data to store
-				this.props.doCoworkSet({ ...snapshot.val(), uid: cowork_id })
-			})
+		const { firebase, cowork, onCoworkListSet, onUserDataSet, match } = this.props
+		if (cowork === undefined) {
+			const { cowork_id } = match.params;
+			firebase.cowork(cowork_id).once('value')
+				.then(snapshot => {
+					const coworkData = snapshot.val()
+					onCoworkListSet({ [cowork_id]: coworkData })
+					return firebase.user(coworkData.userId).once('value')
+				})
+				.then(userData => {
+					onUserDataSet(userData.val())
+				})
 		}
 	}
 
@@ -46,6 +49,10 @@ class CoworkPage extends Component {
 
 	render() {
 		const { cowork } = this.props
+		
+		if (cowork === undefined) {
+			return <div />
+		}
 
 		return (
 			<div>
@@ -89,7 +96,7 @@ class CoworkPage extends Component {
 				<ProfileRow>
 					<h1>Daily Price</h1>
 					<p>$10</p>
-				</ProfileRow>				
+				</ProfileRow>			
 			</div>
 		)
 	}

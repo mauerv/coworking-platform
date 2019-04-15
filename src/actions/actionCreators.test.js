@@ -26,15 +26,6 @@ it('doCoworkListSet should create an action to update the list of coworks', () =
 	expect(actions.doCoworkListSet([1, 2, 3, 4])).toEqual(expectedAction)
 })
 
-it('doCoworkSet should create an action to add a cowork to the coworks substate', () => {
-	const expectedAction = {
-		type: types.COWORK_SET,
-		payload: [1, 2, 3, 4]
-	}
-
-	expect(actions.doCoworkSet([1, 2, 3, 4])).toEqual(expectedAction)
-})
-
 it('doUserDataSet should create an action to show user data', () => {
 	const expectedAction = {
 		type: types.USER_DATA_SET,

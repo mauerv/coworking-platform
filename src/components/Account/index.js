@@ -50,7 +50,11 @@ export default class Account extends Component {
 				{user.coworks !== undefined &&
 				 user.coworks.length !== 0 && 
 				 this.state.loadingCoworks === false ? (
-					<List listTitle={"My Coworks"} items={user.coworks} />
+					<List 
+						listTitle={"My Coworks"} 
+						items={user.coworks} 
+						onClickDelete={this.onClickDelete}
+					/>
 				) : (
 					<FigureWithButton 
 						title="My Coworks"

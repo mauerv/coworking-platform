@@ -29,6 +29,7 @@ class CoworkCreate extends Component {
 	onCreateCowork = values => {
 		const { authUser, firebase, history } = this.props
 		const { ...coworkData } = values
+		coworkData.userId = authUser.uid
 		coworkData.ammenities = Object.keys(values.ammenities)
 		const storage = firebase.storage.ref()
 
