@@ -1,7 +1,9 @@
 import { USER_DATA_SET} from '../constants/actionTypes'
 
 const initialState = {
-	coworks: []
+	coworks: {},
+	username: '',
+	email: ''
 }
 
 export default (state = initialState, action) => {
@@ -15,5 +17,5 @@ export default (state = initialState, action) => {
 
 export const applyUserDataSet = (state, action) => ({
 	...state,
-	coworks: action.payload
+	...action.payload
 })

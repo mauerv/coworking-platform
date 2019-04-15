@@ -26,7 +26,8 @@ export default () => {
 		saveState({
 			session: store.getState().session,
 			coworks: store.getState().coworks,
-			ammenities: store.getState().ammenities
+			ammenities: store.getState().ammenities,
+			user: store.getState().user
 		})
 	}, 1000))
 

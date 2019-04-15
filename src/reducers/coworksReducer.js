@@ -12,5 +12,7 @@ export default (state = initialState, action) => {
 }
 
 export const applyCoworkListSet = (state, action) => ({
+	...state,
 	...action.payload
 })
+

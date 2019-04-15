@@ -16,8 +16,8 @@ const List = ({ listTitle, items }) => (
     {items.map((item, i) => (
 			<Li 
 				key={i}
-				text={item.name}
-				url={`${ROUTES.COWORKS}/${item.id}`}
+				text={item.coworkName} {/* TODO: This component is a mix between general and specific. */}
+				url={`${ROUTES.COWORKS}/${item.uid}`}
 				onClickEdit={() => ''}
 				onClickDelete={() => ''}
 			/>

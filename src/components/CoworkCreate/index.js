@@ -40,17 +40,14 @@ class CoworkCreate extends Component {
 			coworkData.ammenities.push(key)
 		}
 		firebase.coworks().push(coworkData).then(ref => {
-			// Upload each image and push the return ref into the coworkData.images array.
 			let imageIndex = 0
 			for (let key in values.images) {
 				const imgToUpload = values.images[key][0]
 				const storageRef = firebase.storage.ref()
 				const imgRef = storageRef.child(imgToUpload.name)
 				imgRef.put(imgToUpload).then(snapshot => {
-	      // Using the returned snapshot get the image URL.
 	  		storageRef.child(snapshot.ref.fullPath).getDownloadURL()
 	  			.then(url => {
-	  				 // Push images to correct cowork
 	  				 ref.child(`images/${imageIndex}`).set(url)
 	  				 imageIndex++
 	  			})
