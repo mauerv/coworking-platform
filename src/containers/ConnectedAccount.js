@@ -11,7 +11,7 @@ import {
 import Account from '../components/Account'
 
 import { getAuthUser, getUser } from '../selectors'
-import { doUserDataSet, doCoworkListSet } from '../actions'
+import { doUserDataFetch } from '../actions'
 
 const mapStateToProps = state => ({
 	authUser: getAuthUser(state),
@@ -24,9 +24,6 @@ export default compose(
 	withRouter,
   connect(
 		mapStateToProps,
-		{ 
-			onUserDataSet: doUserDataSet,
-			onCoworkListSet: doCoworkListSet
-		}
+		{ onUserDataFetch: doUserDataFetch }
 	)
 )(Account)

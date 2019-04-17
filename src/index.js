@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
 
-import Firebase, { FirebaseContext } from './firebase'
+import { firebase, FirebaseContext } from './firebase'
 import configureStore from './store/configureStore'
 import initIconLibrary from './util/initIconLibrary'
 import theme from './theme/customTheme'
@@ -12,8 +12,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 initIconLibrary()
-
-const firebase = new Firebase()
 
 const store = configureStore()
 

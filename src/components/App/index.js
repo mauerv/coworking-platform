@@ -17,7 +17,6 @@ import SignIn from '../SignIn'
 import PasswordForget from '../PasswordForget'
 import Footer from '../Footer'
 
-
 import * as ROUTES from '../../constants/routes'
 
 import GlobalStyle from '../../theme/globalStyle'
@@ -31,9 +30,7 @@ class App extends Component {
 			() => this.props.onAuthUserSet(null)
 		)
 
-		this.props.firebase.ammenities().on('value', snapshot => {
-			this.props.onAmmenityListSet(snapshot.val())
-		})
+		this.props.onAmmenityListFetch()
 	}
 
 	componentWillUnmount() {
