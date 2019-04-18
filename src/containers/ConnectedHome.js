@@ -10,7 +10,7 @@ import {
 import Home from '../components/Home'
 
 import { getCoworks } from '../selectors'
-import { doCoworkListSet } from '../actions'
+import { doCoworkListFetch } from '../actions'
 
 const mapStateToProps = state => ({
 	coworks: getCoworks(state)
@@ -21,6 +21,6 @@ export default compose(
 	withAuthorization(userIsAuthenticated),
 	connect(
 		mapStateToProps,
-		{ onCoworkListSet: doCoworkListSet }
+		{ onCoworkListFetch: doCoworkListFetch }
 	)
 )(Home)

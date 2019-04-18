@@ -5,7 +5,7 @@ import {
 	AUTH_USER_SET,  
 	COWORK_LIST_SET,
 	USER_DATA_SET,
-	AMMENITY_LIST_FETCH
+	AMMENITY_LIST_SET
 } from '../constants/actionTypes'
 
 export const doAuthUserSet = authUser => ({
@@ -13,15 +13,12 @@ export const doAuthUserSet = authUser => ({
 	payload: authUser
 })
 
-export const doCoworkListSet = coworks => ({
-	type: COWORK_LIST_SET,
-	payload: coworks
-})
-
 export const doUserDataFetch = id => async dispatch => 
+	// Fetch and set user data.
 	firebase.user(id).on('value', async snapshot => {
 		const user = snapshot.val()
 		dispatch(doUserDataSet(user))
+		// Fetch and set user coworks data.
 		const coworkIds = getIdListFromObj(user.coworks)
 		const coworks = await Promise.all(coworkIds.map(id => firebase.cowork(id).once('value')))
 	  const coworksDataList = coworks.map(cowork => cowork.val())
@@ -30,7 +27,6 @@ export const doUserDataFetch = id => async dispatch =>
   		coworksData[coworkIds[i]] = coworksDataList[i]
   	}
   	dispatch(doCoworkListSet(coworksData))
-
 	}) 
 
 export const doUserDataSet = user => ({
@@ -38,11 +34,23 @@ export const doUserDataSet = user => ({
 	payload: user
 })
 
+export const doCoworkListFetch = () => async dispatch => 
+	firebase.coworks().on('value', snapshot => {
+		dispatch(doCoworkListSet(snapshot.val()))
+	})
+
+export const doCoworkListSet = coworks => ({
+	type: COWORK_LIST_SET,
+	payload: coworks
+})
+
 export const doAmmenityListFetch = () => async dispatch => {
 	firebase.ammenities().on('value', snapshot => {
-		dispatch({
-			type: AMMENITY_LIST_FETCH,
-			payload: snapshot.val()
-		})
+		dispatch(doAmmenityListSet(snapshot.val()))
 	})
 }
+
+export const doAmmenityListSet = ammenities => ({
+	type: AMMENITY_LIST_SET,
+	payload: ammenities
+})
