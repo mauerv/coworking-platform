@@ -31,10 +31,6 @@ class CoworkPage extends Component {
 		this.props.onCoworkDataFetch(this.props.match.params.cowork_id)
 	}
 
-	componentWillUnmount() {
-		this.props.firebase.cowork().off()
-	}
-
 	render() {
 		const { cowork } = this.props
 		

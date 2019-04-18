@@ -9,13 +9,13 @@ import {
 	LiButton
 } from './styles'
 
-const Li = ({ text, url, onClickEdit, onClickDelete }) => (
+const Li = ({ text, url, onClickUpdate, onClickDelete }) => (
 	<LiWrapper>
 		<LiText>
 			<Link to={url}>{text}</Link>
 		</LiText>
 		<LiButtons>
-			<LiButton onClick={onClickEdit}>Edit</LiButton>
+			<LiButton onClick={onClickUpdate}>Edit</LiButton>
 			<LiButton onClick={onClickDelete}>Delete</LiButton>
 		</LiButtons>
 	</LiWrapper>

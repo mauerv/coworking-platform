@@ -10,7 +10,7 @@ import {
 	FormSubmit
 } from '../../theme/utilComponents'
 
-export const CreateCoworkWrapper = styled.div`
+export const UpdateCoworkWrapper = styled.div`
 	
 `
 

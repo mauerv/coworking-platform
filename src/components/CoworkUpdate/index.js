@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { compose } from 'recompose'
 import { withRouter } from 'react-router-dom'
 import { Field, FormSection, reduxForm } from 'redux-form'
@@ -15,7 +16,7 @@ import Checkbox from '../Checkbox'
 import * as ROUTES from '../../constants/routes'
 
 import {
-	CreateCoworkWrapper,
+	UpdateCoworkWrapper,
 	FormWrapper,
 	FormRow,
 	FormItem,
@@ -24,8 +25,13 @@ import {
 	FormSubmit
 } from './styles'
 
-class CoworkCreate extends Component {
-	onCreateCowork = values => {
+class CoworkUpdate extends Component {
+	componentDidMount() {
+		this.props.onCoworkDataFetch(this.props.match.params.cowork_id)
+	}
+
+	onUpdateCowork = values => {
+		/*
 		const { authUser, firebase, history } = this.props
 		const { ...coworkData } = values
 		coworkData.userId = authUser.uid
@@ -54,12 +60,14 @@ class CoworkCreate extends Component {
 				history.push(`${ROUTES.COWORKS}/${ref.key}`)
 			})
 		})	
+		*/
 	}
+	
 
-	renderField = ({ input, label, type, meta: { touched, error } }) => (
+	renderField = ({ input, label, placeholder, type, meta: { touched, error } }) => (
 		<FormItem>
 			<FormLabel>{label}</FormLabel>
-			<TextInput {...input} type={type} placeholder={label} />
+			<TextInput {...input} type={type} placeholder={placeholder} />
 			{touched && error && <span>{error}</span>}
 		</FormItem>
 	)
@@ -78,11 +86,12 @@ class CoworkCreate extends Component {
 
 	render() {
 		const { handleSubmit, ammenities } = this.props
+
 		return (
-			<CreateCoworkWrapper>
-				<FormWrapper onSubmit={handleSubmit(this.onCreateCowork)}>
+			<UpdateCoworkWrapper>
+				<FormWrapper onSubmit={handleSubmit(this.onUpdateCowork)}>
 					<FormRow>
-						<Field name='coworkName' component={this.renderField} label='Cowork Name'/>
+						<Field name='coworkName' component={this.renderField} label='Cowork Name' />
 						<Field name='coworkLocation' component={this.renderField} label='Cowork Location' />
 					</FormRow>
 					<FormRow>
@@ -117,7 +126,7 @@ class CoworkCreate extends Component {
 					</Grid>
 					<FormSubmit type="submit">Create Cowork</FormSubmit>
 				</FormWrapper>
-			</CreateCoworkWrapper>
+			</UpdateCoworkWrapper>
 		)
 	}
 }
@@ -127,6 +136,6 @@ export default compose(
 	withAuthorization(userIsAuthenticated),
 	withRouter,
 	reduxForm({
-		form: 'createCowork'
+		form: 'updateCowork'
 	})
-)(CoworkCreate)
+)(CoworkUpdate)

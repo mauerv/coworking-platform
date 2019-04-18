@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { withFirebase } from '../../firebase'
-
 import Li from '../Li'
 
 import * as ROUTES from '../../constants/routes'
@@ -14,7 +12,7 @@ import {
 
 class List extends Component {
 	render() {
-		const { listTitle, items, onClickDelete } = this.props
+		const { listTitle, items, onClickDelete, onClickUpdate } = this.props
 		return (
 		  <ListWrapper>
 		  	{listTitle && <ListTitle>{listTitle}</ListTitle>}
@@ -23,7 +21,7 @@ class List extends Component {
 						key={i}
 						text={item.coworkName} 
 						url={`${ROUTES.COWORKS}/${item.uid}`}
-						onClickEdit={() => ''}
+						onClickUpdate={() => onClickUpdate(item.uid)}
 						onClickDelete={() => onClickDelete(item.uid, item.userId)}
 					/>
 		    ))}
@@ -35,9 +33,9 @@ class List extends Component {
 List.propTypes = {
 	listTitle: PropTypes.string,
 	items: PropTypes.arrayOf(PropTypes.shape({
-		name: PropTypes.string.isRequired,
-		id: PropTypes.string.isRequired
+		coworkName: PropTypes.string.isRequired,
+		uid: PropTypes.string.isRequired
 	}).isRequired).isRequired
 }
 
-export default withFirebase(List)
+export default List

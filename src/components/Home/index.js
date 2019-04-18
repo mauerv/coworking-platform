@@ -24,7 +24,7 @@ export default class Home extends Component {
 					{coworks.map((cowork, i) => (
 						<Card 
 						 key={i} 
-						 name={cowork.name} 
+						 name={cowork.coworkName} 
 						 shortDescription={cowork.smallDescription} 
 						 price={24}
 						 images={cowork.images} 

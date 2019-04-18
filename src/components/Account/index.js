@@ -23,6 +23,8 @@ export default class Account extends Component {
 
 	onClickDelete = (coworkId, userId) => this.props.onCoworkDelete(coworkId, userId)
 
+	onClickUpdate = coworkId => this.props.history.push(`${ROUTES.COWORKS}/${coworkId}/update`) 
+
 	render() {
 		const { user, history } = this.props
 
@@ -34,6 +36,7 @@ export default class Account extends Component {
 						listTitle={"My Coworks"} 
 						items={user.coworks} 
 						onClickDelete={this.onClickDelete}
+						onClickUpdate={this.onClickUpdate}
 					/>
 				) : (
 					<FigureWithButton 

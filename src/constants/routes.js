@@ -7,6 +7,6 @@ export const PASSWORD_FORGET = '/pw-forget'
 export const COWORKS = '/coworks'
 export const COWORK = '/coworks/:cowork_id'
 export const CREATE = '/create'
-
+export const UPDATE = '/coworks/:cowork_id/update'
 
 

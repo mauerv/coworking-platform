@@ -11,6 +11,7 @@ import ConnectedCoworkCreate from '../../containers/ConnectedCoworkCreate'
 import ConnectedAccount from '../../containers/ConnectedAccount'
 import ConnectedNavigation from '../../containers/ConnectedNavigation'
 import ConnectedCoworkPage from '../../containers/ConnectedCoworkPage'
+import ConnectedCoworkUpdate from '../../containers/ConnectedCoworkUpdate'
 import Landing from '../Landing'
 import SignUp from '../SignUp'
 import SignIn from '../SignIn'
@@ -59,6 +60,7 @@ class App extends Component {
 						<Route path={ROUTES.ACCOUNT} component={ConnectedAccount} />
 						<Route exact path={ROUTES.COWORK} component={ConnectedCoworkPage} />
 						<Route path={ROUTES.CREATE} component={ConnectedCoworkCreate} />
+						<Route path={ROUTES.UPDATE} component={ConnectedCoworkUpdate} />
 					</ContentWrapper>
 					<Footer />
 				</AppWrapper>
