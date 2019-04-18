@@ -28,19 +28,7 @@ const settings = {
 
 class CoworkPage extends Component {
 	componentDidMount() {
-		const { firebase, cowork, onCoworkListSet, onUserDataSet, match } = this.props
-		if (cowork === undefined) {
-			const { cowork_id } = match.params;
-			firebase.cowork(cowork_id).once('value')
-				.then(snapshot => {
-					const coworkData = snapshot.val()
-					onCoworkListSet({ [cowork_id]: coworkData })
-					return firebase.user(coworkData.userId).once('value')
-				})
-				.then(userData => {
-					onUserDataSet(userData.val())
-				})
-		}
+		this.props.onCoworkDataFetch(this.props.match.params.cowork_id)
 	}
 
 	componentWillUnmount() {

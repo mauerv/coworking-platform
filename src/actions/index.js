@@ -34,6 +34,11 @@ export const doUserDataSet = user => ({
 	payload: user
 })
 
+export const doCoworkDataFetch = id => async dispatch => {
+	const coworkData = (await firebase.cowork(id).once('value')).val()
+	dispatch(doCoworkListSet({ [id]: coworkData }))
+}
+
 export const doCoworkListFetch = () => async dispatch => 
 	firebase.coworks().on('value', snapshot => {
 		dispatch(doCoworkListSet(snapshot.val()))
