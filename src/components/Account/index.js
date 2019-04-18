@@ -21,6 +21,8 @@ export default class Account extends Component {
 		this.props.firebase.user(this.props.authUser.uid).off()
 	}
 
+	onClickDelete = (coworkId, userId) => this.props.onCoworkDelete(coworkId, userId)
+
 	render() {
 		const { user, history } = this.props
 

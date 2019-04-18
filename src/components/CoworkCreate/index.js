@@ -51,6 +51,7 @@ class CoworkCreate extends Component {
 			firebase.coworks().push(coworkData).then(ref => {
 				firebase.user(authUser.uid).child('coworks').push(ref.key)
 				this.props.onCoworkListSet({ [ref.key]: coworkData })
+				this.props.onUserCoworkAdd(ref.key)
 				history.push(`${ROUTES.COWORKS}/${ref.key}`)
 			})
 		})	

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import CoworkCreate from '../components/CoworkCreate'
 
 import { getAuthUser, getAmmenities } from '../selectors'
-import { doCoworkListSet } from '../actions'
+import { doCoworkListSet, doUserCoworkAdd } from '../actions'
 
 const mapStateToProps = state => ({
 	authUser: getAuthUser(state),
@@ -12,5 +12,8 @@ const mapStateToProps = state => ({
 
 export default connect(
 	mapStateToProps,
-	{ onCoworkListSet: doCoworkListSet }
+	{ 
+		onCoworkListSet: doCoworkListSet,
+		onUserCoworkAdd: doUserCoworkAdd 
+	}
 )(CoworkCreate)

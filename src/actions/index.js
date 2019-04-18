@@ -3,14 +3,21 @@ import { getIdListFromObj } from '../util/helperFunctions'
 
 import { 
 	AUTH_USER_SET,  
+	USER_COWORK_ADD,
 	COWORK_LIST_SET,
 	USER_DATA_SET,
-	AMMENITY_LIST_SET
+	AMMENITY_LIST_SET,
+	COWORK_DELETE
 } from '../constants/actionTypes'
 
 export const doAuthUserSet = authUser => ({
 	type: AUTH_USER_SET,
 	payload: authUser
+})
+
+export const doUserCoworkAdd = id => ({
+	type: USER_COWORK_ADD,
+	payload: id
 })
 
 export const doUserDataFetch = id => async dispatch => 
@@ -48,6 +55,16 @@ export const doCoworkListSet = coworks => ({
 	type: COWORK_LIST_SET,
 	payload: coworks
 })
+
+export const doCoworkDelete = (coworkId, userId) => dispatch => 
+	Promise.all([
+		firebase.cowork(coworkId).remove(),
+		firebase.user(userId).child('coworks').orderByValue().equalTo(coworkId)
+			.once('value', snapshot => snapshot.forEach(child => child.ref.remove()))
+	]).then(() => dispatch({
+		type: COWORK_DELETE,
+		payload: coworkId
+	}))
 
 export const doAmmenityListFetch = () => async dispatch => {
 	firebase.ammenities().on('value', snapshot => {

@@ -13,12 +13,6 @@ import {
 } from './styles'
 
 class List extends Component {
-	onClickDelete = (userId, coworkId) => {
-		// this.props.firebase.cowork(coworkId).remove()
-		// Eliminar la referencia al cowork dentro del user.
-	  // Dispatch action to update state 
-	}
-
 	render() {
 		const { listTitle, items, onClickDelete } = this.props
 		return (
@@ -30,7 +24,7 @@ class List extends Component {
 						text={item.coworkName} 
 						url={`${ROUTES.COWORKS}/${item.uid}`}
 						onClickEdit={() => ''}
-						onClickDelete={() => this.onClickDelete(item.uid)}
+						onClickDelete={() => onClickDelete(item.uid, item.userId)}
 					/>
 		    ))}
 		  </ListWrapper>
