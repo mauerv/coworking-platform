@@ -17,7 +17,6 @@ const Grid = ({ gridTitle, children, justifyContent, alignTitle }) => (
 )
 
 Grid.propTypes = {
-	children: PropTypes.arrayOf(PropTypes.element).isRequired,
 	gridTitle: PropTypes.string,
 	justifyContent: PropTypes.string,
 	alignTitle: PropTypes.string

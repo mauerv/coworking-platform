@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { compose } from 'recompose'
 import { withRouter } from 'react-router-dom'
 import { Field, FormSection, reduxForm } from 'redux-form'
@@ -31,7 +30,6 @@ class CoworkUpdate extends Component {
 	}
 
 	onUpdateCowork = values => {
-		/*
 		const { authUser, firebase, history } = this.props
 		const { ...coworkData } = values
 		coworkData.userId = authUser.uid
@@ -53,14 +51,13 @@ class CoworkUpdate extends Component {
 		})
 		.then(urls => {
 			coworkData.images = urls
-			firebase.coworks().push(coworkData).then(ref => {
-				firebase.user(authUser.uid).child('coworks').push(ref.key)
+
+			firebase.cowork(this.props.match.params.cowork_id).set(coworkData).then(ref => {
 				this.props.onCoworkListSet({ [ref.key]: coworkData })
 				this.props.onUserCoworkAdd(ref.key)
 				history.push(`${ROUTES.COWORKS}/${ref.key}`)
 			})
 		})	
-		*/
 	}
 	
 
@@ -85,8 +82,8 @@ class CoworkUpdate extends Component {
 	}
 
 	render() {
-		const { handleSubmit, ammenities } = this.props
-
+		const { handleSubmit, ammenities, initialValues, cowork } = this.props
+		console.log('Cowork', cowork)
 		return (
 			<UpdateCoworkWrapper>
 				<FormWrapper onSubmit={handleSubmit(this.onUpdateCowork)}>
@@ -124,7 +121,7 @@ class CoworkUpdate extends Component {
 							<Field name='picture3' type='file' component={this.renderFileUpload} label='Upload Image' />
 						</FormSection>
 					</Grid>
-					<FormSubmit type="submit">Create Cowork</FormSubmit>
+					<FormSubmit type="submit">Updates Cowork</FormSubmit>
 				</FormWrapper>
 			</UpdateCoworkWrapper>
 		)

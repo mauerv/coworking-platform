@@ -24,7 +24,7 @@ const Li = ({ text, url, onClickUpdate, onClickDelete }) => (
 Li.propTypes = {
 	text: PropTypes.string.isRequired,
 	url: PropTypes.string.isRequired,
-	onClickEdit: PropTypes.func.isRequired,
+	onClickUpdate: PropTypes.func.isRequired,
 	onClickDelete: PropTypes.func.isRequired
 }
 

@@ -2,6 +2,11 @@ import { connect } from 'react-redux'
 import { compose } from 'recompose'
 
 import { withFirebase } from '../firebase'
+import { 
+	withAuthorization, 
+	withEmailVerification, 
+	userIsAuthenticated
+} from '../session'
 
 import CoworkPage from '../components/CoworkPage'
 
@@ -14,8 +19,11 @@ const mapStateToProps = (state, ownProps) => ({
 
 export default compose(
 	withFirebase,
+	withEmailVerification,
+	withAuthorization(userIsAuthenticated),
 	connect(
 		mapStateToProps,
 		{ onCoworkDataFetch: doCoworkDataFetch }
 	)
 )(CoworkPage)
+

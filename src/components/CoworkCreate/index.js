@@ -29,7 +29,12 @@ class CoworkCreate extends Component {
 		const { authUser, firebase, history } = this.props
 		const { ...coworkData } = values
 		coworkData.userId = authUser.uid
-		coworkData.ammenities = Object.keys(values.ammenities)
+		if (values.ammenities !== undefined) {
+			coworkData.ammenities = Object.keys(values.ammenities).filter(ammenity => {
+				return values.ammenities[ammenity] === true
+			})
+		} else coworkData.ammenities = []
+
 		const storage = firebase.storage.ref()
 
 		Promise.all(

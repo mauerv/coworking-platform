@@ -1,12 +1,5 @@
 import React, { Component } from 'react'
 import Slider from 'react-slick'
-import { compose } from 'recompose'
-
-import { 
-	withAuthorization, 
-	withEmailVerification, 
-	userIsAuthenticated
-} from '../../session'
 
 import Grid from '../Grid'
 import LabeledIcon from '../LabeledIcon'
@@ -51,7 +44,7 @@ class CoworkPage extends Component {
 				</HeroSlider>
 				<ProfileRow>
 					<div>
-						<h1>{cowork.name}</h1>
+						<h1>{cowork.coworkName}</h1>
 						<p>{cowork.coworkLocation}</p>
 						<p>
 							{cowork.description}
@@ -64,14 +57,19 @@ class CoworkPage extends Component {
 						justifyContent='space-between'
 						alignTitle='left'
 					>
-						
-					<LabeledIcon 
-						iconName={'mug-hot'}
-						label={'Coffee'}
-						key={0}
-					/>
+						{cowork.ammenities.length > 0 ? (
+							cowork.ammenities.map(ammenity => (
+								<LabeledIcon 
+									iconName={ammenity.icon}
+									label={ammenity.label}
+									key={ammenity.label}
+								/>
+						))) : (
+							<div>There are no ammenities</div>
+						)} 
+							
 					</Grid>
-				</ProfileRow>
+				</ProfileRow>				
 				<ProfileRow>
 					<h1>Opening Hours</h1>
 					<p><strong>Monday/Friday: </strong>{cowork.openingWeekday}</p>
@@ -86,7 +84,4 @@ class CoworkPage extends Component {
 	}
 }
 
-export default compose(
-	withEmailVerification,
-	withAuthorization(userIsAuthenticated)
-)(CoworkPage)
+export default CoworkPage
