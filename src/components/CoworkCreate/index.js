@@ -29,36 +29,46 @@ class CoworkCreate extends Component {
 		const { authUser, firebase, history } = this.props
 		const { ...coworkData } = values
 		coworkData.userId = authUser.uid
-		if (values.ammenities !== undefined) {
-			coworkData.ammenities = Object.keys(values.ammenities).filter(ammenity => {
-				return values.ammenities[ammenity] === true
-			})
-		} else coworkData.ammenities = []
 
-		const storage = firebase.storage.ref()
+		if (!!values.ammenities) {
+			coworkData.ammenities = Object.keys(values.ammenities).filter(ammenity => 
+				values.ammenities[ammenity] === true
+			)
+		} 
 
-		Promise.all(
-			Object.keys(values.images).map(key => {
-				let img = values.images[key][0]
-				return storage.child(img.name).put(img)
-			})
-		)
-		.then(uploadedImgs => {
-			return Promise.all(
-				uploadedImgs.map(uploadedImg => {
-					return storage.child(uploadedImg.ref.fullPath).getDownloadURL()
+		if (!!values.images) {
+			const storage = firebase.storage.ref()
+
+			Promise.all(
+				Object.keys(values.images).map(key => {
+					let img = values.images[key][0]
+					return storage.child(img.name).put(img)
 				})
 			)
-		})
-		.then(urls => {
-			coworkData.images = urls
-			firebase.coworks().push(coworkData).then(ref => {
-				firebase.user(authUser.uid).child('coworks').push(ref.key)
-				this.props.onCoworkListSet({ [ref.key]: coworkData })
-				this.props.onUserCoworkAdd(ref.key)
-				history.push(`${ROUTES.COWORKS}/${ref.key}`)
+			.then(uploadedImgs => {
+				return Promise.all(
+					uploadedImgs.map(uploadedImg => {
+						return storage.child(uploadedImg.ref.fullPath).getDownloadURL()
+					})
+				)
 			})
-		})	
+			.then(urls => {
+				coworkData.images = urls
+				firebase.coworks().push(coworkData).then(ref => {
+					firebase.user(authUser.uid).child('coworks').push(ref.key)
+					this.props.onCoworkListSet({ [ref.key]: coworkData })
+					this.props.onUserCoworkAdd(ref.key)
+					history.push(`${ROUTES.COWORKS}/${ref.key}`)
+				})
+			})		
+		} else {
+			firebase.coworks().push(coworkData).then(ref => {
+					firebase.user(authUser.uid).child('coworks').push(ref.key)
+					this.props.onCoworkListSet({ [ref.key]: coworkData })
+					this.props.onUserCoworkAdd(ref.key)
+					history.push(`${ROUTES.COWORKS}/${ref.key}`)
+				})
+		}
 	}
 
 	renderField = ({ input, label, type, meta: { touched, error } }) => (

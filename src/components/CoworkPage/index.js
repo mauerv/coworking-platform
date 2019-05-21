@@ -24,10 +24,14 @@ class CoworkPage extends Component {
 		this.props.onCoworkDataFetch(this.props.match.params.cowork_id)
 	}
 
+	componentWillUnmount() {
+		this.props.firebase.cowork(this.props.match.params.cowork_id).off()
+	}
+
 	render() {
 		const { cowork } = this.props
 		
-		if (cowork === undefined) {
+		if (!cowork) {
 			return <div />
 		}
 
@@ -35,11 +39,17 @@ class CoworkPage extends Component {
 			<div>
 				<HeroSlider>
 					<Slider {...settings}>
-						{cowork.images.map((image, i) => (
-							<div key={i}>
-								<img src={image} alt='' /> 
+						{cowork.images ? (
+							cowork.images.map((image, i) => (
+								<div key={i}>
+									<img src={image} alt='' /> 
+								</div>
+							))
+						) : (
+							<div>
+								<img src={`${process.env.PUBLIC_URL}/olegario.jpg`} alt='' /> 
 							</div>
-						))}
+						)}
 					</Slider>
 				</HeroSlider>
 				<ProfileRow>
@@ -51,6 +61,7 @@ class CoworkPage extends Component {
 						</p>
 					</div>
 				</ProfileRow>
+				{/*
 				<ProfileRow>
 					<Grid 
 						gridTitle="Ammenities"
@@ -69,7 +80,8 @@ class CoworkPage extends Component {
 						)} 
 							
 					</Grid>
-				</ProfileRow>				
+				</ProfileRow>		
+				*/}		
 				<ProfileRow>
 					<h1>Opening Hours</h1>
 					<p><strong>Monday/Friday: </strong>{cowork.openingWeekday}</p>

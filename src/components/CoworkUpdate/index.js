@@ -83,7 +83,6 @@ class CoworkUpdate extends Component {
 
 	render() {
 		const { handleSubmit, ammenities, initialValues, cowork } = this.props
-		console.log('Cowork', cowork)
 		return (
 			<UpdateCoworkWrapper>
 				<FormWrapper onSubmit={handleSubmit(this.onUpdateCowork)}>
@@ -133,6 +132,7 @@ export default compose(
 	withAuthorization(userIsAuthenticated),
 	withRouter,
 	reduxForm({
-		form: 'updateCowork'
+		form: 'updateCowork',
+		enableReinitialize: true
 	})
 )(CoworkUpdate)

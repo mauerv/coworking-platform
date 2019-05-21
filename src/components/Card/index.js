@@ -16,7 +16,7 @@ const Card = ({ name, shortDescription, price, images, id }) => (
 	<CardLink to={`${ROUTES.COWORKS}/${id}`}>
 		<CardContent>
 			<CardThumbnail>
-		 		<img src={images[0]} alt='' />
+		 		<img src={images ? images[0] : `${process.env.PUBLIC_URL}/olegario.jpg`} alt='' />
 		 	</CardThumbnail>
 			<CardTitle>
 				{name}

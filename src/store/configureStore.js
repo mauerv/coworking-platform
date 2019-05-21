@@ -8,7 +8,6 @@ import { loadState, saveState } from '../util/localStorage'
 
 export default () => {
 	const preloadedState = loadState()
-
 	const middlewares = [thunk]
 	const middlewareEnhancer = applyMiddleware(...middlewares)
 

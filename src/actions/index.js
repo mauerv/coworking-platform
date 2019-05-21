@@ -7,7 +7,8 @@ import {
 	COWORK_LIST_SET,
 	USER_DATA_SET,
 	AMMENITY_LIST_SET,
-	COWORK_DELETE
+	COWORK_DELETE,
+	COWORK_DATA_SET
 } from '../constants/actionTypes'
 
 export const doAuthUserSet = authUser => ({
@@ -41,10 +42,11 @@ export const doUserDataSet = user => ({
 	payload: user
 })
 
-export const doCoworkDataFetch = id => async dispatch => {
-	const coworkData = (await firebase.cowork(id).once('value')).val()
-	dispatch(doCoworkListSet({ [id]: coworkData }))
-}
+export const doCoworkDataFetch = id => async dispatch =>
+	firebase.cowork(id).on('value', snapshot => {
+		console.log(snapshot)
+		dispatch(doCoworkListSet())
+	})
 
 export const doCoworkListFetch = () => async dispatch => 
 	firebase.coworks().on('value', snapshot => {

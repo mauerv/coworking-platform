@@ -51,7 +51,8 @@ export const getCoworkUpdateInitVal = (state, cowork) => {
 			})
 		}
 		return initialValues
-	} else return {}
+	}  
+	return {}
 }
 
 
